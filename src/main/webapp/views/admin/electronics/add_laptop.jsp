@@ -151,68 +151,47 @@
 
 									</div>
 								</c:when>
-							</c:choose --%>>
+							</c:choose> --%>
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="laptop" action="/admin/add-laptop"
-										enctype="multipart/form-data">
+									<form:form modelAttribute="laptop" action="/admin/electronics/add-laptop">
 										<div class="form-group">
-											<label class="required" for="txtInput">Hãng sản xuất:</label>
+											<label class="required" for="txtInput">Manufacturer:</label>
 											<form:select class="form-control"
-												path="laptopManufacturer.id">
-												<form:options items="${laptopManufacturer}" itemValue="id"
+												path="manufacturer.id">
+												<form:options items="${manufacturers}" itemValue="id"
 													itemLabel="name" />
 											</form:select>
 										</div>
 										<div class="form-group">
-											<label class="required">Tên:</label>
+											<label class="required">Name:</label>
 											<form:input path="name" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Bộ vi xử lý:</label>
+											<label class="required">Cpu:</label>
 											<form:input path="cpu" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Ổ cứng:</label>
-											<form:input path="oCung" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Bộ nhớ trong:</label>
+											<label class="required">Ram:</label>
 											<form:input path="ram" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">VGA:</label>
-											<form:input path="vga" class="form-control" />
+											<label class="required">Card:</label>
+											<form:input path="card" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Màn hình:</label>
-											<form:input path="manHinh" class="form-control" />
+											<label class="required">Screend size:</label>
+											<form:input path="screendSize" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Giá tiền:</label>
-											<form:input path="price" class="form-control" />
+											<label class="required">Warranty:</label>
+											<form:input path="warranty" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Bảng thông số kĩ thuật:</label>
-											<form:textarea path="table_content" class="form-control"
+											<label class="required">Specifications:</label>
+											<form:textarea path="specifications" class="form-control"
 												rows="5" id="summernote"></form:textarea>
-										</div>
-										<div class="form-group">
-											<label class="required">Số lượng nhập:</label>
-											<form:input path="soLuongNhap" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label>Khuyến mại:</label>
-											<form:input path="khuyenMai" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label>Link Video:</label>
-											<form:input path="video" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Hình ảnh:&ensp;</label> <input
-												type="file" name="laptopImage" multiple="multiple" />
 										</div>
 										<button type="submit" class="btn btn-success">
 											<i class="fas fa-download"></i> Save

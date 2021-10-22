@@ -28,12 +28,14 @@ public class AdminLaptopController {
 		List<Manufacturer> manufacturers =
 				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
 		model.addAttribute("manufacturers", manufacturers);
-		return "add_laptop";
+		Laptop laptop = new Laptop();
+		model.addAttribute("laptop",laptop);
+		return "admin/electronics/add_laptop";
 	}
 	
 	@PostMapping("/add-laptop")
 	public String addLaptop(@ModelAttribute Laptop laptop, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		rest.postForObject("http://localhost:6969/rest/api/electronics/laptop/insert", laptop, Laptop.class);
-		return "add_laptop";
+		return "admin/electronics/add_laptop";
 	}
 }
