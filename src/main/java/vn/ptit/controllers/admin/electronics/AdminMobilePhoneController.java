@@ -17,25 +17,26 @@ import org.springframework.web.client.RestTemplate;
 
 import vn.ptit.model.electronics.Laptop;
 import vn.ptit.model.electronics.Manufacturer;
+import vn.ptit.model.electronics.MobilePhone;
 
 @Controller
 @RequestMapping("/admin/electronics")
-public class AdminLaptopController {
+public class AdminMobilePhoneController {
 	private RestTemplate rest = new RestTemplate();
 	
-	@GetMapping("/add-laptop")
-	public String viewAddLaptop(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	@GetMapping("/add-mobilePhone")
+	public String viewAddMobilePhone(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<Manufacturer> manufacturers =
 				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
 		model.addAttribute("manufacturers", manufacturers);
-		Laptop laptop = new Laptop();
-		model.addAttribute("laptop",laptop);
-		return "admin/electronics/add_laptop";
+		MobilePhone mobilePhone = new MobilePhone();
+		model.addAttribute("mobilePhone",mobilePhone);
+		return "admin/electronics/add_mobilePhone";
 	}
 	
-	@PostMapping("/add-laptop")
-	public String addLaptop(@ModelAttribute("laptop") Laptop laptop, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		rest.postForObject("http://localhost:6969/rest/api/electronics/laptop/insert", laptop, Laptop.class);
-		return "admin/electronics/add_laptop";
+	@PostMapping("/add-mobilePhone")
+	public String addMobilePhone(@ModelAttribute("mobilePhone") MobilePhone mobilePhone, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.postForObject("http://localhost:6969/rest/api/electronics/mobilePhone/insert", mobilePhone, MobilePhone.class);
+		return "admin/electronics/add_mobilePhone";
 	}
 }

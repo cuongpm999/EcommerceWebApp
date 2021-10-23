@@ -18,18 +18,19 @@ import vn.ptit.model.electronics.Laptop;
 import vn.ptit.model.electronics.Manufacturer;
 
 @Controller
-@RequestMapping("/admin/manufacturer")
+@RequestMapping("/admin")
 public class AdminManufacturerController {
 	private RestTemplate rest = new RestTemplate();
 	
 	@GetMapping("/add-manufacturer")
 	public String viewAddManufacturer(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		return "add_manufacturer";
+		model.addAttribute("manufacturer", new Manufacturer());
+		return "admin/electronics/add_manufacturer";
 	}
 	
 	@PostMapping("/add-manufacturer")
-	public String addManufacturer(@ModelAttribute Manufacturer manufacturer, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	public String addManufacturer(@ModelAttribute("manufacturer") Manufacturer manufacturer, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		rest.postForObject("http://localhost:6969/rest/api/manufacturer/insert", manufacturer, Manufacturer.class);
-		return "add_manufacturer";
+		return "admin/electronics/add_manufacturer";
 	}
 }

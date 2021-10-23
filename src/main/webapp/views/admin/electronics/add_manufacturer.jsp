@@ -155,47 +155,14 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="laptop" action="/admin/electronics/add-laptop">
-										<div class="form-group">
-											<label class="required" for="txtInput">Manufacturer:</label>
-											<form:select class="form-control"
-												path="manufacturer.id">
-												<form:options items="${manufacturers}" itemValue="id"
-													itemLabel="name" />
-											</form:select>
-										</div>
+									<form:form modelAttribute="manufacturer" action="/admin/add-manufacturer">
 										<div class="form-group">
 											<label class="required">Name:</label>
 											<form:input path="name" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Cpu:</label>
-											<form:input path="cpu" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Ram:</label>
-											<form:input path="ram" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Card:</label>
-											<form:input path="card" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Hard drive:</label>
-											<form:input path="hardDrive" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Screend size:</label>
-											<form:input path="screendSize" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Warranty:</label>
-											<form:input path="warranty" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Specifications:</label>
-											<form:textarea path="specifications" class="form-control"
-												rows="5" id="summernote"></form:textarea>
+											<label class="required">Address:</label>
+											<form:input path="address" class="form-control" />
 										</div>
 										<button type="submit" class="btn btn-success">
 											<i class="fas fa-download"></i> Save

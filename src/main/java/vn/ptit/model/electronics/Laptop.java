@@ -4,17 +4,19 @@ public class Laptop extends Electronics{
 	private String ram;
 	private String cpu;
 	private String card;
+	private String hardDrive;
 	
 	public Laptop() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Laptop(String name, String specifications, int warranty, double screendSize, Manufacturer manufacturer,
-			String ram, String cpu, String card) {
+			String ram, String cpu, String card, String hardDrive) {
 		super(name, specifications, warranty, screendSize, manufacturer);
 		this.ram = ram;
 		this.cpu = cpu;
 		this.card = card;
+		this.hardDrive = hardDrive;
 	}
 
 	public String getRam() {
@@ -39,6 +41,14 @@ public class Laptop extends Electronics{
 
 	public void setCard(String card) {
 		this.card = card;
+	}
+
+	public String getHardDrive() {
+		return hardDrive;
+	}
+
+	public void setHardDrive(String hardDrive) {
+		this.hardDrive = hardDrive;
 	}
 	
 }

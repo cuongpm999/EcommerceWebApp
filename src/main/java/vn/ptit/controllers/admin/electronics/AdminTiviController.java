@@ -17,25 +17,27 @@ import org.springframework.web.client.RestTemplate;
 
 import vn.ptit.model.electronics.Laptop;
 import vn.ptit.model.electronics.Manufacturer;
+import vn.ptit.model.electronics.MobilePhone;
+import vn.ptit.model.electronics.Tivi;
 
 @Controller
 @RequestMapping("/admin/electronics")
-public class AdminLaptopController {
+public class AdminTiviController {
 	private RestTemplate rest = new RestTemplate();
 	
-	@GetMapping("/add-laptop")
-	public String viewAddLaptop(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	@GetMapping("/add-tivi")
+	public String viewAddTivi(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<Manufacturer> manufacturers =
 				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
 		model.addAttribute("manufacturers", manufacturers);
-		Laptop laptop = new Laptop();
-		model.addAttribute("laptop",laptop);
-		return "admin/electronics/add_laptop";
+		Tivi tivi = new Tivi();
+		model.addAttribute("tivi",tivi);
+		return "admin/electronics/add_tivi";
 	}
 	
-	@PostMapping("/add-laptop")
-	public String addLaptop(@ModelAttribute("laptop") Laptop laptop, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		rest.postForObject("http://localhost:6969/rest/api/electronics/laptop/insert", laptop, Laptop.class);
-		return "admin/electronics/add_laptop";
+	@PostMapping("/add-tivi")
+	public String addTivi(@ModelAttribute("tivi") Tivi tivi, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.postForObject("http://localhost:6969/rest/api/electronics/tivi/insert", tivi, MobilePhone.class);
+		return "admin/electronics/add_tivi";
 	}
 }

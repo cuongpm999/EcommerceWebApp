@@ -155,7 +155,7 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="laptop" action="/admin/electronics/add-laptop">
+									<form:form modelAttribute="tivi" action="/admin/electronics/add-tivi">
 										<div class="form-group">
 											<label class="required" for="txtInput">Manufacturer:</label>
 											<form:select class="form-control"
@@ -169,20 +169,8 @@
 											<form:input path="name" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Cpu:</label>
-											<form:input path="cpu" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Ram:</label>
-											<form:input path="ram" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Card:</label>
-											<form:input path="card" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Hard drive:</label>
-											<form:input path="hardDrive" class="form-control" />
+											<label class="required">Connector:</label>
+											<form:input path="connector" class="form-control" />
 										</div>
 										<div class="form-group">
 											<label class="required">Screend size:</label>
