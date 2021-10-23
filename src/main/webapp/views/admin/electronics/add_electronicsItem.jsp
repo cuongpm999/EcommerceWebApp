@@ -124,7 +124,7 @@
 											src="/files_users/${userDis.userAttachment.name }">
 									</c:when>
 								</c:choose> --%>
-								<span class="text-icon"><%-- ${userDis.username } --%></span> 
+								<span class="text-icon"><%-- ${userDis.username } --%></span>
 						</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="/user-details"><i
@@ -155,43 +155,27 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="mobilePhone" action="/admin/electronics/add-mobilephone">
+									<form:form modelAttribute="electronicsItem" action="/admin/add-electronics-item"
+										enctype="multipart/form-data">
 										<div class="form-group">
-											<label class="required" for="txtInput">Manufacturer:</label>
+											<label class="required" for="txtInput">Electronics:</label>
 											<form:select class="form-control"
-												path="manufacturer.id">
-												<form:options items="${manufacturers}" itemValue="id"
+												path="electronics.id">
+												<form:options items="${electronics}" itemValue="id"
 													itemLabel="name" />
 											</form:select>
+										</div>							
+										<div class="form-group">
+											<label class="required">Price:</label>
+											<form:input path="price" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Name:</label>
-											<form:input path="name" class="form-control" />
+											<label>Discount:</label>
+											<form:input path="discount" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Cpu:</label>
-											<form:input path="cpu" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Ram:</label>
-											<form:input path="ram" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Camera:</label>
-											<form:input path="camera" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Screend size:</label>
-											<form:input path="screendSize" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Warranty:</label>
-											<form:input path="warranty" class="form-control" />
-										</div>
-										<div class="form-group">
-											<label class="required">Specifications:</label>
-											<form:textarea path="specifications" class="form-control"
-												rows="5" id="summernote"></form:textarea>
+											<label class="required">Img:&ensp;</label> <input
+												type="file" name="electronicsImage" multiple="multiple" />
 										</div>
 										<button type="submit" class="btn btn-success">
 											<i class="fas fa-download"></i> Save

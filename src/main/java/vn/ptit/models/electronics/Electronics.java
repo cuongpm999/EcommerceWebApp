@@ -70,4 +70,10 @@ public class Electronics {
 		this.manufacturer = manufacturer;
 	}
 
+	@Override
+	public String toString() {
+		return "Electronics [id=" + id + ", name=" + name + ", specifications=" + specifications + ", warranty="
+				+ warranty + ", screendSize=" + screendSize + ", manufacturer=" + manufacturer + "]";
+	}
+
 }
