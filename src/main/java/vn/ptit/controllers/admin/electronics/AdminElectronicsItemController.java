@@ -75,12 +75,9 @@ public class AdminElectronicsItemController {
 		RandomString randomString = new RandomString(13, new SecureRandom(), RandomString.digits);
 		electronicsItem.setBarCode(randomString.nextString());
 		electronicsItem.setSlug(new CreateSlug().create(electronicsItem.getElectronics().getName()));
-
-		electronicsItem = rest.postForObject("http://localhost:6969/rest/api/electronics-item/insert", electronicsItem,
-				ElectronicsItem.class);
+		List<ImgElectronicsItem> imgElectronicsItems = new ArrayList<>();
 
 		Map uploadResult = null;
-		List<ImgElectronicsItem> imgElectronicsItems = new ArrayList<ImgElectronicsItem>();
 		if (electronicsImage != null && electronicsImage.length > 0) {
 			for (MultipartFile multipartFile : electronicsImage) {
 				if (multipartFile.getSize() <= 0)
@@ -92,12 +89,15 @@ public class AdminElectronicsItemController {
 						ObjectUtils.asMap("resource_type", "auto", "folder", "EcommerceProject/ElectronicsItem"));
 				imgElectronicsItem.setName((String) uploadResult.get("public_id") + '.'
 						+ multipartFile.getContentType().substring(multipartFile.getContentType().indexOf('/') + 1));
-				imgElectronicsItem.setElectronicsItem(electronicsItem);
 				
-				rest.postForObject("http://localhost:6969/rest/api/electronics-item/img/insert", imgElectronicsItem,
-						ImgElectronicsItem.class);
+				imgElectronicsItems.add(imgElectronicsItem);
+			
 			}
 		}
+		electronicsItem.setImgElectronicsItems(imgElectronicsItems);
+		
+		rest.postForObject("http://localhost:6969/rest/api/electronics-item/insert", electronicsItem,
+				ElectronicsItem.class);
 
 		return "admin/electronics/add_electronicsItem";
 	}
