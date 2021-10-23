@@ -145,7 +145,7 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="publisher" action="/admin/publisher/add-publisher" method="post">
+									<form:form modelAttribute="publisher" action="/admin/add-publisher" method="post">
 										<div class="form-group">
 											<label class="required" for="txtInput">Name: </label>
 											<form:input path="name" class="form-control" />

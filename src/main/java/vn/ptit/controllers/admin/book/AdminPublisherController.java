@@ -14,19 +14,20 @@ import org.springframework.web.client.RestTemplate;
 import vn.ptit.model.book.Publisher;
 
 @Controller
-@RequestMapping("/admin/publisher")
+@RequestMapping("/admin")
 public class AdminPublisherController {
 	
 	private RestTemplate rest = new RestTemplate();
 	
 	@PostMapping("/add-publisher")
-	public String addPublisher(@ModelAttribute Publisher publisher, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	public String addPublisher(@ModelAttribute("publisher") Publisher publisher, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		rest.postForObject("http://localhost:6969/rest/api/publisher/insert", publisher, Publisher.class);
 		return "/admin/book/add_publisher";
 	}
 	
 	@GetMapping("/add-publisher")
-	public String viewAddPublisher(@ModelAttribute Publisher publisher, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	public String viewAddPublisher(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		model.addAttribute("pulisher", new Publisher());
 		return "/admin/book/add_publisher";
 	}
 }

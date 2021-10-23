@@ -14,18 +14,19 @@ import org.springframework.web.client.RestTemplate;
 import vn.ptit.model.book.Author;
 
 @Controller
-@RequestMapping("/admin/author")
+@RequestMapping("/admin")
 public class AdminAuthorController {
 	
 	private RestTemplate rest = new RestTemplate();
 	
 	@GetMapping("/add-author")
-	public String viewAddAuthor(@ModelAttribute Author author, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	public String viewAddAuthor(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		model.addAttribute("author", new Author());
 		return "/admin/book/add_author";
 	}
 	
 	@PostMapping("/add-author")
-	public String addAuthor(@ModelAttribute Author author, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	public String addAuthor(@ModelAttribute("author") Author author, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		rest.postForObject("http://localhost:6969/rest/api/author/insert", author, Author.class);
 		return "/admin/book/add_author";
 	}

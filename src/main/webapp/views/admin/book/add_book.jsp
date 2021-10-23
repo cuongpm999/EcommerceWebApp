@@ -145,40 +145,47 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="book" action="/admin/book/add-book" method="post">
+									<form action="/admin/add-book" method="post">
 										<div class="form-group">
 											<label class="required">Author: </label>
-											<form:select multiple="true" class="form-control" path="authors">
-												<form:options items="${authors}" itemValue="id" itemLabel="name" />
-											</form:select>
+											<div style="height: 100px; overflow-y: scroll;">
+												<c:forEach var="author" items="${authors }">
+													<label style="display: block; color: #495057; font-size: 16px;">
+														<input name="authors" type="checkbox" value="${author.id }">
+														${author.name }
+													</label>
+												</c:forEach>
+											</div>
 										</div>
 										<div class="form-group">
 											<label class="required">Publisher: </label>
-											<form:select class="form-control" path="publisher">
-												<form:options items="${publishers}" itemValue="id" itemLabel="name" />
-											</form:select>
+											<select class="form-control" name="publisherId">
+												<c:forEach var="publisher" items="${publishers }">
+													<option value="${publisher.id }">${publisher.name }</option>
+												</c:forEach>
+											</select>
 										</div>
 										<div class="form-group">
 											<label class="required">Title: </label>
-											<form:input path="title" class="form-control" />
+											<input name="title" class="form-control" />
 										</div>
 										<div class="form-group">
 											<label class="required">Summary: </label>
-											<form:input path="summary" class="form-control" />
+											<textarea name="summary" class="form-control" rows="5" style="width: 100%;"></textarea>
 										</div>
 										<div class="form-group">
 											<label class="required">Pages: </label>
-											<form:input path="pages" class="form-control" type="number"/>
+											<input name="pages" class="form-control" type="number"/>
 										</div>
 										<div class="form-group">
 											<label class="required">Language: </label>
-											<form:input path="language" class="form-control" />
+											<input name="language" class="form-control" />
 										</div>
 
 										<button type="submit" class="btn btn-success">
 											<i class="fas fa-download"></i> Save
 										</button>
-									</form:form>
+									</form>
 								</div>
 							</div>
 						</div>
