@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import vn.ptit.model.book.Publisher;
+import vn.ptit.models.book.Publisher;
 
 @Controller
 @RequestMapping("/admin")

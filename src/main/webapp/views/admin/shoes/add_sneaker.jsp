@@ -123,8 +123,7 @@
 										<img class="icon" alt="user"
 											src="/files_users/${userDis.userAttachment.name }">
 									</c:when>
-								</c:choose> --%> <span class="text-icon">
-									<%-- ${userDis.username } --%>
+								</c:choose> --%> <span class="text-icon"> <%-- ${userDis.username } --%>
 							</span>
 						</a>
 							<div class="dropdown-menu">
@@ -156,7 +155,8 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="sneaker" action="/admin/shoes/add-sneaker"
+									<form:form modelAttribute="sneaker"
+										action="/admin/shoes/add-sneaker"
 										enctype="multipart/form-data">
 										<%-- <div class="form-group">
 											<label class="required" for="txtInput">Hãng sản xuất:</label>
@@ -187,9 +187,11 @@
 											<form:input path="size" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Clinch:</label>
-											<form:radiobutton path="clinch" class="" value="1" label="Yes"/>
-											<form:radiobutton path="clinch" class="" value="0" label="No"/>
+											<label class="required">Clinch:</label>&ensp;
+											<form:radiobutton path="clinch" class="" value="1"
+												label="Yes" />
+											&emsp;
+											<form:radiobutton path="clinch" class="" value="0" label="No" />
 										</div>
 										<div class="form-group">
 											<label class="required">Sole:</label>

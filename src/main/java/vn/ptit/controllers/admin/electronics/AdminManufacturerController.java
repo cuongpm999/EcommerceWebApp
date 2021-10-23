@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import vn.ptit.model.electronics.Laptop;
-import vn.ptit.model.electronics.Manufacturer;
+import vn.ptit.models.electronics.Laptop;
+import vn.ptit.models.electronics.Manufacturer;
 
 @Controller
 @RequestMapping("/admin")

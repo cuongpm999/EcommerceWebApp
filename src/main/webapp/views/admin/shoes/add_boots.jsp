@@ -123,8 +123,7 @@
 										<img class="icon" alt="user"
 											src="/files_users/${userDis.userAttachment.name }">
 									</c:when>
-								</c:choose> --%> <span class="text-icon">
-									<%-- ${userDis.username } --%>
+								</c:choose> --%> <span class="text-icon"> <%-- ${userDis.username } --%>
 							</span>
 						</a>
 							<div class="dropdown-menu">
@@ -156,8 +155,8 @@
 
 							<div class="card-body">
 								<div class="panel-body">
-									<form:form modelAttribute="boots" action="/admin/shoes/add-boots"
-										enctype="multipart/form-data">
+									<form:form modelAttribute="boots"
+										action="/admin/shoes/add-boots" enctype="multipart/form-data">
 										<%-- <div class="form-group">
 											<label class="required" for="txtInput">Hãng sản xuất:</label>
 											<form:select class="form-control"
@@ -187,9 +186,12 @@
 											<form:input path="size" class="form-control" />
 										</div>
 										<div class="form-group">
-											<label class="required">Is shoelace:</label>
-											<form:radiobutton path="isShoelace" class="" value="1" label="Yes"/>
-											<form:radiobutton path="isShoelace" class="" value="0" label="No"/>
+											<label class="required">Shoelace:</label>&ensp;
+											<form:radiobutton path="isShoelace" class="" value="1"
+												label="Yes" />
+											&emsp;
+											<form:radiobutton path="isShoelace" class="" value="0"
+												label="No" />
 										</div>
 										<button type="submit" class="btn btn-success">
 											<i class="fas fa-download"></i> Save
