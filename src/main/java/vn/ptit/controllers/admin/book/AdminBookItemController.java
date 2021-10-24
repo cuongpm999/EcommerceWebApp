@@ -1,15 +1,17 @@
 package vn.ptit.controllers.admin.book;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,44 +22,79 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import vn.ptit.entities.ImgProduct;
-import vn.ptit.entities.Product;
-import vn.ptit.models.book.Author;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+
 import vn.ptit.models.book.Book;
 import vn.ptit.models.book.BookItem;
 import vn.ptit.models.book.ImgBookItem;
-import vn.ptit.models.book.Publisher;
+import vn.ptit.utils.CreateSlug;
+import vn.ptit.utils.RandomString;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminBookItemController {
-	
-	@Autowired 
-	
+
+	@Autowired
+	Cloudinary cloudinary;
+
+	@Value("${file.upload.path}")
+	private String attachmentPath;
+
 	private RestTemplate rest = new RestTemplate();
-	
-	@GetMapping("/add-bookitem")
+
+	@GetMapping("/add-book-item")
 	public String viewAddBookItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		List<Book> books = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/book/find-all", Book[].class));
+		List<Book> books = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/book/find-all", Book[].class));
 		model.addAttribute("books", books);
 		model.addAttribute("bookItem", new BookItem());
 		return "/admin/book/add_bookItem";
 	}
-	
-	@PostMapping("/add-bookitem")
-	public String addBookItem(@RequestParam("imgBookItem") MultipartFile[] imgBookItem, @ModelAttribute("bookItem") BookItem bookItem, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+
+	@PostMapping("/add-book-item")
+	public String addBookItem(@RequestParam("imgBookItem") MultipartFile[] imgBookItem,
+			@ModelAttribute("bookItem") BookItem bookItem, ModelMap model, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+
+		List<Book> books = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/book/find-all", Book[].class));
+		model.addAttribute("books", books);
+
+		for (int i = 0; i < books.size(); i++) {
+			if (books.get(i).getId() == bookItem.getBook().getId()) {
+				bookItem.setBook(books.get(i));
+			}
+		}
+		
+		RandomString randomString = new RandomString(13, new SecureRandom(), RandomString.digits);
+		bookItem.setBarCode(randomString.nextString());
+		bookItem.setSlug(new CreateSlug().create(bookItem.getBook().getTitle()));
+		
+		List<ImgBookItem> listImgBookItems = new ArrayList<ImgBookItem>();
+		
+		Map uploadResult = null;
+
 		if (imgBookItem != null && imgBookItem.length > 0) {
 			for (MultipartFile multipartFile : imgBookItem) {
 				if (multipartFile.getSize() <= 0)
 					continue;
 				ImgBookItem img = new ImgBookItem();
-				img.setName(multipartFile.getOriginalFilename());
-				img.setPath(null);
-				img.setMime(null);
-				product.addImgProduct(imgProduct);
-				multipartFile.transferTo(new File(fileProduct + "/" + multipartFile.getOriginalFilename()));
+				img.setMime(multipartFile.getContentType());
+				img.setPath(attachmentPath);
+				uploadResult = cloudinary.uploader().upload(multipartFile.getBytes(),
+						ObjectUtils.asMap("resource_type", "auto", "folder", "EcommerceProject/BookItem"));
+				img.setName((String) uploadResult.get("public_id") + '.'
+						+ multipartFile.getContentType().substring(multipartFile.getContentType().indexOf('/') + 1));
+				listImgBookItems.add(img);
 			}
 		}
+		
+		bookItem.setImgBookItems(listImgBookItems);
+		rest.postForObject("http://localhost:6969/rest/api/book-item/insert", bookItem,
+				BookItem.class);
+
+		return "/admin/book/add_bookItem";
 	}
-	
+
 }

@@ -14,30 +14,25 @@ public class BookItem {
 
 	private Book book;
 	
-	private List<ImgBookItem> imgBookItem;
+	private List<ImgBookItem> imgBookItems;
 
 	public BookItem() {
 		super();
 	}
 
-	public BookItem(String barCode, double price, double discount, String slug, Book book,
-			List<ImgBookItem> imgBookItem) {
-		super();
-		this.barCode = barCode;
-		this.price = price;
-		this.discount = discount;
-		this.slug = slug;
-		this.book = book;
-		this.imgBookItem = imgBookItem;
+	
+
+	public List<ImgBookItem> getImgBookItems() {
+		return imgBookItems;
 	}
 
-	public List<ImgBookItem> getImgBookItem() {
-		return imgBookItem;
+
+
+	public void setImgBookItems(List<ImgBookItem> imgBookItems) {
+		this.imgBookItems = imgBookItems;
 	}
-	
-	public void setImgBookItem(List<ImgBookItem> imgBookItem) {
-		this.imgBookItem = imgBookItem;
-	}
+
+
 
 	public String getBarCode() {
 		return barCode;

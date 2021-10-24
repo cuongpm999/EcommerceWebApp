@@ -1,6 +1,5 @@
 package vn.ptit.models.electronics;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ElectronicsItem {

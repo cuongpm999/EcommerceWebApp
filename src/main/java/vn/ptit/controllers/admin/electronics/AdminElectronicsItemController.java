@@ -56,7 +56,7 @@ public class AdminElectronicsItemController {
 	}
 
 	@PostMapping("/add-electronics-item")
-	public String add_laptop(@RequestParam("electronicsImage") MultipartFile[] electronicsImage,
+	public String addElectronicsItem(@RequestParam("electronicsImage") MultipartFile[] electronicsImage,
 			@ModelAttribute("electronicsItem") ElectronicsItem electronicsItem, final ModelMap model,
 			final HttpServletRequest request, final HttpServletResponse response)
 			throws IllegalStateException, IOException {
