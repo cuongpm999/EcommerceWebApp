@@ -1,21 +1,19 @@
-package vn.ptit.models.clothes;
+package vn.ptit.models.shoes;
 
-public class ImgClothesItem {
+public class ImgShoesItem {
 	private int id;
 	private String name;
 	private String path;
 	private String mime;
-	public ImgClothesItem() {
+	public ImgShoesItem() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public ImgClothesItem(String name, String path, String mime) {
+	public ImgShoesItem(String name, String path, String mime) {
 		super();
 		this.name = name;
 		this.path = path;
 		this.mime = mime;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -40,6 +38,5 @@ public class ImgClothesItem {
 	public void setMime(String mime) {
 		this.mime = mime;
 	}
-	
 	
 }
