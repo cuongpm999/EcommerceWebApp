@@ -38,6 +38,9 @@ public class AdminTiviController {
 	@PostMapping("/add-tivi")
 	public String addTivi(@ModelAttribute("tivi") Tivi tivi, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		rest.postForObject("http://localhost:6969/rest/api/electronics/tivi/insert", tivi, MobilePhone.class);
+		List<Manufacturer> manufacturers =
+				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
+		model.addAttribute("manufacturers", manufacturers);
 		return "admin/electronics/add_tivi";
 	}
 }
