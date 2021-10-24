@@ -24,7 +24,7 @@ import vn.ptit.models.electronics.MobilePhone;
 public class AdminMobilePhoneController {
 	private RestTemplate rest = new RestTemplate();
 	
-	@GetMapping("/add-mobilePhone")
+	@GetMapping("/add-mobilephone")
 	public String viewAddMobilePhone(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<Manufacturer> manufacturers =
 				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
@@ -34,9 +34,12 @@ public class AdminMobilePhoneController {
 		return "admin/electronics/add_mobilePhone";
 	}
 	
-	@PostMapping("/add-mobilePhone")
+	@PostMapping("/add-mobilephone")
 	public String addMobilePhone(@ModelAttribute("mobilePhone") MobilePhone mobilePhone, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		rest.postForObject("http://localhost:6969/rest/api/electronics/mobilePhone/insert", mobilePhone, MobilePhone.class);
+		rest.postForObject("http://localhost:6969/rest/api/electronics/mobilephone/insert", mobilePhone, MobilePhone.class);
+		List<Manufacturer> manufacturers =
+				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
+		model.addAttribute("manufacturers", manufacturers);
 		return "admin/electronics/add_mobilePhone";
 	}
 }

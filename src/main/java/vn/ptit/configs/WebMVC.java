@@ -46,10 +46,7 @@ public class WebMVC implements WebMvcConfigurer {
 		registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
 		registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/");
 //		registry.addResourceHandler("/favicons/**").addResourceLocations("classpath:/static/favicons/");
-		registry.addResourceHandler("/files_bookitem/**").addResourceLocations(attachmentPath);
-		registry.addResourceHandler("/files_electronicsitem/**").addResourceLocations(attachmentPath);
-		registry.addResourceHandler("/files_shoesitem/**").addResourceLocations(attachmentPath);
-		registry.addResourceHandler("/files_clothesitem/**").addResourceLocations(attachmentPath);
+		registry.addResourceHandler("/files_item/**").addResourceLocations(attachmentPath);
 //		registry.addResourceHandler("/files_banners/**").addResourceLocations(attachmentPath);
 //		registry.addResourceHandler("/files_users/**").addResourceLocations(attachmentPath);
 		
