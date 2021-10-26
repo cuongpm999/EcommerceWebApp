@@ -3,36 +3,24 @@ package vn.ptit.models.book;
 import java.util.List;
 
 public class BookItem {
-	
 	private String barCode;
-
 	private double price;
-
 	private double discount;
-	
 	private String slug;
-
 	private Book book;
-	
 	private List<ImgBookItem> imgBookItems;
 
 	public BookItem() {
 		super();
 	}
 
-	
-
 	public List<ImgBookItem> getImgBookItems() {
 		return imgBookItems;
 	}
 
-
-
 	public void setImgBookItems(List<ImgBookItem> imgBookItems) {
 		this.imgBookItems = imgBookItems;
 	}
-
-
 
 	public String getBarCode() {
 		return barCode;

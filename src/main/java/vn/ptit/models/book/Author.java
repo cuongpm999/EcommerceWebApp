@@ -1,11 +1,8 @@
 package vn.ptit.models.book;
 
 public class Author {
-
 	private int id;
-	
 	private String name;
-	
 	private String biography;
 	
 	public Author() {

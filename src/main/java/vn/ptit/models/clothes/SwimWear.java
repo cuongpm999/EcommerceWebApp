@@ -2,9 +2,7 @@ package vn.ptit.models.clothes;
 
 public class SwimWear extends Clothes {
 	private int bustSize;
-
 	private int waistSize;
-
 	private int hipsSize;
 
 	public SwimWear() {

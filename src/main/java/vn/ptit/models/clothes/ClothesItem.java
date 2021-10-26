@@ -9,6 +9,7 @@ public class ClothesItem {
 	private String slug;
 	private Clothes clothes;
 	private List<ImgClothesItem> imgClothesItems;
+	
 	public ClothesItem() {
 		// TODO Auto-generated constructor stub
 	}

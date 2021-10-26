@@ -5,6 +5,7 @@ public class ImgClothesItem {
 	private String name;
 	private String path;
 	private String mime;
+	
 	public ImgClothesItem() {
 		// TODO Auto-generated constructor stub
 	}

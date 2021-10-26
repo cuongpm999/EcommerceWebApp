@@ -1,15 +1,10 @@
 package vn.ptit.models.clothes;
 
 public class Clothes {
-
 	private int id;
-
 	private String color;
-
 	private String material;
-
 	private String style;
-
 	private String name;
 
 	public Clothes() {

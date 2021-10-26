@@ -4,6 +4,7 @@ public class Dresses extends Clothes{
 	private String size;
 	private String length;
 	private String pattern;
+	
 	public Dresses() {
 	}
 	

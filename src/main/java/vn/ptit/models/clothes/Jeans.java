@@ -2,9 +2,9 @@ package vn.ptit.models.clothes;
 
 
 public class Jeans extends Clothes{
-	
 	private String pipe;
 	private String size;
+	
 	public Jeans() {
 		// TODO Auto-generated constructor stub
 	}

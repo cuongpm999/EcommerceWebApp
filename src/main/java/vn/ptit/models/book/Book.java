@@ -5,17 +5,11 @@ import java.util.List;
 
 public class Book {
 	private int id;
-
 	private String title;
-
 	private String summary;
-
 	private int pages;
-
 	private String language;
-	
 	private Publisher publisher;
-
 	private List<Author> authors = new ArrayList<>();
 	
 	public Book() {
