@@ -74,36 +74,36 @@
 					MỤC</h3>
 				<div class="row">
 					<div class="col-md-3">
-						<a href="#"><img src="/img/clothes.png" alt="product"></a>
+						<a href="/clothes"><img src="/img/clothes.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/clothes">
 								<h6>Clothes</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/electronic.png" alt="product"></a>
+						<a href="/electronics"><img src="/img/electronic.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/electronics">
 								<h6>Electronics</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/shoes.png" alt="product"></a>
+						<a href="/shoes"><img src="/img/shoes.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/shoes">
 								<h6>Shoes</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/book.png" alt="product"></a>
+						<a href="/book"><img src="/img/book.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/book">
 								<h6>Book</h6>
 							</a>
 						</div>

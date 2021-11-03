@@ -160,5 +160,6 @@ h4.tieude-tp::after {
 }
 
 .list-electronics img {
-    height: 190px;
+    height: 180px;
+    width: 180px
 }
