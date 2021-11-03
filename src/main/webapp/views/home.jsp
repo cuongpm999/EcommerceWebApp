@@ -39,6 +39,7 @@
 				<li data-target="#demo" data-slide-to="0" class="active"></li>
 				<li data-target="#demo" data-slide-to="1"></li>
 				<li data-target="#demo" data-slide-to="2"></li>
+				<li data-target="#demo" data-slide-to="3"></li>
 			</ul>
 
 			<div class="carousel-inner">
@@ -73,36 +74,36 @@
 					MỤC</h3>
 				<div class="row">
 					<div class="col-md-3">
-						<a href="#"><img src="/img/clothes.png" alt="product"></a>
+						<a href="/clothes"><img src="/img/clothes.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/clothes">
 								<h6>Clothes</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/electronic.png" alt="product"></a>
+						<a href="/electronics"><img src="/img/electronic.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/electronics">
 								<h6>Electronics</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/shoes.png" alt="product"></a>
+						<a href="/shoes"><img src="/img/shoes.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/shoes">
 								<h6>Shoes</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/book.png" alt="product"></a>
+						<a href="/book"><img src="/img/book.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/book">
 								<h6>Book</h6>
 							</a>
 						</div>
@@ -129,24 +130,126 @@
 									<c:choose>
 										<c:when test="${bookItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${bookItem.price }Đ</p>
+												<p class="gia-chinh">${bookItem.price }₫</p>
 												<p class="khuyen-mai">(Tiết kiệm: ${bookItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }</h6>
-									<a href="buy?id=${product.id }"><i
-										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
+									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
+									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
 								</div>
 							</div>
 						</c:if>
 					</c:forEach>
-
-
-
-
 				</div>
 			</div>
+
+			<div class="electronics">
+				<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">ELECTRONICS</h3>
+				<div class="row">
+					<c:forEach var="electronicsItem" items="${electronicsItems }"
+						varStatus="loop">
+						<c:if test="${loop.index <4 }">
+							<div class="col-md-3">
+								<div style="text-align: center;">
+									<a href="#"><img
+										src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
+										alt="product"></a>
+								</div>
+								<div class="infor" style="text-align: center;">
+									<a href="">
+										<h6>${electronicsItem.electronics.name }</h6>
+									</a>
+									<c:choose>
+										<c:when test="${electronicsItem.discount > 0}">
+											<div class="gia-goc">
+												<p class="gia-chinh">${electronicsItem.price }₫</p>
+												<p class="khuyen-mai">(Tiết kiệm:
+													${electronicsItem.discount}%)</p>
+											</div>
+										</c:when>
+									</c:choose>
+									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
+									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+			</div>
+			
+			<div class="shoes">
+				<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">SHOES</h3>
+				<div class="row">
+					<c:forEach var="shoesItem" items="${shoesItems }"
+						varStatus="loop">
+						<c:if test="${loop.index <4 }">
+							<div class="col-md-3">
+								<div style="text-align: center;">
+									<a href="#"><img
+										src="/files_item/${shoesItem.imgShoesItems.get(0).name }"
+										alt="product"></a>
+								</div>
+								<div class="infor" style="text-align: center;">
+									<a href="">
+										<h6>${shoesItem.shoes.name }</h6>
+									</a>
+									<c:choose>
+										<c:when test="${shoesItem.discount > 0}">
+											<div class="gia-goc">
+												<p class="gia-chinh">${shoesItem.price }₫</p>
+												<p class="khuyen-mai">(Tiết kiệm:
+													${shoesItem.discount}%)</p>
+											</div>
+										</c:when>
+									</c:choose>
+									<h6 class="gia-ban">${shoesItem.price*(100-shoesItem.discount)/100 }₫</h6>
+									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+			</div>
+			
+			<div class="clothes">
+				<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">CLOTHES</h3>
+				<div class="row">
+					<c:forEach var="clothesItem" items="${clothesItems }"
+						varStatus="loop">
+						<c:if test="${loop.index <4 }">
+							<div class="col-md-3">
+								<div style="text-align: center;">
+									<a href="#"><img
+										src="/files_item/${clothesItem.imgClothesItems.get(0).name }"
+										alt="product"></a>
+								</div>
+								<div class="infor" style="text-align: center;">
+									<a href="">
+										<h6>${clothesItem.clothes.name }</h6>
+									</a>
+									<c:choose>
+										<c:when test="${clothesItem.discount > 0}">
+											<div class="gia-goc">
+												<p class="gia-chinh">${clothesItem.price }₫</p>
+												<p class="khuyen-mai">(Tiết kiệm:
+													${clothesItem.discount}%)</p>
+											</div>
+										</c:when>
+									</c:choose>
+									<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
+									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
+				</div>
+			</div>
+			
 
 		</div>
 

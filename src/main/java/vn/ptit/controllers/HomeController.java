@@ -15,17 +15,33 @@ import org.springframework.web.client.RestTemplate;
 
 import vn.ptit.models.book.Author;
 import vn.ptit.models.book.BookItem;
+import vn.ptit.models.clothes.ClothesItem;
+import vn.ptit.models.electronics.ElectronicsItem;
+import vn.ptit.models.shoes.ShoesItem;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 	private RestTemplate rest = new RestTemplate();
 	
-	@GetMapping("/")
+	@GetMapping
 	public String home(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<BookItem> bookItems = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
+		
+		List<ElectronicsItem> electronicsItems = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/find-all", ElectronicsItem[].class));
+		
+		List<ShoesItem> shoesItems = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/find-all", ShoesItem[].class));
+		
+		List<ClothesItem> clothesItems = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/find-all", ClothesItem[].class));
+		
 		model.addAttribute("bookItems", bookItems);
+		model.addAttribute("electronicsItems", electronicsItems);
+		model.addAttribute("shoesItems", shoesItems);
+		model.addAttribute("clothesItems", clothesItems);
 		return "home";
 	}
 

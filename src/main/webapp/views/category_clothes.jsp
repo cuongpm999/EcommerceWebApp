@@ -118,20 +118,49 @@
 					<c:choose>
 						<c:when test="${empty price }">
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('price', 'duoi1tram')"><i
+								onclick="Shop.addUrlParameter('price', 'duoi100')"><i
 									class="far fa-square"></i> Dưới 100.000₫</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('price', '')"><i
+								onclick="Shop.addUrlParameter('price', 'tu100den300')"><i
 									class="far fa-square"></i> 100.000₫ - 300.000₫</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('price', '')"><i
+								onclick="Shop.addUrlParameter('price', 'tu300den500')"><i
 									class="far fa-square"></i> 300.000₫ - 500.000₫</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('price', '')"><i
+								onclick="Shop.addUrlParameter('price', 'tu500den1trieu')"><i
 									class="far fa-square"></i> 500.000₫ - 1.000.000₫ </a></li>
 							<li><a href="javascript:void(0);"
 								onclick="Shop.addUrlParameter('price', 'tren1trieu')"><i
 									class="far fa-square"></i> Trên 1.000.000₫</a></li>
+						</c:when>
+						<c:when test="${price=='duoi100' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Dưới 100.000₫</a></li>
+						</c:when>
+
+						<c:when test="${price=='tu100den300' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 100.000₫ - 300.000₫</a></li>
+						</c:when>
+
+						<c:when test="${price=='tu300den500' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 300.000₫ - 500.000₫</a></li>
+						</c:when>
+
+						<c:when test="${price=='tu500den1trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 500.000₫ - 1.000.000₫</a></li>
+						</c:when>
+
+						<c:when test="${price=='tren1trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Trên 1.000.000₫</a></li>
 						</c:when>
 
 					</c:choose>
@@ -140,57 +169,134 @@
 			<div class="color">
 				<span class="title">MÀU SẮC</span>
 				<ul class="list-unstyled">
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('color', 'den')"><i
-							class="fas fa-circle" style="color: rgb(0, 0, 0);"></i> Đen</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('color', 'trang')"><i
-							class="fas fa-circle" style="color: white;"></i> Trắng</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('color', 'xanhnavy')"><i
-							class="fas fa-circle" style="color: #063970;"></i> Xanh navy </a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('color', 'do')"><i
-							class="fas fa-circle" style="color: red;"></i> Đỏ </a></li>
+					<c:choose>
+						<c:when test="${empty color }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('color', 'den')"><i
+									class="fas fa-circle" style="color: rgb(0, 0, 0);"></i> Đen</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('color', 'trang')"><i
+									class="fas fa-circle" style="color: white;"></i> Trắng</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('color', 'xanhnavy')"><i
+									class="fas fa-circle" style="color: #063970;"></i> Xanh navy </a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('color', 'do')"><i
+									class="fas fa-circle" style="color: red;"></i> Đỏ </a></li>
+						</c:when>
+						<c:when test="${color == 'den' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('color')"><i
+									class="fas fa-circle" style="color: rgb(0, 0, 0);"></i> Đen</a></li>
+						</c:when>
+						<c:when test="${color == 'trang' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('color')"><i
+									class="fas fa-circle" style="color: white;"></i> Trắng</a></li>
+						</c:when>
+						<c:when test="${color == 'xanhnavy' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('color')"><i
+									class="fas fa-circle" style="color: #063970;"></i> Xanh navy </a></li>
+						</c:when>
+						<c:when test="${color == 'do' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('color')"><i
+									class="fas fa-circle" style="color: red;"></i> Đỏ </a></li>
+						</c:when>
+					</c:choose>
 				</ul>
 			</div>
 
 			<div class="style">
 				<span class="title">STYLE</span>
 				<ul class="list-unstyled">
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('style', 'amcung')"><i
-							class="far fa-square"></i> Ấm cúng</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('style', 'matme')"><i
-							class="far fa-square"></i> Mát mể</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('style', 'lichsu')"><i
-							class="far fa-square"></i> Lịch sự</a></li>
+					<c:choose>
+						<c:when test="${empty style }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('style', 'amcung')"><i
+									class="far fa-square"></i> Ấm cúng</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('style', 'matme')"><i
+									class="far fa-square"></i> Mát mể</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('style', 'lichsu')"><i
+									class="far fa-square"></i> Lịch sự</a></li>
+						</c:when>
+						<c:when test="${style == 'amcung' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('style')"><i
+									class="far fa-square"></i> Ấm cúng</a></li>
+						</c:when>
+						<c:when test="${style == 'matme' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('style')"><i
+									class="far fa-square"></i> Mát mể</a></li>
+						</c:when>
+						<c:when test="${style == 'lichsu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('style')"><i
+									class="far fa-square"></i> Lịch sự</a></li>
+						</c:when>
+					</c:choose>
 				</ul>
 			</div>
 
 			<div class="chat-lieu">
 				<span class="title">CHẤT LIỆU</span>
 				<ul class="list-unstyled">
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('material', 'vaicotton')"><i
-							class="far fa-square"></i> Vải cotton</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('material', 'vailen')"><i
-							class="far fa-square"></i> Vải len</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('material', 'vaini')"><i
-							class="far fa-square"></i> Vải nỉ</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('material', 'vailua')"><i
-							class="far fa-square"></i> Vải lụa</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('material', 'vaikhaki')"><i
-							class="far fa-square"></i> Vải khaki</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('material', 'vaijeans')"><i
-							class="far fa-square"></i> Vải jeans</a></li>
+					<c:choose>
+						<c:when test="${empty material }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('material', 'vaicotton')"><i
+									class="far fa-square"></i> Vải cotton</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('material', 'vailen')"><i
+									class="far fa-square"></i> Vải len</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('material', 'vaini')"><i
+									class="far fa-square"></i> Vải nỉ</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('material', 'vailua')"><i
+									class="far fa-square"></i> Vải lụa</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('material', 'vaikhaki')"><i
+									class="far fa-square"></i> Vải khaki</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('material', 'vaijeans')"><i
+									class="far fa-square"></i> Vải jeans</a></li>
+						</c:when>
+						<c:when test="${material == 'vaicotton' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('material')"><i
+									class="far fa-square"></i> Vải cotton</a></li>
+						</c:when>
+						<c:when test="${material == 'vailen' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('material')"><i
+									class="far fa-square"></i> Vải len</a></li>
+						</c:when>
+						<c:when test="${material == 'vaijeans' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('material')"><i
+									class="far fa-square"></i> Vải nỉ</a></li>
+						</c:when>
+						<c:when test="${material == 'vailua' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('material')"><i
+									class="far fa-square"></i> Vải lụa</a></li>
+						</c:when>
+						<c:when test="${material == 'vaikhaki' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('material')"><i
+									class="far fa-square"></i> Vải khaki</a></li>
+						</c:when>
+						<c:when test="${material == 'vaijeans' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('material')"><i
+									class="far fa-square"></i> Vải jeans</a></li>
+						</c:when>
+					</c:choose>
 				</ul>
 			</div>
 
@@ -213,7 +319,8 @@
 						<c:forEach var="clothesItem" items="${clothesItems }">
 							<div class="col-md-3">
 								<a href="/clothes/${clothesItem.slug }"><img
-										src="/files_item/${clothesItem.imgClothesItems.get(0).name }" alt="product"></a>
+									src="/files_item/${clothesItem.imgClothesItems.get(0).name }"
+									alt="product"></a>
 								<div class="infor" style="text-align: center;">
 									<a href="/clothes/${clothesItem.slug }">
 										<h6 class="card-title">${clothesItem.clothes.name }</h6>
@@ -222,12 +329,14 @@
 										<c:when test="${clothesItem.discount > 0}">
 											<div class="gia-goc">
 												<p class="gia-chinh">${clothesItem.price }₫</p>
-												<p class="khuyen-mai">(Tiết kiệm: ${clothesItem.discount}%)</p>
+												<p class="khuyen-mai">(Tiết kiệm:
+													${clothesItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
+									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
 								</div>
 							</div>
 						</c:forEach>

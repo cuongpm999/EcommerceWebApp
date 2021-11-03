@@ -100,8 +100,7 @@ h4.tieude-tp::after {
 
 #main .row .col-md-3 .infor a{
     color: black;
-    
-    
+
 }
 
 #main .row .col-md-3 .infor a h6{
@@ -160,6 +159,7 @@ h4.tieude-tp::after {
 .list-book img {
     height: 186px;
 }
+
 .list-clothes img {
 	width: 180px;
     height: 180px;
@@ -167,4 +167,9 @@ h4.tieude-tp::after {
 .list-shoes img {
 	width: 180px;
     height: 180px;
+}
+
+.list-electronics img {
+    height: 180px;
+    width: 180px;
 }
