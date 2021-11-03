@@ -27,7 +27,7 @@ public class AdminPublisherController {
 	
 	@GetMapping("/add-publisher")
 	public String viewAddPublisher(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		model.addAttribute("pulisher", new Publisher());
+		model.addAttribute("publisher", new Publisher());
 		return "/admin/book/add_publisher";
 	}
 }
