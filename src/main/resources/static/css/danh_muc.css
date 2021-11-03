@@ -1,0 +1,162 @@
+body {
+    background: #ededed;
+}
+h4.tieude-tp {
+    margin-top: 45px;
+    font-size: 26px;
+    font-weight: 640;
+    color: #3c4a65;
+    margin-bottom: 20px;
+}
+h4.tieude-tp::after {
+    content: "";
+    height: 2px;
+    width: 400px;
+    background-color: #fa9f2c;
+    display: block;
+}
+.loc-sp {
+    background: #fff;
+    float: left;
+    width: 25%;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+.clear-with-height {
+    clear: both;
+}
+.loc-sp .title-x {
+    line-height: 30px;
+    display: block;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.title {
+    color: #333;
+    font-size: 14px;
+    line-height: 45px;
+    display: block;
+    border-bottom: 1px solid #eee;
+    font-weight: 700;
+}
+.loc-sp ul {
+    padding-left: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+    color: #000;
+}
+.loc-sp ul li a {
+    text-decoration: none;
+    color: #000;
+}
+.product-sp {
+    float: right;
+    width: 74%;
+    margin-left: 1px;
+    margin-bottom: 40px;
+}
+.product-sp .carousel img {
+    width: 100%;
+}
+.list-sort {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 10px 12px;
+}
+.product-list {
+    background-color: #fff;
+    padding: 5px;
+}
+.list-sort select {
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 13px;
+    height: 30px;
+    width: 180px;
+}
+.list-sort .paging {
+    padding: 10px;
+}
+.list-sort .paging a {
+    padding: 8px 10px;
+    line-height: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+.list-sort .paging a:hover {
+    color: #fff;
+    background: #243a76;
+}
+
+#main .row .col-md-3 .infor{
+    margin-top: 20px;
+}
+
+#main .row .col-md-3 .infor a{
+    color: black;
+    
+    
+}
+
+#main .row .col-md-3 .infor a h6{
+    color: black;
+    height: 40px;
+    overflow: hidden;
+    font-size: 16px;
+    
+}
+
+#main .row .col-md-3 .infor a h6:hover{
+    color: rgba(25, 0, 255, 0.959);
+}
+
+#main .row .col-md-3 img:hover{
+    transform: scale(1.1, 1.1);
+}
+
+#main .row .col-md-3 a{
+    text-decoration: none;
+}
+
+#main .row .col-md-3 a.btn{
+    color: white;
+}
+
+#main .row .col-md-3 .infor .gia-goc{
+    display: flex;
+    justify-content: space-around;
+}
+
+#main .row .col-md-3 .infor .gia-goc .gia-chinh{
+    color: #666;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: line-through;
+}
+
+#main .row .col-md-3 .infor .gia-goc .khuyen-mai{
+    color: red;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+#main .row .col-md-3 .infor h6.gia-ban {
+    font-size: 16px;
+}
+
+#main .row .col-md-3 .infor a:hover{
+    color: rgba(25, 0, 255, 0.959);
+}
+
+.list-book img {
+    height: 186px;
+}
