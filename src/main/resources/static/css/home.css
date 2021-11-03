@@ -132,6 +132,21 @@ h3.tieu-de::after{
     height: 202px;
 }
 
+#main .electronics .row .col-md-3 img{
+    width: 200px;
+    height: 200px;
+}
+
+#main .shoes .row .col-md-3 img{
+    width: 200px;
+    height: 200px;
+}
+
+#main .clothes .row .col-md-3 img{
+    width: 200px;
+    height: 200px;
+}
+
 #main .row .col-md-3 .infor{
     margin-top: 20px;
 }
