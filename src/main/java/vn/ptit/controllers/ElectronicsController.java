@@ -2,6 +2,7 @@ package vn.ptit.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +24,10 @@ import vn.ptit.utils.FilterMap;
 @RequestMapping("/electronics")
 public class ElectronicsController {
 	private RestTemplate rest = new RestTemplate();
-	
+
 	@GetMapping
 	public String viewAllElectronics(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		
+
 		String price = req.getParameter("price");
 		String screendSize = req.getParameter("screendSize");
 		String sort = req.getParameter("sort");
@@ -47,27 +48,29 @@ public class ElectronicsController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
-		
+
 		List<ElectronicsItem> electronicsItems = Arrays
-				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-all-in-category", listFilter, ElectronicsItem[].class));
+				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-all-in-category",
+						listFilter, ElectronicsItem[].class));
 		model.addAttribute("electronicsItems", electronicsItems);
-		
-		List<Manufacturer> manufacturers =
-				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
+
+		List<Manufacturer> manufacturers = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all", Manufacturer[].class));
 		model.addAttribute("manufacturers", manufacturers);
-		
+
 		return "category_electronics";
 	}
-	
+
 	@GetMapping("/find-by-category/{categoryName}")
-	public String viewElectronicsByCategory(@PathVariable String categoryName, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		
+	public String viewElectronicsByCategory(@PathVariable String categoryName, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
+
 		String price = req.getParameter("price");
 		String screendSize = req.getParameter("screendSize");
 		String sort = req.getParameter("sort");
 
 		List<FilterMap> listFilter = new ArrayList<>();
-		if(categoryName !=null) {
+		if (categoryName != null) {
 			FilterMap filter = new FilterMap("categoryName", categoryName);
 			listFilter.add(filter);
 		}
@@ -86,27 +89,29 @@ public class ElectronicsController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
-		
+
 		List<ElectronicsItem> electronicsItems = Arrays
-				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-by-category", listFilter, ElectronicsItem[].class));
+				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-by-category",
+						listFilter, ElectronicsItem[].class));
 		model.addAttribute("electronicsItems", electronicsItems);
-		
-		List<Manufacturer> manufacturers =
-				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
+
+		List<Manufacturer> manufacturers = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all", Manufacturer[].class));
 		model.addAttribute("manufacturers", manufacturers);
-		
+
 		return "category_electronics";
 	}
-	
+
 	@GetMapping("/find-by-manufacturer/{idManufacturer}")
-	public String viewElectronicsByManufacturer(@PathVariable String idManufacturer, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		
+	public String viewElectronicsByManufacturer(@PathVariable String idManufacturer, ModelMap model,
+			HttpServletRequest req, HttpServletResponse resp) {
+
 		String price = req.getParameter("price");
 		String screendSize = req.getParameter("screendSize");
 		String sort = req.getParameter("sort");
 
 		List<FilterMap> listFilter = new ArrayList<>();
-		if(idManufacturer !=null) {
+		if (idManufacturer != null) {
 			FilterMap filter = new FilterMap("idManufacturer", idManufacturer);
 			listFilter.add(filter);
 		}
@@ -125,15 +130,30 @@ public class ElectronicsController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
-		
+
 		List<ElectronicsItem> electronicsItems = Arrays
-				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-by-manufacturer", listFilter, ElectronicsItem[].class));
+				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-by-manufacturer",
+						listFilter, ElectronicsItem[].class));
 		model.addAttribute("electronicsItems", electronicsItems);
-		
-		List<Manufacturer> manufacturers =
-				Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all",Manufacturer[].class));
+
+		List<Manufacturer> manufacturers = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/manufacturer/find-all", Manufacturer[].class));
 		model.addAttribute("manufacturers", manufacturers);
-		
+
 		return "category_electronics";
+	}
+
+	@GetMapping("/{slug}")
+	public String viewDetail(@PathVariable String slug, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
+
+		List<ElectronicsItem> sameElectronicsItems = Arrays.asList(rest.getForObject(
+				"http://localhost:6969/rest/api/electronics-item/same-item/" + slug, ElectronicsItem[].class));
+		model.addAttribute("item_same", sameElectronicsItems);
+
+		ElectronicsItem electronicsItem = rest
+				.getForObject("http://localhost:6969/rest/api/electronics-item/" + slug, ElectronicsItem.class);
+		model.addAttribute("electronicsItem", electronicsItem);
+		return "electronics_detail";
 	}
 }

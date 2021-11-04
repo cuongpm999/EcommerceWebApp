@@ -1,0 +1,108 @@
+body {
+    background: #ededed;
+}
+
+.information {
+	margin-top: 40px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+}
+
+.slider img:hover {
+    cursor: pointer;
+}
+
+.slider-for {
+    border: solid 1px thistle;
+}
+
+.slider-nav div {
+    padding: 5px 5px 5px 5px;
+}
+
+.slider-nav span img {
+    border: solid 1px thistle;
+}
+
+.button {
+    display: block;
+    text-align: center;
+}
+
+.button a:hover {
+    text-decoration: none;
+}
+
+.btn1,
+.btn2 {
+    border: 1px solid #de0b00;
+    height: 50px;
+    width: 30%;
+}
+
+.btn1:hover {
+    background-color: #fff5f1 !important;
+}
+
+.btn1 i {
+    color: #de0b00;
+}
+
+.btn2 {
+    background-color: #de0b00;
+    margin-left: 10px;
+}
+
+.btn2:hover {
+    background-color: #f05d40;
+}
+
+.gia-chinh {
+    color: #666;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 20px;
+    text-decoration: line-through;
+    line-height: 35px;
+}
+
+.scrollbar {
+	padding: 10px;
+	height: 380px;
+	overflow-y: auto;
+	margin-bottom: 20px;
+}
+
+#style-1::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	background-color: #ededed;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+
+.book {
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+.electronics {
+    background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 20px;
+}

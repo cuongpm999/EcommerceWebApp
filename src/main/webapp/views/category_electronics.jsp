@@ -39,14 +39,13 @@
 			<div class="danh-muc">
 				<span class="title">DANH MỤC</span>
 				<ul class="list-unstyled">
-					<li><a
-						href="/electronics/find-by-category/tivi"><i
+					<li><a href="/electronics"><i
+							class="fas fa-angle-double-right"></i> All</a></li>
+					<li><a href="/electronics/find-by-category/tivi"><i
 							class="fas fa-angle-double-right"></i> Tivi</a></li>
-					<li><a
-						href="/electronics/find-by-category/mobile-phone"><i
+					<li><a href="/electronics/find-by-category/mobile-phone"><i
 							class="fas fa-angle-double-right"></i> MobilePhone</a></li>
-					<li><a
-						href="/electronics/find-by-category/laptop"><i
+					<li><a href="/electronics/find-by-category/laptop"><i
 							class="fas fa-angle-double-right"></i> Laptop</a></li>
 				</ul>
 			</div>
@@ -55,7 +54,8 @@
 				<span class="title">HÃNG SẢN XUẤT</span>
 				<ul class="list-unstyled">
 					<c:forEach var="manufacturer" items="${manufacturers }">
-						<li><a href="/electronics/find-by-manufacturer/${manufacturer.id }"><i
+						<li><a
+							href="/electronics/find-by-manufacturer/${manufacturer.id }"><i
 								class="fas fa-angle-double-right"></i> ${manufacturer.name }</a></li>
 					</c:forEach>
 
@@ -138,9 +138,6 @@
 								onclick="Shop.addUrlParameter('screendSize', '6.7')"><i
 									class="far fa-square"></i> 6.7 inch</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('screendSize', '13.3')"><i
-									class="far fa-square"></i> 13.3 inch</a></li>
-							<li><a href="javascript:void(0);"
 								onclick="Shop.addUrlParameter('screendSize', '13')"><i
 									class="far fa-square"></i> 13 inch</a></li>
 							<li><a href="javascript:void(0);"
@@ -222,12 +219,12 @@
 						<c:forEach var="electronicsItem" items="${electronicsItems }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/electronics/${electronicsItem.slug }"><img
 										src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/electronics/${electronicsItem.slug }">
 										<h6>${electronicsItem.electronics.name }</h6>
 									</a>
 									<c:choose>
@@ -240,7 +237,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>

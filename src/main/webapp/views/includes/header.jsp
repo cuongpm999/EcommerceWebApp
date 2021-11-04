@@ -19,7 +19,7 @@
 			</ul>
 		</div>
 		<div class="header-bottom">
-			<a class="navbar-brand" href="/BookShop/"><img class="logo"
+			<a class="navbar-brand" href="/"><img class="logo"
 				src="/img/logo1.png" alt="logo"></a>
 			<div class="nav-search">
 				<form class="form-inline" action="search-name"

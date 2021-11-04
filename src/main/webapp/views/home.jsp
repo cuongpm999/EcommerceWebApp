@@ -136,7 +136,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
@@ -153,12 +153,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/electronics/${electronicsItem.slug }"><img
 										src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/electronics/${electronicsItem.slug }">
 										<h6>${electronicsItem.electronics.name }</h6>
 									</a>
 									<c:choose>
@@ -171,7 +171,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
@@ -206,7 +206,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${shoesItem.price*(100-shoesItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${shoesItem.slug}','shoes');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
@@ -241,7 +241,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
