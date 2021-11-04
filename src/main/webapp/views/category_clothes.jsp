@@ -20,33 +20,10 @@
 <meta name="author" content="CuongPham">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- CSS & JAVA_SCRIPT -->
-<!-- CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css">
-<link rel="stylesheet" type="text/css" href="/css/home.css">
-<link rel="stylesheet" type="text/css" href="/css/category.css">
 
-<!-- JavaScript -->
-<script src="/js/chart.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="/js/waypoint.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="/js/shop_home.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<script src="/js/fontawesome.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/category.css">
+<%@ include file="/views/includes/css_js.jsp"%>
+
 
 <title>Laptop Project</title>
 </head>
@@ -59,38 +36,7 @@
 		nonce="ChmFo6ST"></script>
 
 	<!-- HEADER -->
-	<div id='header'>
-		<nav class="navbar navbar-expand-sm container">
-			<div class="header-top">
-				<ul>
-					<li><a href="#">Thông tin order</a></li>
-					<li><a href="#">Đăng kí</a></li>
-					<li><a href="#">Đăng nhập</a></li>
-				</ul>
-			</div>
-			<div class="header-bottom">
-				<a class="navbar-brand" href="/BookShop/"><img class="logo"
-					src="/img/logo1.png" alt="logo"></a>
-				<div class="nav-search">
-					<form class="form-inline" action="search-name"
-						style="width: 100%; position: relative;" method="get">
-						<input class="form-control mr-sm-2" type="text"
-							placeholder="Search" name="key">
-						<button class="btn" type="submit">
-							<i class="fas fa-search"></i>
-						</button>
-					</form>
-				</div>
-
-				<div class="nav-cart">
-					<a class="nav-link" style="position: relative;" href="cart"> <img
-						class="cart" src="/img/cart.png" alt="cart"> <span
-						class="count-item">0</span>
-					</a>
-				</div>
-			</div>
-		</nav>
-	</div>
+	<%@ include file="/views/includes/header.jsp"%>
 	<!-- ------ -->
 
 	<!-- MAIN -->
@@ -101,14 +47,13 @@
 			<div class="danh-muc">
 				<span class="title">DANH MỤC</span>
 				<ul class="list-unstyled">
-					<li><a
-						href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
+					<li><a href="/clothes"><i
+							class="fas fa-angle-double-right"></i> All</a></li>
+					<li><a href="/clothes/find-by-category/jeans"><i
 							class="fas fa-angle-double-right"></i> Jeans</a></li>
-					<li><a
-						href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
+					<li><a href="/clothes/find-by-category/swimwear"><i
 							class="fas fa-angle-double-right"></i> Swimwear</a></li>
-					<li><a
-						href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
+					<li><a href="/clothes/find-by-category/dresses"><i
 							class="fas fa-angle-double-right"></i> Dresses</a></li>
 				</ul>
 			</div>
@@ -172,34 +117,34 @@
 					<c:choose>
 						<c:when test="${empty color }">
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('color', 'den')"><i
+								onclick="Shop.addUrlParameter('color', 'Đen')"><i
 									class="fas fa-circle" style="color: rgb(0, 0, 0);"></i> Đen</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('color', 'trang')"><i
+								onclick="Shop.addUrlParameter('color', 'Trắng')"><i
 									class="fas fa-circle" style="color: white;"></i> Trắng</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('color', 'xanhnavy')"><i
+								onclick="Shop.addUrlParameter('color', 'Xanh navy')"><i
 									class="fas fa-circle" style="color: #063970;"></i> Xanh navy </a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('color', 'do')"><i
+								onclick="Shop.addUrlParameter('color', 'Đỏ')"><i
 									class="fas fa-circle" style="color: red;"></i> Đỏ </a></li>
 						</c:when>
-						<c:when test="${color == 'den' }">
+						<c:when test="${color == 'Đen' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('color')"><i
 									class="fas fa-circle" style="color: rgb(0, 0, 0);"></i> Đen</a></li>
 						</c:when>
-						<c:when test="${color == 'trang' }">
+						<c:when test="${color == 'Trắng' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('color')"><i
 									class="fas fa-circle" style="color: white;"></i> Trắng</a></li>
 						</c:when>
-						<c:when test="${color == 'xanhnavy' }">
+						<c:when test="${color == 'Xanh navy' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('color')"><i
 									class="fas fa-circle" style="color: #063970;"></i> Xanh navy </a></li>
 						</c:when>
-						<c:when test="${color == 'do' }">
+						<c:when test="${color == 'Đỏ' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('color')"><i
 									class="fas fa-circle" style="color: red;"></i> Đỏ </a></li>
@@ -214,29 +159,29 @@
 					<c:choose>
 						<c:when test="${empty style }">
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('style', 'amcung')"><i
+								onclick="Shop.addUrlParameter('style', 'Ấm cúng')"><i
 									class="far fa-square"></i> Ấm cúng</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('style', 'matme')"><i
-									class="far fa-square"></i> Mát mể</a></li>
+								onclick="Shop.addUrlParameter('style', 'Mát mẻ')"><i
+									class="far fa-square"></i> Mát mẻ</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('style', 'lichsu')"><i
+								onclick="Shop.addUrlParameter('style', 'Lịch sự')"><i
 									class="far fa-square"></i> Lịch sự</a></li>
 						</c:when>
-						<c:when test="${style == 'amcung' }">
+						<c:when test="${style == 'Ấm cúng' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('style')"><i
-									class="far fa-square"></i> Ấm cúng</a></li>
+									class="far fa-check-square"></i> Ấm cúng</a></li>
 						</c:when>
-						<c:when test="${style == 'matme' }">
+						<c:when test="${style == 'Mát mẻ' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('style')"><i
-									class="far fa-square"></i> Mát mể</a></li>
+									class="far fa-check-square"></i> Mát mẻ</a></li>
 						</c:when>
-						<c:when test="${style == 'lichsu' }">
+						<c:when test="${style == 'Lịch sự' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('style')"><i
-									class="far fa-square"></i> Lịch sự</a></li>
+									class="far fa-check-square"></i> Lịch sự</a></li>
 						</c:when>
 					</c:choose>
 				</ul>
@@ -248,53 +193,53 @@
 					<c:choose>
 						<c:when test="${empty material }">
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('material', 'vaicotton')"><i
+								onclick="Shop.addUrlParameter('material', 'Vải cotton')"><i
 									class="far fa-square"></i> Vải cotton</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('material', 'vailen')"><i
+								onclick="Shop.addUrlParameter('material', 'Vải len')"><i
 									class="far fa-square"></i> Vải len</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('material', 'vaini')"><i
+								onclick="Shop.addUrlParameter('material', 'Vải nỉ')"><i
 									class="far fa-square"></i> Vải nỉ</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('material', 'vailua')"><i
+								onclick="Shop.addUrlParameter('material', 'Vải lụa')"><i
 									class="far fa-square"></i> Vải lụa</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('material', 'vaikhaki')"><i
+								onclick="Shop.addUrlParameter('material', 'Vải khaki')"><i
 									class="far fa-square"></i> Vải khaki</a></li>
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('material', 'vaijeans')"><i
+								onclick="Shop.addUrlParameter('material', 'Vải jeans')"><i
 									class="far fa-square"></i> Vải jeans</a></li>
 						</c:when>
-						<c:when test="${material == 'vaicotton' }">
+						<c:when test="${material == 'Vải cotton' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('material')"><i
-									class="far fa-square"></i> Vải cotton</a></li>
+									class="far fa-check-square"></i> Vải cotton</a></li>
 						</c:when>
-						<c:when test="${material == 'vailen' }">
+						<c:when test="${material == 'Vải len' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('material')"><i
-									class="far fa-square"></i> Vải len</a></li>
+									class="far fa-check-square"></i> Vải len</a></li>
 						</c:when>
-						<c:when test="${material == 'vaijeans' }">
+						<c:when test="${material == 'Vải nỉ' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('material')"><i
-									class="far fa-square"></i> Vải nỉ</a></li>
+									class="far fa-check-square"></i> Vải nỉ</a></li>
 						</c:when>
-						<c:when test="${material == 'vailua' }">
+						<c:when test="${material == 'Vải lụa' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('material')"><i
-									class="far fa-square"></i> Vải lụa</a></li>
+									class="far fa-check-square"></i> Vải lụa</a></li>
 						</c:when>
-						<c:when test="${material == 'vaikhaki' }">
+						<c:when test="${material == 'Vải khaki' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('material')"><i
-									class="far fa-square"></i> Vải khaki</a></li>
+									class="far fa-check-square"></i> Vải khaki</a></li>
 						</c:when>
-						<c:when test="${material == 'vaijeans' }">
+						<c:when test="${material == 'Vải jeans' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('material')"><i
-									class="far fa-square"></i> Vải jeans</a></li>
+									class="far fa-check-square"></i> Vải jeans</a></li>
 						</c:when>
 					</c:choose>
 				</ul>
@@ -371,49 +316,7 @@
 	<!-- --- -->
 
 	<!--  FOOTER -->
-	<div id="footer">
-		<div id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
-						<h5>CHÍNH HÃNG, UY TÍN, CHẤT LƯỢNG</h5>
-						<ul>
-							<li>
-								<h4>ONLINE STORE</h4>
-							</li>
-							<li><a href="javascript:void(0);"><i
-									class="fas fa-map-marker-alt"></i>&ensp;Address: 19A Xa La, Hà
-									Nội</a></li>
-							<li><a href="javascript:void(0);"><i
-									class="fas fa-envelope"></i>&ensp;Email:
-									phamcuongth2000@gmail.com</a></li>
-							<li><a href="javascript:void(0);"><i
-									class="fas fa-phone"></i>&ensp;Mobile: 0961656067</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<h5>SẢN PHẨM</h5>
-					</div>
-
-					<div class="col-md-4">
-						<h5>KẾT NỐI VỚI CHÚNG TÔI</h5>
-
-					</div>
-
-					<hr>
-					<div class="footer-copyright text-center py-3" style="width: 100%;">
-						©
-						<script>
-							var now = new Date();
-							document.write(now.getFullYear());
-						</script>
-						Copyright: <a href="https://www.facebook.com/cuongphamptit999/">
-							CuongPham.com</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<%@ include file="/views/includes/footer.jsp"%>
 	<!-- ------- -->
 
 </body>

@@ -36,18 +36,18 @@
 			<div class="row">
 				<div class="slider col-md-5">
 					<div class="slider-for">
-						<c:forEach items="${clothesItemDetail.imgClothesItems }"
-							var="imgClothesItem">
+						<c:forEach items="${shoesItemDetail.imgShoesItems }"
+							var="imgShoesItem">
 							<div>
-								<img src="/files_item/${imgClothesItem.name }" alt="">
+								<img src="/files_item/${imgShoesItem.name }" alt="">
 							</div>
 						</c:forEach>
 					</div>
 					<div class="slider-nav">
-						<c:forEach items="${clothesItemDetail.imgClothesItems }"
-							var="imgClothesItem">
+						<c:forEach items="${shoesItemDetail.imgShoesItems }"
+							var="imgShoesItem">
 							<div>
-								<img src="/files_item/${imgClothesItem.name }" alt="">
+								<img src="/files_item/${imgShoesItem.name }" alt="">
 							</div>
 						</c:forEach>
 
@@ -55,59 +55,47 @@
 				</div>
 				<div class="col-md-7">
 					<div>
-						<h4>${clothesItemDetail.clothes.name }</h4>
+						<h4>${shoesItemDetail.shoes.name }</h4>
 					</div>
 					<table class="table table-hover" style="font-weight: 600;">
 						<tbody>
 							<tr>
 								<td>Color:</td>
-								<td>${clothesItemDetail.clothes.color }</td>
+								<td>${shoesItemDetail.shoes.color }</td>
+							</tr>
+							<tr>
+								<td>Size:</td>
+								<td>${shoesItemDetail.shoes.size }</td>
 							</tr>
 							<tr>
 								<td>Style:</td>
-								<td>${clothesItemDetail.clothes.style }</td>
+								<td>${shoesItemDetail.shoes.style }</td>
 							</tr>
 							<tr>
 								<td>Material:</td>
-								<td>${clothesItemDetail.clothes.material}</td>
+								<td>${shoesItemDetail.shoes.material}</td>
 							</tr>
 							<c:choose>
-								<c:when test="${not empty jeans}">
+								<c:when test="${not empty sneaker}">
 									<tr>
-										<td>Pipe:</td>
-										<td>${jeans.pipe }</td>
+										<td>Clinch:</td>
+										<td>${sneaker.clinch == false ? "Không" : "Có" }</td>
 									</tr>
 									<tr>
-										<td>Size:</td>
-										<td>${jeans.size }</td>
-									</tr>
-								</c:when>
-								<c:when test="${not empty dresses}">
-									<tr>
-										<td>Size:</td>
-										<td>${dresses.size }</td>
-									</tr>
-									<tr>
-										<td>Length:</td>
-										<td>${dresses.length }</td>
-									</tr>
-									<tr>
-										<td>Pattern:</td>
-										<td>${dresses.pattern }</td>
+										<td>Sole:</td>
+										<td>${sneaker.sole }</td>
 									</tr>
 								</c:when>
-								<c:when test="${not empty swimwear}">
+								<c:when test="${not empty boots}">
 									<tr>
-										<td>Bust size:</td>
-										<td>${swimwear.bustSize }</td>
+										<td>Shoelace:</td>
+										<td>${boots.isShoelace == false ? "Không" : "Có" }</td>
 									</tr>
+								</c:when>
+								<c:when test="${not empty highheels}">
 									<tr>
-										<td>Waist size:</td>
-										<td>${swimwear.waistSize }</td>
-									</tr>
-									<tr>
-										<td>Hips size:</td>
-										<td>${swimwear.hipsSize }</td>
+										<td>Height:</td>
+										<td>${highheels.height }</td>
 									</tr>
 								</c:when>
 							</c:choose>
@@ -117,11 +105,11 @@
 
 					<div style="display: flex;">
 						<c:choose>
-							<c:when test="${clothesItemDetail.discount > 0}">
-								<h4  class="gia-chinh"">${clothesItemDetail.price }₫</h4>
+							<c:when test="${shoesItemDetail.discount > 0}">
+								<h4  class="gia-chinh"">${shoesItemDetail.price }₫</h4>
 							</c:when>
 						</c:choose>
-						<h3 class="price">${clothesItemDetail.price*(100-clothesItemDetail.discount)/100 }₫</h3>
+						<h3 class="price">${shoesItemDetail.price*(100-shoesItemDetail.discount)/100 }₫</h3>
 					</div>
 					<div class="table-mid" style="margin-top: 20px">
 						<div class="button" style="display: flex">
@@ -136,29 +124,29 @@
 
 		<!-- SPTT -->
 
-		<div class="clothes">
+		<div class="shoes">
 			<h4 class="mb-4">Các sản phẩm tương tự</h4>
 			<div class="row">
-				<c:forEach var="clothesItem" items="${clothesItems }"
+				<c:forEach var="shoesItem" items="${shoesItems }"
 					varStatus="loop">
 						<div class="col-md-3">
-							<a href="/clothes/${clothesItem.slug }"><img
-								src="/files_item/${clothesItem.imgClothesItems.get(0).name }"
+							<a href="/shoes/${shoesItem.slug }"><img
+								src="/files_item/${shoesItem.imgShoesItems.get(0).name }"
 								alt="product"></a>
 							<div class="infor" style="text-align: center;">
-								<a href="/clothes/${clothesItem.slug }">
-									<h6 class="card-title">${clothesItem.clothes.name }</h6>
+								<a href="/shoes/${shoesItem.slug }">
+									<h6 class="card-title">${shoesItem.shoes.name }</h6>
 								</a>
 								<c:choose>
-									<c:when test="${clothesItem.discount > 0}">
+									<c:when test="${shoesItem.discount > 0}">
 										<div class="gia-goc">
-											<p class="gia-chinh">${clothesItem.price }₫</p>
+											<p class="gia-chinh">${shoesItem.price }₫</p>
 											<p class="khuyen-mai">(Tiết kiệm:
-												${clothesItem.discount}%)</p>
+												${shoesItem.discount}%)</p>
 										</div>
 									</c:when>
 								</c:choose>
-								<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
+								<h6 class="gia-ban">${shoesItem.price*(100-shoesItem.discount)/100 }₫</h6>
 								<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 									ngay</a>
 							</div>
