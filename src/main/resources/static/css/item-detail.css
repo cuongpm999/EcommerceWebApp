@@ -106,3 +106,17 @@ body {
     border-radius: 3px;
     margin-top: 20px;
 }
+
+.clothes{
+	background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+
+.shoes{
+	background-color: white;
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 20px;
+}

@@ -33,14 +33,22 @@ public class AjaxController {
 		String slug = (String) data.get("slug");
 		String category = (String) data.get("category");
 
-		ShoesItem shoesItem = new ShoesItem();
-		BookItem bookItem = new BookItem();
-		ClothesItem clothesItem = new ClothesItem();
-
 		if (category.equalsIgnoreCase("electronics")) {
 			ElectronicsItem electronicsItem = rest
 					.getForObject("http://localhost:6969/rest/api/electronics-item/" + slug, ElectronicsItem.class);
 			CartUtil.addToCart(electronicsItem, request);
+		}
+		
+		if (category.equalsIgnoreCase("clothes")) {
+			ClothesItem clothesItem = rest
+					.getForObject("http://localhost:6969/rest/api/clothes-item/" + slug, ClothesItem.class);
+			CartUtil.addToCart(clothesItem, request);
+		}
+		
+		if (category.equalsIgnoreCase("shoes")) {
+			ShoesItem shoesItem = rest
+					.getForObject("http://localhost:6969/rest/api/shoes-item/" + slug, ShoesItem.class);
+			CartUtil.addToCart(shoesItem, request);
 		}
 
 		CartUtil.tinhTongTien(request);

@@ -35,7 +35,7 @@
 			<div class="nav-cart">
 				<a class="nav-link" style="position: relative;" href="cart"> <img
 					class="cart" src="/img/cart.png" alt="cart"> <span
-					class="count-item">0</span>
+					class="count-item">${not empty soLuongMua ? soLuongMua : 0 }</span>
 				</a>
 			</div>
 		</div>

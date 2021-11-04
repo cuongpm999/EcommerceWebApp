@@ -188,12 +188,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/shoes/${shoesItem.slug }"><img
 										src="/files_item/${shoesItem.imgShoesItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/shoes/${shoesItem.slug }">
 										<h6>${shoesItem.shoes.name }</h6>
 									</a>
 									<c:choose>
@@ -223,12 +223,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/clothes/${clothesItem.slug }"><img
 										src="/files_item/${clothesItem.imgClothesItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/clothes/${clothesItem.slug }">
 										<h6>${clothesItem.clothes.name }</h6>
 									</a>
 									<c:choose>
