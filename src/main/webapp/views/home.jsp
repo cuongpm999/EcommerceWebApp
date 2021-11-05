@@ -119,12 +119,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/book/${bookItem.slug }"><img
 										src="/files_item/${bookItem.imgBookItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/book/${bookItem.slug }">
 										<h6>${bookItem.book.title }</h6>
 									</a>
 									<c:choose>

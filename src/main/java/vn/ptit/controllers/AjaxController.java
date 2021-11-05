@@ -50,6 +50,12 @@ public class AjaxController {
 					.getForObject("http://localhost:6969/rest/api/shoes-item/" + slug, ShoesItem.class);
 			CartUtil.addToCart(shoesItem, request);
 		}
+		
+		if (category.equalsIgnoreCase("book")) {
+			BookItem bookItem = rest
+					.getForObject("http://localhost:6969/rest/api/book-item/" + slug, BookItem.class);
+			CartUtil.addToCart(bookItem, request);
+		}
 
 		CartUtil.tinhTongTien(request);
 		CartUtil.tinhSoLuongMua(request);

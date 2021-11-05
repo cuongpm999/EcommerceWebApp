@@ -139,7 +139,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
