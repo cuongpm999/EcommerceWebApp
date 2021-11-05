@@ -10,12 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import vn.ptit.models.book.Author;
 import vn.ptit.models.book.BookItem;
 import vn.ptit.models.clothes.ClothesItem;
+import vn.ptit.models.customer.Customer;
+import vn.ptit.models.customer.CustomerMember;
 import vn.ptit.models.electronics.ElectronicsItem;
 import vn.ptit.models.shoes.ShoesItem;
 
@@ -44,5 +47,11 @@ public class HomeController {
 		model.addAttribute("clothesItems", clothesItems);
 		return "home";
 	}
-
+	
+	@GetMapping(value = "/register")
+	public String register(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		model.addAttribute("customerMember",new CustomerMember());
+		return "register";
+	}
+	
 }
