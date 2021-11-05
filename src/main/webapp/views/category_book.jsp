@@ -20,34 +20,12 @@
 <meta name="author" content="CuongPham">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- CSS & JAVA_SCRIPT -->
-<!-- CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css">
-<link rel="stylesheet" type="text/css" href="/css/danh_muc.css">
+<!-- CSS & JS -->
+<%@ include file="/views/includes/css_js.jsp"%>
+<link rel="stylesheet" type="text/css" href="/css/category.css">
+<!-- --- -->
 
-<!-- JavaScript -->
-<script src="/js/chart.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="/js/waypoint.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="/js/shop_home.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<script src="/js/fontawesome.min.js"></script>
-
-<title>PTTK Project</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -58,7 +36,7 @@
 		nonce="ChmFo6ST"></script>
 
 	<!-- HEADER -->
-	<div id='header'></div>
+	<%@ include file="/views/includes/header.jsp"%>
 	<!-- ------ -->
 
 	<!-- MAIN -->
@@ -108,23 +86,12 @@
 					</c:forEach>
 				</ul>
 			</div>
-			<div class="cpu">
-				<span class="title">NHÀ XUẤT BẢN</span>
-				<ul class="list-unstyled">
-					<c:forEach var="publisher" items="${publishers }" varStatus="loop">
-						<c:if test="${loop.index < 4 }">
-							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('cpu', 'i3')"><i
-									class="far fa-square"></i> ${publisher.name }</a></li>
-						</c:if>
-					</c:forEach>
-				</ul>
-			</div>
+
 		</div>
 
 		<div class="product-sp">
 			<div class="product-list">
-				<div class="list-sort">
+				<div class="list-sort" style="margin-bottom: 10px;">
 					<select id="sort-select"
 						onchange="Shop.addUrlParameter('sort', this.value)">
 						<option value="">Sắp xếp sản phẩm</option>
@@ -138,25 +105,25 @@
 					<div class="row">
 						<c:forEach var="bookItem" items="${bookItems }">
 							<div class="col-md-3">
-								<div style="text-align: center;">
-									<a href="#"><img
+								<div style="text-align: center; width: 100%;">
+									<a href="/book/${bookItem.slug }"><img
 										src="/files_item/${bookItem.imgBookItems.get(0).name }"
-										alt="product"></a>
+										alt="${bookItem.book.title }"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/book/${bookItem.slug }">
 										<h6>${bookItem.book.title }</h6>
 									</a>
 									<c:choose>
 										<c:when test="${bookItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${bookItem.price }Đ</p>
+												<p class="gia-chinh">${bookItem.price }₫</p>
 												<p class="khuyen-mai">(Tiết kiệm: ${bookItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }</h6>
-									<a href="buy?id=${product.id }"><i
+									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
+									<a href="#"><i
 										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
 								</div>
 							</div>
@@ -191,9 +158,9 @@
 	<div class="clear-with-height"></div>
 	<!-- --- -->
 
-	<!--  FOOTER -->
-	<div id="footer"></div>
-	<!-- ------- -->
+	<!-- FOOTER -->
+	<%@ include file="/views/includes/footer.jsp"%>
+	<!-- ------ -->
 
 </body>
 
