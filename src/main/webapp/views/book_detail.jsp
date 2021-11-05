@@ -9,32 +9,28 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="app mua sách">
+<meta name="keywords" content="app, mua, sách">
+<meta name="author" content="CuongPham">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS & JS -->
 <%@ include file="/views/includes/css_js.jsp"%>
-<link rel="stylesheet" type="text/css" href="/css/category.css">
-<!-- --- -->
 <link rel="stylesheet" href="/css/slick.css">
 <link rel="stylesheet" href="/css/slick-theme.css">
-
 <script src="/js/slick.min.js"></script>
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/item-detail.css">
+<!-- --- -->
 
-<title>Ecommerce Project</title>
+<title>BookShop</title>
 </head>
 
-<body>
 
-	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous"
-		src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0"
-		nonce="ChmFo6ST"></script>
+<body>
 
 	<!-- HEADER -->
 	<%@ include file="/views/includes/header.jsp"%>
@@ -50,11 +46,6 @@
 						</div>
 					</c:forEach>
 				</div>
-				<style>
-.slider-for img {
-	aspect-ratio: unset;
-}
-</style>
 			</div>
 			<div class="col-md-7">
 				<div>

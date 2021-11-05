@@ -19,7 +19,7 @@
 			</ul>
 		</div>
 		<div class="header-bottom">
-			<a class="navbar-brand" href="/BookShop/"><img class="logo"
+			<a class="navbar-brand" href="/"><img class="logo"
 				src="/img/logo1.png" alt="logo"></a>
 			<div class="nav-search">
 				<form class="form-inline" action="search-name"
@@ -35,7 +35,7 @@
 			<div class="nav-cart">
 				<a class="nav-link" style="position: relative;" href="cart"> <img
 					class="cart" src="/img/cart.png" alt="cart"> <span
-					class="count-item">0</span>
+					class="count-item">${not empty soLuongMua ? soLuongMua : 0 }</span>
 				</a>
 			</div>
 		</div>

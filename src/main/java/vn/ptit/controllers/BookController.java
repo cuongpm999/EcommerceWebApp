@@ -19,17 +19,18 @@ import com.sun.xml.internal.stream.Entity;
 import vn.ptit.models.book.Author;
 import vn.ptit.models.book.BookItem;
 import vn.ptit.models.book.Publisher;
+import vn.ptit.models.electronics.ElectronicsItem;
 
 @Controller
 @RequestMapping("/book")
 public class BookController {
-	
+
 	private RestTemplate rest = new RestTemplate();
-	
+
 	@GetMapping
 	public String allBook(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		String price = req.getParameter("price");
-		String 
+//		String price = req.getParameter("price");
+//		String 
 		List<BookItem> bookItems = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
 		List<Author> authors = Arrays
@@ -41,15 +42,16 @@ public class BookController {
 		model.addAttribute("bookItems", bookItems);
 		return "/category_book";
 	}
-	
-	@GetMapping(value="/{slug}")
+
+	@GetMapping(value = "/{slug}")
 	public String getBookItemBySlug(@PathVariable String slug, ModelMap model, HttpServletRequest req,
 			HttpServletResponse resp) {
-		List<BookItem> bookItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
-		BookItem bookItem = rest.postForObject("http://localhost:6969/rest/api/book-item/slug", slug, BookItem.class);
-		model.addAttribute("bookItem", bookItem);
+		List<BookItem> bookItems = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/book-item/same-item/" + slug, BookItem[].class));
 		model.addAttribute("bookItems", bookItems);
+
+		BookItem bookItem = rest.getForObject("http://localhost:6969/rest/api/book-item/" + slug, BookItem.class);
+		model.addAttribute("bookItem", bookItem);
 		return "book_detail";
 	}
 }

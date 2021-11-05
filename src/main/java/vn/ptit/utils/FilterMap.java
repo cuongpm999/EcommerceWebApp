@@ -29,5 +29,5 @@ public class FilterMap {
 	public void setValue(String value) {
 		this.value = value;
 	}
-
 }
+

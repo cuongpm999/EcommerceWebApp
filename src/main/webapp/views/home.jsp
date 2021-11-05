@@ -74,36 +74,36 @@
 					MỤC</h3>
 				<div class="row">
 					<div class="col-md-3">
-						<a href="#"><img src="/img/clothes.png" alt="product"></a>
+						<a href="/clothes"><img src="/img/clothes.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/clothes">
 								<h6>Clothes</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/electronic.png" alt="product"></a>
+						<a href="/electronics"><img src="/img/electronic.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/electronics">
 								<h6>Electronics</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/shoes.png" alt="product"></a>
+						<a href="/shoes"><img src="/img/shoes.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/shoes">
 								<h6>Shoes</h6>
 							</a>
 						</div>
 					</div>
 
 					<div class="col-md-3">
-						<a href="#"><img src="/img/book.png" alt="product"></a>
+						<a href="/book"><img src="/img/book.png" alt="product"></a>
 						<div class="infor" style="text-align: center;">
-							<a href="#">
+							<a href="/book">
 								<h6>Book</h6>
 							</a>
 						</div>
@@ -136,7 +136,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
@@ -153,12 +153,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/electronics/${electronicsItem.slug }"><img
 										src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/electronics/${electronicsItem.slug }">
 										<h6>${electronicsItem.electronics.name }</h6>
 									</a>
 									<c:choose>
@@ -171,7 +171,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
@@ -188,12 +188,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/shoes/${shoesItem.slug }"><img
 										src="/files_item/${shoesItem.imgShoesItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/shoes/${shoesItem.slug }">
 										<h6>${shoesItem.shoes.name }</h6>
 									</a>
 									<c:choose>
@@ -206,7 +206,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${shoesItem.price*(100-shoesItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${shoesItem.slug}','shoes');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>
@@ -223,12 +223,12 @@
 						<c:if test="${loop.index <4 }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
-									<a href="#"><img
+									<a href="/clothes/${clothesItem.slug }"><img
 										src="/files_item/${clothesItem.imgClothesItems.get(0).name }"
 										alt="product"></a>
 								</div>
 								<div class="infor" style="text-align: center;">
-									<a href="">
+									<a href="/clothes/${clothesItem.slug }">
 										<h6>${clothesItem.clothes.name }</h6>
 									</a>
 									<c:choose>
@@ -241,7 +241,7 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
-									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+									<a href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
 										ngay</a>
 								</div>
 							</div>

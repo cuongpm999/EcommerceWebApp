@@ -30,181 +30,248 @@
 	<!-- HEADER -->
 	<%@ include file="/views/includes/header.jsp"%>
 	<!-- ------ -->
-	
+
 	<!-- MAIN -->
-    <div id="main" class="container all-item">
-        <h4 class="tieude-tp">LAPTOP</h4>
-        <div class="loc-sp">
-            <span class="title-x">LỌC SẢN PHẨM</span>
-            <div class="danh-muc">
-                <span class="title">DANH MỤC</span>
-                <ul class="list-unstyled">
-                    <li><a href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
-                                class="fas fa-angle-double-right"></i> HP</a></li>
-                    <li><a href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
-                                class="fas fa-angle-double-right"></i> Dell</a></li>
-                    <li><a href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
-                                class="fas fa-angle-double-right"></i> Apple</a></li>
-                    <li><a href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
-                                class="fas fa-angle-double-right"></i> Lenovo</a></li>
-                    <li><a href="/shop-all-item/${laptopManufacturer_.seo }/?page=1"><i
-                                class="fas fa-angle-double-right"></i> Asus</a></li>
-                </ul>
-            </div>
-            <div class="khoang-gia">
-                <span class="title">KHOẢNG GIÁ</span>
-                <ul class="list-unstyled">
-                    <c:choose>
-                        <c:when test="${empty price }">
-                            <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('price', 'duoi20trieu')"><i
-                                        class="far fa-square"></i> Dưới 20 triệu</a></li>
-                            <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('price', '20den30trieu')"><i
-                                        class="far fa-square"></i> 20 triệu - 30 triệu</a></li>
-                            <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('price', '30den40trieu')"><i
-                                        class="far fa-square"></i> 30 triệu - 40 triệu</a></li>
-                            <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('price', '40den50trieu')"><i
-                                        class="far fa-square"></i> 40 triệu - 50 triệu </a></li>
-                            <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('price', 'tren50trieu')"><i
-                                        class="far fa-square"></i> Trên 50 triệu</a></li>
-                        </c:when>
+	<div id="main" class="container all-item">
+		<h4 class="tieude-tp">ELECTRONICS</h4>
+		<div class="loc-sp">
+			<span class="title-x">LỌC SẢN PHẨM</span>
+			<div class="danh-muc">
+				<span class="title">DANH MỤC</span>
+				<ul class="list-unstyled">
+					<li><a href="/electronics"><i
+							class="fas fa-angle-double-right"></i> All</a></li>
+					<li><a href="/electronics/find-by-category/tivi"><i
+							class="fas fa-angle-double-right"></i> Tivi</a></li>
+					<li><a href="/electronics/find-by-category/mobile-phone"><i
+							class="fas fa-angle-double-right"></i> MobilePhone</a></li>
+					<li><a href="/electronics/find-by-category/laptop"><i
+							class="fas fa-angle-double-right"></i> Laptop</a></li>
+				</ul>
+			</div>
 
-                    </c:choose>
-                </ul>
-            </div>
-            <div class="cpu">
-                <span class="title">CPU</span>
-                <ul class="list-unstyled">
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'i3')"><i
-                                class="far fa-square"></i> Intel Core i3</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'i5')"><i
-                                class="far fa-square"></i> Intel Core i5</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'i7')"><i
-                                class="far fa-square"></i> Intel Core i7</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'i9')"><i
-                                class="far fa-square"></i> Intel Core i9</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'amd ryzen 3')"><i
-                                class="far fa-square"></i> AMD Ryzen 3 </a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'amd ryzen 5')"><i
-                                class="far fa-square"></i> AMD Ryzen 5</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'amd ryzen 7')"><i
-                                class="far fa-square"></i> AMD Ryzen 7 </a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('cpu', 'amd ryzen 9')"><i
-                                class="far fa-square"></i> AMD Ryzen 9 </a></li>
-                </ul>
-            </div>
-            <div id="waypoint_here" class="ram">
-                <span class="title">RAM</span>
-                <ul class="list-unstyled">
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('ram', '4gb')"><i
-                                class="far fa-square"></i> 4GB</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('ram', '8gb')"><i
-                                class="far fa-square"></i> 8GB</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('ram', '16gb')"><i
-                                class="far fa-square"></i> 16GB</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('ram', '32gb')"><i
-                                class="far fa-square"></i> 32GB</a></li>
-                </ul>
-            </div>
+			<div class="danh-muc">
+				<span class="title">HÃNG SẢN XUẤT</span>
+				<ul class="list-unstyled">
+					<c:forEach var="manufacturer" items="${manufacturers }">
+						<li><a
+							href="/electronics/find-by-manufacturer/${manufacturer.id }"><i
+								class="fas fa-angle-double-right"></i> ${manufacturer.name }</a></li>
+					</c:forEach>
 
-            <div class="o-cung">
-                <span class="title">Ổ CỨNG</span>
-                <ul class="list-unstyled">
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('oCung', 'ssd')"><i
-                                class="far fa-square"></i> SSD</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('oCung', 'hhd')"><i
-                                class="far fa-square"></i> HDD</a></li>
-                </ul>
-            </div>
+				</ul>
+			</div>
 
-            <div class="vga">
-                <span class="title">VGA</span>
-                <ul class="list-unstyled">
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('vga', 'nvidia')"><i
-                                class="far fa-square"></i> NVIDIA</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('vga', 'amd')"><i
-                                class="far fa-square"></i> AMD</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('vga', 'onboard')"><i
-                                class="far fa-square"></i> Onboard</a></li>
-                </ul>
-            </div>
+			<div class="khoang-gia">
+				<span class="title">KHOẢNG GIÁ</span>
+				<ul class="list-unstyled">
+					<c:choose>
+						<c:when test="${empty price }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', 'duoi10trieu')"><i
+									class="far fa-square"></i> Dưới 10 triệu</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', '10den20trieu')"><i
+									class="far fa-square"></i> 10 triệu - 20 triệu</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', '20den30trieu')"><i
+									class="far fa-square"></i> 20 triệu - 30 triệu</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', '30den40trieu')"><i
+									class="far fa-square"></i> 30 triệu - 40 triệu</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', '40den50trieu')"><i
+									class="far fa-square"></i> 40 triệu - 50 triệu </a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', 'tren50trieu')"><i
+									class="far fa-square"></i> Trên 50 triệu</a></li>
+						</c:when>
+						<c:when test="${price=='duoi10trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Dưới 10 triệu</a></li>
+						</c:when>
 
-            <div class="man-hinh">
-                <span class="title">KÍCH THƯỚC MÀN HÌNH</span>
-                <ul class="list-unstyled">
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '12.3')"><i
-                                class="far fa-square"></i> 12.3 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '12.5')"><i
-                                class="far fa-square"></i> 12.5 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '13.3')"><i
-                                class="far fa-square"></i> 13.3 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '13')"><i
-                                class="far fa-square"></i> 13 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '14')"><i
-                                class="far fa-square"></i> 14 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '15.4')"><i
-                                class="far fa-square"></i> 15.4 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '15.6')"><i
-                                class="far fa-square"></i> 15.6 inch</a></li>
-                    <li><a href="javascript:void(0);" onclick="Shop.addUrlParameter('manHinh', '17.3')"><i
-                                class="far fa-square"></i> 17.3 inch</a></li>
-                </ul>
-            </div>
-        </div>
+						<c:when test="${price=='10den20trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 10 triệu - 20 triệu</a></li>
+						</c:when>
 
-        <div class="product-sp">
-            <div class="product-list">
-                <div class="list-sort">
-                    <select id="sort-select" onchange="Shop.addUrlParameter('sort', this.value)">
-                        <option value="">Sắp xếp sản phẩm</option>
-                        <option value="low-to-high">Giá
-                            tăng dần</option>
-                        <option value="high-to-low">Giá
-                            giảm dần</option>
-                    </select>
-                    
-                </div>
+						<c:when test="${price=='20den30trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 20 triệu - 30 triệu</a></li>
+						</c:when>
 
-                <div class="list-book">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div style="text-align: center;"><a href="#"><img src="/img/book.jpg" alt="product"></a></div>
-                            <div class="infor" style="text-align: center;">
-                                <a href="#">
-                                    <h6>Cân bằng cảm xúc</h6>
-                                </a>
-                                <div class="gia-goc">
-                                    <p class="gia-chinh">200.000 Đ</p>
-                                    <p class="khuyen-mai">(Tiết kiệm: 7%)</p>
-                                </div>
-                                <h6 class="gia-ban">26.599.000 Đ</h6>
-                                <a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
- 
-                <div class="list-sort" style="margin-top: 3rem;">
+						<c:when test="${price=='30den40trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 30 triệu - 40 triệu</a></li>
+						</c:when>
 
-                    <div class="paging mx-auto">
-                        <a href="javascript:Shop.goPrev()">Previous</a> <a href="javascript:void(0);"
-                            onclick="Shop.addUrlParameter('page', 1)">1</a> <a href="javascript:void(0);"
-                            onclick="Shop.addUrlParameter('page', 2)">2</a> <a href="javascript:void(0);"
-                            onclick="Shop.addUrlParameter('page', 3)">3</a> <a class="pa4" href="javascript:void(0);"
-                            onclick="Shop.addUrlParameter('page', 4)">4</a> <a class="pa5" href="javascript:void(0);"
-                            onclick="Shop.addUrlParameter('page', 5)">5</a>
-                        <a href="javascript:Shop.goNext()">Next</a>
-                    </div>
-                </div>
+						<c:when test="${price=='40den50trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> 40 triệu - 50 triệu</a></li>
+						</c:when>
+
+						<c:when test="${price=='tren50trieu' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Trên 50 triệu</a></li>
+						</c:when>
+
+					</c:choose>
+				</ul>
+			</div>
+
+			<div class="man-hinh">
+				<span class="title">KÍCH THƯỚC MÀN HÌNH</span>
+				<ul class="list-unstyled">
+					<c:choose>
+						<c:when test="${empty screendSize }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '6.1')"><i
+									class="far fa-square"></i> 6.1 inch</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '6.7')"><i
+									class="far fa-square"></i> 6.7 inch</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '13')"><i
+									class="far fa-square"></i> 13 inch</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '14')"><i
+									class="far fa-square"></i> 14 inch</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '15.4')"><i
+									class="far fa-square"></i> 15.4 inch</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '15.6')"><i
+									class="far fa-square"></i> 15.6 inch</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('screendSize', '65')"><i
+									class="far fa-square"></i> 65 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='6.1' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 6.1 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='6.7' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 6.7 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='13' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 13 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='14' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 14 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='15.4' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 15.4 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='15.6' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 15.6 inch</a></li>
+						</c:when>
+
+						<c:when test="${screendSize=='65' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('screendSize')"><i
+									class="far fa-check-square"></i> 65 inch</a></li>
+						</c:when>
+
+					</c:choose>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="product-sp">
+			<div class="product-list">
+				<div class="list-sort">
+					<select id="sort-select"
+						onchange="Shop.addUrlParameter('sort', this.value)">
+						<option value="">Sắp xếp sản phẩm</option>
+						<option value="low-to-high">Giá tăng dần</option>
+						<option value="high-to-low">Giá giảm dần</option>
+					</select>
+
+				</div>
+
+				<div class="list-electronics">
+					<div class="row">
+						<c:forEach var="electronicsItem" items="${electronicsItems }">
+							<div class="col-md-3">
+								<div style="text-align: center;">
+									<a href="/electronics/${electronicsItem.slug }"><img
+										src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
+										alt="product"></a>
+								</div>
+								<div class="infor" style="text-align: center;">
+									<a href="/electronics/${electronicsItem.slug }">
+										<h6>${electronicsItem.electronics.name }</h6>
+									</a>
+									<c:choose>
+										<c:when test="${electronicsItem.discount > 0}">
+											<div class="gia-goc">
+												<p class="gia-chinh">${electronicsItem.price }₫</p>
+												<p class="khuyen-mai">(Tiết kiệm:
+													${electronicsItem.discount}%)</p>
+											</div>
+										</c:when>
+									</c:choose>
+									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
+									<a href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+
+				<div class="list-sort" style="margin-top: 3rem;">
+
+					<div class="paging mx-auto">
+						<a href="javascript:Shop.goPrev()">Previous</a> <a
+							href="javascript:void(0);"
+							onclick="Shop.addUrlParameter('page', 1)">1</a> <a
+							href="javascript:void(0);"
+							onclick="Shop.addUrlParameter('page', 2)">2</a> <a
+							href="javascript:void(0);"
+							onclick="Shop.addUrlParameter('page', 3)">3</a> <a class="pa4"
+							href="javascript:void(0);"
+							onclick="Shop.addUrlParameter('page', 4)">4</a> <a class="pa5"
+							href="javascript:void(0);"
+							onclick="Shop.addUrlParameter('page', 5)">5</a> <a
+							href="javascript:Shop.goNext()">Next</a>
+					</div>
+				</div>
 
 
-            </div>
-        </div>
+			</div>
+		</div>
 
-    </div>
-    <div class="clear-with-height"></div>
-    <!-- --- -->
-    
-    <!-- FOOTER -->
+	</div>
+	<div class="clear-with-height"></div>
+	<!-- --- -->
+
+	<!-- FOOTER -->
 	<%@ include file="/views/includes/footer.jsp"%>
 	<!-- ------ -->
 
@@ -212,4 +279,3 @@
 </body>
 
 </html>
-	
