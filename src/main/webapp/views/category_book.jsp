@@ -42,10 +42,25 @@
 			<div class="danh-muc">
 				<span class="title">TÁC GIẢ</span>
 				<ul class="list-unstyled">
+					<li><a href="/book"><i class="fas fa-angle-double-right"></i>
+							Tất cả</a></li>
 					<c:forEach var="author" items="${authors }" varStatus="loop">
 						<c:if test="${loop.index < 4 }">
-							<li><a href="#"><i class="fas fa-angle-double-right"></i>
-									${author.name }</a></li>
+							<li><a href="/book/find-by-author/${author.id }"><i
+									class="fas fa-angle-double-right"></i> ${author.name }</a></li>
+						</c:if>
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="danh-muc">
+				<span class="title">NHÀ XUẤT BẢN</span>
+				<ul class="list-unstyled">
+					<li><a href="/book"><i class="fas fa-angle-double-right"></i>
+							Tất cả</a></li>
+					<c:forEach var="publisher" items="${publishers }" varStatus="loop">
+						<c:if test="${loop.index < 4 }">
+							<li><a href="/book/find-by-publisher/${publisher.id }"><i
+									class="fas fa-angle-double-right"></i> ${publisher.name }</a></li>
 						</c:if>
 					</c:forEach>
 				</ul>
@@ -53,32 +68,38 @@
 			<div class="khoang-gia">
 				<span class="title">KHOẢNG GIÁ</span>
 				<ul class="list-unstyled">
-					<%-- <c:choose>
-                        <c:when test="${empty price }"> --%>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('price', 'duoi10trieu')"><i
-							class="far fa-square"></i> Dưới 100.000₫</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('price', '10den20trieu')"><i
-							class="far fa-square"></i> Từ 100.000₫ đến 200.000₫</a></li>
-					<li><a href="javascript:void(0);"
-						onclick="Shop.addUrlParameter('price', 'tren50trieu')"><i
-							class="far fa-square"></i> Trên 200.000₫</a></li>
-					<%--  </c:when>
-
-                    </c:choose> --%>
-				</ul>
-			</div>
-			<div class="cpu">
-				<span class="title">NHÀ XUẤT BẢN</span>
-				<ul class="list-unstyled">
-					<c:forEach var="publisher" items="${publishers }" varStatus="loop">
-						<c:if test="${loop.index < 4 }">
+					<c:choose>
+						<c:when test="${empty price }">
 							<li><a href="javascript:void(0);"
-								onclick="Shop.addUrlParameter('cpu', 'i3')"><i
-									class="far fa-square"></i> ${publisher.name }</a></li>
-						</c:if>
-					</c:forEach>
+								onclick="Shop.addUrlParameter('price', 'duoi100')"><i
+									class="far fa-square"></i> Dưới 100.000₫</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', '100den200')"><i
+									class="far fa-square"></i> Từ 100.000₫ đến 200.000₫</a></li>
+							<li><a href="javascript:void(0);"
+								onclick="Shop.addUrlParameter('price', 'tren200')"><i
+									class="far fa-square"></i> Trên 200.000₫</a></li>
+						</c:when>
+						
+						<c:when test="${price=='duoi100' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Dưới 10 triệu</a></li>
+						</c:when>
+						
+						<c:when test="${price=='100den200' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Từ 100.000₫ đến 200.000₫</a></li>
+						</c:when>
+						
+						<c:when test="${price=='tren200' }">
+							<li><a href="javascript:void(0);"
+								onclick="Shop.deleteUrlParameter('price')"><i
+									class="far fa-check-square"></i> Trên 200.000₫</a></li>
+						</c:when>
+
+					</c:choose>
 				</ul>
 			</div>
 
@@ -118,8 +139,8 @@
 										</c:when>
 									</c:choose>
 									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
-									<a href="#"><i
-										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
+									<a href="#"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
+										ngay</a>
 								</div>
 							</div>
 
