@@ -10,8 +10,8 @@ public class CustomerMember extends Customer{
 	}
 
 	public CustomerMember(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address, double point,
-			Account account) {
-		super(mobile, sex, dateOfBirth, fullName, address);
+			Account account, String email) {
+		super(mobile, sex, dateOfBirth, fullName, address, email);
 		this.point = point;
 		this.account = account;
 	}

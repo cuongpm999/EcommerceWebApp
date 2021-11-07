@@ -14,13 +14,14 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address) {
+	public Customer(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address, String email) {
 		super();
 		this.mobile = mobile;
 		this.sex = sex;
 		this.dateOfBirth = dateOfBirth;
 		this.fullName = fullName;
 		this.address = address;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -78,5 +79,6 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	
 }

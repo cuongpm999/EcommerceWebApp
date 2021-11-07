@@ -43,10 +43,10 @@ public class HomeController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/find-all", ElectronicsItem[].class));
 		
 		List<ShoesItem> shoesItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/find-all", ShoesItem[].class));
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/get-8-shoes-item", ShoesItem[].class));
 		
 		List<ClothesItem> clothesItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/find-all", ClothesItem[].class));
+				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/get-8-clothes-item", ClothesItem[].class));
 		
 		model.addAttribute("bookItems", bookItems);
 		model.addAttribute("electronicsItems", electronicsItems);
@@ -54,13 +54,6 @@ public class HomeController {
 		model.addAttribute("clothesItems", clothesItems);
 		return "home";
 	}
-	
-	@GetMapping(value = "/register")
-	public String viewRegister(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		model.addAttribute("customerMember",new CustomerMember());
-		return "register";
-	}
-	
 	
 	@GetMapping(value = "/search-name")
 	public String viewSearch(@RequestParam("key") String name, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {

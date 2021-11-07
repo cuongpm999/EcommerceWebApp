@@ -27,6 +27,7 @@ import vn.ptit.utils.FilterMap;
 public class ClothesController {
 	private RestTemplate rest = new RestTemplate();
 	
+	private int LIMIT = 3;
 	@GetMapping
 	public String viewAllClothes(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		String price = req.getParameter("price");
@@ -34,7 +35,8 @@ public class ClothesController {
 		String style = req.getParameter("style");
 		String material = req.getParameter("material");
 		String sort = req.getParameter("sort");
-
+		String pageNumber = req.getParameter("page");
+		
 		List<FilterMap> listFilter = new ArrayList<>();
 		if (price != null) {
 			FilterMap filter = new FilterMap("price", price);
@@ -61,6 +63,10 @@ public class ClothesController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
+		if (pageNumber != null) {
+			FilterMap filter = new FilterMap("pageNumber", pageNumber);
+			listFilter.add(filter);
+		}
 		
 		List<ClothesItem> clothesItems = Arrays.asList(rest.postForObject("http://localhost:6969/rest/api/clothes-item/find-all-in-category", listFilter, ClothesItem[].class));
 		model.addAttribute("clothesItems", clothesItems);
@@ -74,6 +80,10 @@ public class ClothesController {
 		String style = req.getParameter("style");
 		String material = req.getParameter("material");
 		String sort = req.getParameter("sort");
+		int pageNumber = 1;
+		if(req.getParameter("page") != null) {
+			pageNumber = Integer.parseInt(req.getParameter("page"));
+		}
 
 		List<FilterMap> listFilter = new ArrayList<>();
 
@@ -107,8 +117,13 @@ public class ClothesController {
 			model.addAttribute("sort", sort);
 		}
 		
+		
 		List<ClothesItem> clothesItems = Arrays.asList(rest.postForObject("http://localhost:6969/rest/api/clothes-item/find-by-category", listFilter, ClothesItem[].class));
-		model.addAttribute("clothesItems", clothesItems);
+		
+		List<ClothesItem> clothesItems1 = clothesItems.subList(
+				(pageNumber - 1) * LIMIT > clothesItems.size() ? clothesItems.size() : (pageNumber - 1) * LIMIT,
+				pageNumber * LIMIT > clothesItems.size() ? clothesItems.size() : pageNumber * LIMIT);
+		model.addAttribute("clothesItems", clothesItems1);
 		return "category_clothes";
 	}
 

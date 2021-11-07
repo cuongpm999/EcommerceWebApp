@@ -19,6 +19,8 @@ import vn.ptit.utils.FilterMap;
 public class ShoesController {
 	private RestTemplate rest = new RestTemplate();
 
+	private int LIMIT = 3;
+
 	@GetMapping
 	public String viewAllClothes(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		String price = req.getParameter("price");
@@ -26,6 +28,7 @@ public class ShoesController {
 		String style = req.getParameter("style");
 		String material = req.getParameter("material");
 		String sort = req.getParameter("sort");
+		String pageNumber = req.getParameter("page");
 
 		List<FilterMap> listFilter = new ArrayList<>();
 		if (price != null) {
@@ -53,19 +56,25 @@ public class ShoesController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
+		if (pageNumber != null) {
+			FilterMap filter = new FilterMap("pageNumber", pageNumber);
+			listFilter.add(filter);
+		}
 		List<ShoesItem> shoesItems = Arrays.asList(rest.postForObject(
 				"http://localhost:6969/rest/api/shoes-item/find-all-in-category", listFilter, ShoesItem[].class));
 		model.addAttribute("shoesItems", shoesItems);
 		return "category_shoes";
 	}
-	
+
 	@GetMapping("/find-by-category/{categoryName}")
-	public String viewShoesByCategory(@PathVariable String categoryName, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+	public String viewShoesByCategory(@PathVariable String categoryName, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
 		String price = req.getParameter("price");
 		String color = req.getParameter("color");
 		String style = req.getParameter("style");
 		String material = req.getParameter("material");
 		String sort = req.getParameter("sort");
+		int pageNumber = 1;
 
 		List<FilterMap> listFilter = new ArrayList<>();
 
@@ -100,14 +109,19 @@ public class ShoesController {
 		}
 		List<ShoesItem> shoesItems = Arrays.asList(rest.postForObject(
 				"http://localhost:6969/rest/api/shoes-item/find-by-category", listFilter, ShoesItem[].class));
+
+		List<ShoesItem> shoesItems1 = shoesItems.subList(
+				(pageNumber - 1) * LIMIT > shoesItems.size() ? shoesItems.size() : (pageNumber - 1) * LIMIT,
+				pageNumber * LIMIT > shoesItems.size() ? shoesItems.size() : pageNumber * LIMIT);
 		model.addAttribute("shoesItems", shoesItems);
 		return "category_shoes";
 	}
+
 	@GetMapping(value = "/{slug}")
 	public String viewShoesBySlug(@PathVariable String slug, ModelMap model, HttpServletRequest req,
 			HttpServletResponse resp) {
-		List<ShoesItem> shoesItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/get-4-shoes-item/{slug}", ShoesItem[].class, slug));
+		List<ShoesItem> shoesItems = Arrays.asList(rest.getForObject(
+				"http://localhost:6969/rest/api/shoes-item/get-4-shoes-item/{slug}", ShoesItem[].class, slug));
 		ShoesItem shoesItemDetail = rest.getForObject("http://localhost:6969/rest/api/shoes-item/" + slug,
 				ShoesItem.class);
 		Sneaker sneaker = rest.getForObject("http://localhost:6969/rest/api/shoes/sneaker/{id}", Sneaker.class,
