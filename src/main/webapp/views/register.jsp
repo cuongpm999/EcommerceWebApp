@@ -15,6 +15,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Document</title>
 <!-- CSS & JS -->
 <!-- CSS -->
@@ -47,117 +48,70 @@
 				<div class="card-body">
 					<div class="panel-body">
 						<form:form modelAttribute="customerMember" action="/register"
-							enctype="multipart/form-data">
-							
+							enctype="multipart/form-data" id="registerForm">
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">First name:</label>
 								<form:input path="fullName.firstName" class="form-control"
 									placeholder="First name" />
 							</div>
-							
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">Middle name:</label>
 								<form:input path="fullName.middleName" class="form-control"
 									placeholder="Middle name" />
 							</div>
-							
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">Last name:</label>
 								<form:input path="fullName.lastName" class="form-control"
 									placeholder="Last name" />
 							</div>
-							
+
 							<div class="form-group">
 								<label class="required">Mobile:</label>
 								<form:input path="mobile" class="form-control"
 									placeholder="Mobile" />
 							</div>
-							
+
 							<div class="form-group">
 								<label class="required">Sex:</label>&ensp;
-								<form:radiobutton path="sex" value="nam" label="Nam" checked="checked"/>&emsp;
-								<form:radiobutton path="sex" value="nữ" label="Nữ"/>
+								<form:radiobutton path="sex" value="nam" label="Nam"
+									checked="checked" />
+								&emsp;
+								<form:radiobutton path="sex" value="nữ" label="Nữ" />
 							</div>
-							
+
 							<div class="form-group">
 								<label class="required">Date of birth:</label>
 								<form:input type="date" path="dateOfBirth" class="form-control"
 									placeholder="Date of birth" />
 							</div>
-							
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">Number:</label>
-								<form:input type="number" path="address.number" class="form-control"
-									placeholder="number" />
+								<form:input type="number" path="address.number"
+									class="form-control" placeholder="number" />
 							</div>
-							
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">Street:</label>
 								<form:input path="address.street" class="form-control"
 									placeholder="Street" />
 							</div>
-							
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">District:</label>
 								<form:input path="address.district" class="form-control"
 									placeholder="District" />
 							</div>
-							
+
 							<div class="form-group">
-								<%-- <c:choose>
-									<c:when test="${status=='faileNameNotNull'}">
-										<div class="alert alert-danger">
-											<strong>Faile!</strong> Họ tên không được để trống!
-										</div>
-									</c:when>
-								</c:choose> --%>
 								<label class="required">City:</label>
 								<form:input path="address.city" class="form-control"
 									placeholder="City" />
 							</div>
-							
+
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${status=='faileTenBiTrung'}">
@@ -175,7 +129,7 @@
 								<form:input path="account.username" class="form-control"
 									placeholder="Username" />
 							</div>
-							
+
 							<div class="form-group">
 								<c:choose>
 									<c:when test="${status=='failePassNotNull'}">
