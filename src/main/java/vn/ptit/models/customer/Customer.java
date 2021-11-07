@@ -9,6 +9,7 @@ public class Customer {
 	private Date dateOfBirth;
 	private FullName fullName;
 	private Address address;
+	private String email;
 	
 	public Customer() {
 	}
@@ -69,6 +70,13 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 }
