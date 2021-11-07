@@ -55,13 +55,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping(value = "/register")
-	public String viewRegister(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		model.addAttribute("customerMember",new CustomerMember());
-		return "register";
-	}
-	
-	
 	@GetMapping(value = "/search-name")
 	public String viewSearch(@RequestParam("key") String name, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<BookItem> bookItems = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-by-name/" + name, BookItem[].class));
