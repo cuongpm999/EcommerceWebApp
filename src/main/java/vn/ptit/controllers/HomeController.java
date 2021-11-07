@@ -47,11 +47,4 @@ public class HomeController {
 		model.addAttribute("clothesItems", clothesItems);
 		return "home";
 	}
-	
-	@GetMapping(value = "/register")
-	public String register(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		model.addAttribute("customerMember",new CustomerMember());
-		return "register";
-	}
-	
 }

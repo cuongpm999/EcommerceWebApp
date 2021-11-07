@@ -9,17 +9,19 @@ public class Customer {
 	private Date dateOfBirth;
 	private FullName fullName;
 	private Address address;
+	private String email;
 	
 	public Customer() {
 	}
 
-	public Customer(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address) {
+	public Customer(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address, String email) {
 		super();
 		this.mobile = mobile;
 		this.sex = sex;
 		this.dateOfBirth = dateOfBirth;
 		this.fullName = fullName;
 		this.address = address;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -68,6 +70,14 @@ public class Customer {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

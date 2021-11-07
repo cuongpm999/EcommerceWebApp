@@ -10,35 +10,64 @@
 
 <!-- HEADER -->
 <div id="header">
-	<nav class="navbar navbar-expand-sm container">
-		<div class="header-top">
-			<ul>
-				<li><a href="#">Thông tin order</a></li>
-				<li><a href="#">Đăng kí</a></li>
-				<li><a href="#">Đăng nhập</a></li>
-			</ul>
-		</div>
-		<div class="header-bottom">
-			<a class="navbar-brand" href="/"><img class="logo"
-				src="/img/logo1.png" alt="logo"></a>
-			<div class="nav-search">
-				<form class="form-inline" action="search-name"
-					style="width: 100%; position: relative;" method="get">
-					<input class="form-control mr-sm-2" type="text"
-						placeholder="Search" name="key">
-					<button class="btn" type="submit">
-						<i class="fas fa-search"></i>
-					</button>
-				</form>
-			</div>
 
-			<div class="nav-cart">
-				<a class="nav-link" style="position: relative;" href="cart"> <img
-					class="cart" src="/img/cart.png" alt="cart"> <span
-					class="count-item">${not empty soLuongMua ? soLuongMua : 0 }</span>
-				</a>
+	<div class="header-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 header-top-left">
+					<i class="fas fa-users"></i> Nhóm 1 - Analysis & Design - tdque
+				</div>
+				<div class="col-md-6 header-top-right">
+					<c:choose>
+						<c:when test="${not empty customer_username }">
+							<span style="color: #020528E6"><i class="fas fa-user"></i> ${customer_username }</span>
+							<div class="header-separator"></div>
+							<a href="/order"><i class="fas fa-clipboard"> </i> Đơn hàng của tôi</a>
+							<div class="header-separator"></div>
+							<a href="/logout">Đăng xuất</a>
+						</c:when>
+						<c:when test="${empty customer_username}">
+							<a href="/login"><i class="fas fa-sign-in-alt"> </i>&nbsp;&nbsp;Đăng
+								nhập </a>
+							<div class="header-separator"></div>
+							<a href="/register">Đăng kí</i></a>
+						</c:when>
+					</c:choose>
+
+				</div>
 			</div>
 		</div>
-	</nav>
+	</div>
+
+	<div class="header-bottom">
+		<div class="container">
+			<div class="row d-flex align-items-center">
+				<div class="col-md-3">
+					<a href="/"><img src="/img/logo1.png" style="width: 55px;"
+						alt="logo"></a>
+				</div>
+				<div class="col-md-6">
+					<div class="nav-search">
+						<form action="search-name" method="get"
+							style="width: 100%; display: flex; align-items: center;">
+							<input class="" type="text" placeholder="Search..." name="key">
+							<button class="btn" type="submit">
+								<i class="fas fa-search"
+									style="color: rgba(55, 0, 255, 0.884); font-size: 20px;"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-3 text-center">
+					<div class="nav-cart">
+						<a class="nav-link" href="/cart"> <img class="cart"
+							src="/img/cart.png" alt="cart" style="width: 45px;"> <span
+							class="count-item">${not empty soLuongMua ? soLuongMua : 0 }</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- ------ -->

@@ -6,8 +6,8 @@ public class CustomerNew extends Customer{
 	private String note;
 	public CustomerNew() {
 	}
-	public CustomerNew(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address, String note) {
-		super(mobile, sex, dateOfBirth, fullName, address);
+	public CustomerNew(String mobile, String sex, Date dateOfBirth, FullName fullName, Address address, String email, String note) {
+		super(mobile, sex, dateOfBirth, fullName, address, email);
 		this.note = note;
 	}
 	public String getNote() {
