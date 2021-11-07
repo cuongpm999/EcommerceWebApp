@@ -22,7 +22,7 @@
 			<a class="navbar-brand" href="/"><img class="logo"
 				src="/img/logo1.png" alt="logo"></a>
 			<div class="nav-search">
-				<form class="form-inline" action="search-name"
+				<form class="form-inline" action="/search-name"
 					style="width: 100%; position: relative;" method="get">
 					<input class="form-control mr-sm-2" type="text"
 						placeholder="Search" name="key">
