@@ -128,7 +128,7 @@
 							<a href="javascript:Shop.addToCart('${clothesItemDetail.slug}','clothes');" class="btn1"
 								style="background-color: #ffeee8; line-height: 46px; margin-right: 40px; color: #ee4d2d;">
 								<i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
-							</a> <a href="#" class="btn2"
+							</a> <a href="javascript:Shop.addToCartNow('${clothesItemDetail.slug}','clothes');" class="btn2"
 								style="line-height: 46px; color: white; font-size: 16px; font-weight: 600;">MUA
 								NGAY</a>
 						</div>

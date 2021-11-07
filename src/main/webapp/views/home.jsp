@@ -66,7 +66,6 @@
 		</div>
 	</div>
 
-	<!-- MAIN -->
 	<div id="main">
 		<div class="container">
 			<div class="category">

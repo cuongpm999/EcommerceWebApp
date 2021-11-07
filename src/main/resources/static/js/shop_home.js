@@ -54,7 +54,7 @@ $(document).ready(function() {
 	$("#searchNameLaptop").autocomplete({
 		source: '/rest/api/data/autocomplete'
 	});
-	
+
 	// slick-slider
 	$('.your-class').slick({
 		dots: true,
@@ -119,7 +119,7 @@ $(document).ready(function() {
 		autoplaySpeed: 2000,
 	});
 	/////////////////
-	
+
 });
 
 var Shop = {
@@ -145,9 +145,10 @@ var Shop = {
 		});
 	},
 
-	addToCartNow: function(laptopSeo) {
+	addToCartNow: function(slug, category) {
 		var data = {};
-		data["laptopSeo"] = laptopSeo;
+		data["slug"] = slug;
+		data["category"] = category;
 
 		$.ajax({
 			url: "/rest/api/cart/addToCart",
@@ -158,15 +159,17 @@ var Shop = {
 			dataType: "json",
 			success: function(jsonResult) {
 				location.href = "/cart";
-				$("#count_shopping_cart_store").html(jsonResult.data);
+				$("span.count-item").html(jsonResult.data);
 			}
 		});
 	},
 
-	deleteCart: function(modalID, laptopSeo) {
-		$("#deleteproduct").click(function() {
+	deleteCart: function(slug, category) {
+		var flag = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?");
+		if (flag == true) {
 			var data = {};
-			data["laptopSeo"] = laptopSeo;
+			data["slug"] = slug;
+			data["category"] = category;
 
 			$.ajax({
 				url: "/rest/api/cart/deleteCart",
@@ -178,40 +181,39 @@ var Shop = {
 				success: function(jsonResult) {
 					if (jsonResult.status == "500") {
 						location.href = "/cart";
-						$("#count_shopping_cart_store").html(jsonResult.data);
+						$("span.count-item").html(jsonResult.data);
 					}
 				}
 			});
-		});
-		$('#' + modalID).modal('show');
+		}
 	},
 
-	editCart: function(modalID, laptopSeo) {
-		$("#editOk").click(function() {
-			var amount = $("#amount" + laptopSeo).val();
-			var data = {};
-			data["amount"] = amount;
-			data["laptopSeo"] = laptopSeo;
+	editCart: function(slug, category) {
+		var quantity = $("#quantity" + slug).val();
+		var data = {};
+		data["quantity"] = quantity;
+		data["slug"] = slug;
+		data["category"] = category;
 
-			$.ajax({
-				url: "/rest/api/cart/editCart",
-				type: "post",
-				contentType: "application/json",
-				data: JSON.stringify(data),
 
-				dataType: "json",
-				success: function(jsonResult) {
-					if (jsonResult.status == "400") {
-						location.href = "/cart";
-						$("#count_shopping_cart_store").html(jsonResult.data);
-					}
+		$.ajax({
+			url: "/rest/api/cart/editCart",
+			type: "post",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+
+			dataType: "json",
+			success: function(jsonResult) {
+				if (jsonResult.status == "400") {
+					$("span.count-item").html(jsonResult.data.val1);
+					$("#price" + slug).html(jsonResult.data.val2 + "₫");
+					$("#total_value").html(jsonResult.data.val3);
 				}
-			});
+			}
 		});
-		$('#' + modalID).modal('show');
 	},
 
-	deleteForm: function(modalID, entityId, restApi) {
+	deleteForm: function(entityId, restApi) {
 		$("#deleteOk").click(function() {
 			var data = {};
 			data["entityId"] = entityId;
@@ -230,7 +232,6 @@ var Shop = {
 				}
 			});
 		});
-		$('#' + modalID).modal('show');
 	},
 
 	goNext() {
