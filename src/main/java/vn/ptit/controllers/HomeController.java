@@ -30,17 +30,16 @@ import vn.ptit.models.electronics.ElectronicsItem;
 import vn.ptit.models.shoes.ShoesItem;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 	private RestTemplate rest = new RestTemplate();
 	
-	@GetMapping
+	@GetMapping("/")
 	public String home(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<BookItem> bookItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
+				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/get-item-in-home", BookItem[].class));
 		
 		List<ElectronicsItem> electronicsItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/find-all", ElectronicsItem[].class));
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/get-item-in-home", ElectronicsItem[].class));
 		
 		List<ShoesItem> shoesItems = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/find-all", ShoesItem[].class));

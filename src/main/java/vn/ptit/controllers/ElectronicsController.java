@@ -24,6 +24,7 @@ import vn.ptit.utils.FilterMap;
 @RequestMapping("/electronics")
 public class ElectronicsController {
 	private RestTemplate rest = new RestTemplate();
+	private int LIMIT = 3;
 
 	@GetMapping
 	public String viewAllElectronics(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
@@ -31,6 +32,7 @@ public class ElectronicsController {
 		String price = req.getParameter("price");
 		String screendSize = req.getParameter("screendSize");
 		String sort = req.getParameter("sort");
+		String pageNumber = req.getParameter("page");
 
 		List<FilterMap> listFilter = new ArrayList<>();
 		if (price != null) {
@@ -47,6 +49,10 @@ public class ElectronicsController {
 			FilterMap filter = new FilterMap("sort", sort);
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
+		}
+		if (pageNumber != null) {
+			FilterMap filter = new FilterMap("pageNumber", pageNumber);
+			listFilter.add(filter);
 		}
 
 		List<ElectronicsItem> electronicsItems = Arrays
@@ -68,6 +74,10 @@ public class ElectronicsController {
 		String price = req.getParameter("price");
 		String screendSize = req.getParameter("screendSize");
 		String sort = req.getParameter("sort");
+		int pageNumber = 1;
+		if (req.getParameter("page") != null) {
+			pageNumber = Integer.parseInt(req.getParameter("page"));
+		}
 
 		List<FilterMap> listFilter = new ArrayList<>();
 		if (categoryName != null) {
@@ -93,6 +103,13 @@ public class ElectronicsController {
 		List<ElectronicsItem> electronicsItems = Arrays
 				.asList(rest.postForObject("http://localhost:6969/rest/api/electronics-item/find-by-category",
 						listFilter, ElectronicsItem[].class));
+
+		System.out.println(electronicsItems.size());
+		electronicsItems = electronicsItems.subList(
+				(pageNumber - 1) * LIMIT > electronicsItems.size() ? electronicsItems.size()
+						: ((pageNumber - 1) * LIMIT),
+				(pageNumber * LIMIT) > electronicsItems.size() ? electronicsItems.size() : (pageNumber * LIMIT));
+
 		model.addAttribute("electronicsItems", electronicsItems);
 
 		List<Manufacturer> manufacturers = Arrays.asList(
@@ -109,6 +126,7 @@ public class ElectronicsController {
 		String price = req.getParameter("price");
 		String screendSize = req.getParameter("screendSize");
 		String sort = req.getParameter("sort");
+		String pageNumber = req.getParameter("page");
 
 		List<FilterMap> listFilter = new ArrayList<>();
 		if (idManufacturer != null) {
@@ -129,6 +147,10 @@ public class ElectronicsController {
 			FilterMap filter = new FilterMap("sort", sort);
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
+		}
+		if (pageNumber != null) {
+			FilterMap filter = new FilterMap("pageNumber", pageNumber);
+			listFilter.add(filter);
 		}
 
 		List<ElectronicsItem> electronicsItems = Arrays
@@ -151,8 +173,8 @@ public class ElectronicsController {
 				"http://localhost:6969/rest/api/electronics-item/same-item/" + slug, ElectronicsItem[].class));
 		model.addAttribute("item_same", sameElectronicsItems);
 
-		ElectronicsItem electronicsItem = rest
-				.getForObject("http://localhost:6969/rest/api/electronics-item/" + slug, ElectronicsItem.class);
+		ElectronicsItem electronicsItem = rest.getForObject("http://localhost:6969/rest/api/electronics-item/" + slug,
+				ElectronicsItem.class);
 		model.addAttribute("electronicsItem", electronicsItem);
 		return "electronics_detail";
 	}

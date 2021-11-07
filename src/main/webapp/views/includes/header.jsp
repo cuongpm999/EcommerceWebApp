@@ -47,7 +47,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="nav-search">
-						<form action="search-name" method="get"
+						<form action="/search-name" method="get"
 							style="width: 100%; display: flex; align-items: center;">
 							<input class="" type="text" placeholder="Search..." name="key">
 							<button class="btn" type="submit">

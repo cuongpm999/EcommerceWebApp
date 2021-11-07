@@ -45,7 +45,7 @@
 					<li><a href="/book"><i class="fas fa-angle-double-right"></i>
 							Tất cả</a></li>
 					<c:forEach var="author" items="${authors }" varStatus="loop">
-						<c:if test="${loop.index < 4 }">
+						<c:if test="${loop.index < 6 }">
 							<li><a href="/book/find-by-author/${author.id }"><i
 									class="fas fa-angle-double-right"></i> ${author.name }</a></li>
 						</c:if>
@@ -58,7 +58,7 @@
 					<li><a href="/book"><i class="fas fa-angle-double-right"></i>
 							Tất cả</a></li>
 					<c:forEach var="publisher" items="${publishers }" varStatus="loop">
-						<c:if test="${loop.index < 4 }">
+						<c:if test="${loop.index < 6 }">
 							<li><a href="/book/find-by-publisher/${publisher.id }"><i
 									class="fas fa-angle-double-right"></i> ${publisher.name }</a></li>
 						</c:if>
@@ -84,7 +84,7 @@
 						<c:when test="${price=='duoi100' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('price')"><i
-									class="far fa-check-square"></i> Dưới 10 triệu</a></li>
+									class="far fa-check-square"></i> Dưới 100.000₫</a></li>
 						</c:when>
 						
 						<c:when test="${price=='100den200' }">

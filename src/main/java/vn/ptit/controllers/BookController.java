@@ -34,6 +34,7 @@ public class BookController {
 	public String viewAllBook(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		String price = req.getParameter("price");
 		String sort = req.getParameter("sort");
+		String pageNumber = req.getParameter("page");
 
 		List<FilterMap> listFilter = new ArrayList<>();
 		if (price != null) {
@@ -46,8 +47,12 @@ public class BookController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
-		List<BookItem> bookItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
+		if (pageNumber != null) {
+			FilterMap filter = new FilterMap("pageNumber", pageNumber);
+			listFilter.add(filter);
+		}
+		List<BookItem> bookItems = Arrays.asList(rest.postForObject(
+				"http://localhost:6969/rest/api/book-item/find-all-in-category", listFilter, BookItem[].class));
 		List<Author> authors = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/author/find-all", Author[].class));
 		List<Publisher> publishers = Arrays
@@ -57,10 +62,10 @@ public class BookController {
 		model.addAttribute("bookItems", bookItems);
 		return "category_book";
 	}
-	
+
 	@GetMapping("/find-by-author/{idAuthor}")
-	public String viewBookByAuthor(@PathVariable String idAuthor, ModelMap model,
-			HttpServletRequest req, HttpServletResponse resp) {
+	public String viewBookByAuthor(@PathVariable String idAuthor, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
 
 		String price = req.getParameter("price");
 		String sort = req.getParameter("sort");
@@ -80,23 +85,22 @@ public class BookController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
-		
+
 		List<Author> authors = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/author/find-all", Author[].class));
 		List<Publisher> publishers = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/publisher/find-all", Publisher[].class));
-		List<BookItem> bookItems = Arrays
-				.asList(rest.postForObject("http://localhost:6969/rest/api/book-item/find-by-author",
-						listFilter, BookItem[].class));
+		List<BookItem> bookItems = Arrays.asList(rest.postForObject(
+				"http://localhost:6969/rest/api/book-item/find-by-author", listFilter, BookItem[].class));
 		model.addAttribute("authors", authors);
 		model.addAttribute("publishers", publishers);
 		model.addAttribute("bookItems", bookItems);
 		return "category_book";
 	}
-	
+
 	@GetMapping("/find-by-publisher/{idPublisher}")
-	public String viewBookByPublisher(@PathVariable String idPublisher, ModelMap model,
-			HttpServletRequest req, HttpServletResponse resp) {
+	public String viewBookByPublisher(@PathVariable String idPublisher, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
 
 		String price = req.getParameter("price");
 		String sort = req.getParameter("sort");
@@ -116,14 +120,13 @@ public class BookController {
 			listFilter.add(filter);
 			model.addAttribute("sort", sort);
 		}
-		
+
 		List<Author> authors = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/author/find-all", Author[].class));
 		List<Publisher> publishers = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/publisher/find-all", Publisher[].class));
-		List<BookItem> bookItems = Arrays
-				.asList(rest.postForObject("http://localhost:6969/rest/api/book-item/find-by-publisher",
-						listFilter, BookItem[].class));
+		List<BookItem> bookItems = Arrays.asList(rest.postForObject(
+				"http://localhost:6969/rest/api/book-item/find-by-publisher", listFilter, BookItem[].class));
 		model.addAttribute("authors", authors);
 		model.addAttribute("publishers", publishers);
 		model.addAttribute("bookItems", bookItems);

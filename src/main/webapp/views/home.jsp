@@ -114,8 +114,7 @@
 			<div class="book">
 				<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">BOOK</h3>
 				<div class="row">
-					<c:forEach var="bookItem" items="${bookItems }" varStatus="loop">
-						<c:if test="${loop.index <4 }">
+					<c:forEach var="bookItem" items="${bookItems }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
 									<a href="/book/${bookItem.slug }"><img
@@ -139,7 +138,6 @@
 										ngay</a>
 								</div>
 							</div>
-						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -147,9 +145,7 @@
 			<div class="electronics">
 				<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">ELECTRONICS</h3>
 				<div class="row">
-					<c:forEach var="electronicsItem" items="${electronicsItems }"
-						varStatus="loop">
-						<c:if test="${loop.index <4 }">
+					<c:forEach var="electronicsItem" items="${electronicsItems }">
 							<div class="col-md-3">
 								<div style="text-align: center;">
 									<a href="/electronics/${electronicsItem.slug }"><img
@@ -174,7 +170,6 @@
 										ngay</a>
 								</div>
 							</div>
-						</c:if>
 					</c:forEach>
 				</div>
 			</div>
