@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import vn.ptit.models.customer.CustomerNew;
 import vn.ptit.models.order.ShoppingCart;
 
 @Controller
@@ -18,5 +19,11 @@ public class CartController {
 	
 		return "cart";
 	}
-
+	
+	@GetMapping("/choose-address")
+	public String viewChooseAddress(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+		model.addAttribute("customerNew", new CustomerNew());
+		return "choose_address_view";
+	}
+	
 }

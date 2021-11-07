@@ -24,7 +24,7 @@ import vn.ptit.utils.FilterMap;
 @RequestMapping("/electronics")
 public class ElectronicsController {
 	private RestTemplate rest = new RestTemplate();
-	private int LIMIT = 3;
+	private int LIMIT = 28;
 
 	@GetMapping
 	public String viewAllElectronics(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {

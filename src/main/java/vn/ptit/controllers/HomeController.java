@@ -42,10 +42,10 @@ public class HomeController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/get-item-in-home", ElectronicsItem[].class));
 		
 		List<ShoesItem> shoesItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/find-all", ShoesItem[].class));
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/get-8-shoes-item", ShoesItem[].class));
 		
 		List<ClothesItem> clothesItems = Arrays
-				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/find-all", ClothesItem[].class));
+				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/get-8-clothes-item", ClothesItem[].class));
 		
 		model.addAttribute("bookItems", bookItems);
 		model.addAttribute("electronicsItems", electronicsItems);

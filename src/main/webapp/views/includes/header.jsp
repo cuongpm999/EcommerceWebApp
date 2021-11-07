@@ -19,9 +19,11 @@
 				<div class="col-md-6 header-top-right">
 					<c:choose>
 						<c:when test="${not empty customerMemberLogin }">
-							<span style="color: #020528E6"><i class="fas fa-user"></i> ${customerMemberLogin.account.username }</span>
+							<span style="color: #020528E6"><i class="fas fa-user"></i>
+								${customerMemberLogin.fullName.firstName }</span>
 							<div class="header-separator"></div>
-							<a href="/order"><i class="fas fa-clipboard"> </i> Đơn hàng của tôi</a>
+							<a href="/order"><i class="fas fa-clipboard"> </i> Đơn hàng
+								của tôi</a>
 							<div class="header-separator"></div>
 							<a href="/logout">Đăng xuất</a>
 						</c:when>
@@ -59,7 +61,8 @@
 				</div>
 				<div class="col-md-3 text-center">
 					<div class="nav-cart">
-						<a class="nav-link" href="/cart"> <img class="cart"
+						<a class="nav-link" href="/cart"
+							style="width: max-content; margin: auto;"> <img class="cart"
 							src="/img/cart.png" alt="cart" style="width: 45px;"> <span
 							class="count-item">${not empty soLuongMua ? soLuongMua : 0 }</span>
 						</a>

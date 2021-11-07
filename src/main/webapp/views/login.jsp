@@ -41,8 +41,8 @@
 			<div class="wthree-form">
 				<h2>Vui lòng điền để đăng nhập</h2>
 				<a class="login-google"
-					href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://computer-cuongpham.herokuapp.com/login-google&response_type=code
-    &client_id=312227553133-icpkjofc6crhvtgdpje818q7ksvbn5qr.apps.googleusercontent.com&approval_prompt=force">
+					href="https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&redirect_uri=http://localhost:8080/login-google&response_type=code
+    &client_id=434671752570-ga1g0u2jetvj3udoj5ou6nr56kk8dr5j.apps.googleusercontent.com&approval_prompt=force">
 					<div class="btn-gg">
 						<div class="btn-gg-img">
 							<img src="/img/icons8-google-48.png" alt="logo">
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 				</a> <a class="login-facebook"
-					href="https://www.facebook.com/dialog/oauth?client_id=463826531507215&redirect_uri=https://computer-cuongpham.herokuapp.com/login-facebook">
+					href="#">
 					<div class="btn-f">
 						<div class="btn-f-img">
 							<img src="/img/icons8-facebook-48.png" alt="logo">
@@ -65,12 +65,6 @@
 				<div class="separator">Hoặc</div>
 				<form action="/login" method="post">
 					<c:choose>
-						<c:when test="${status=='register-success'}">
-							<div class="alert alert-success"
-								style="font-size: 13px; text-align: center;">
-								<strong>Success!</strong> Đăng kí thành công! Xin mời đăng nhập!
-							</div>
-						</c:when>
 						<c:when test="${status=='failed'}">
 							<div class="alert alert-danger"
 								style="font-size: 13px; text-align: center;">
