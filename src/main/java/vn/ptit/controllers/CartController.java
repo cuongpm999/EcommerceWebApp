@@ -26,4 +26,10 @@ public class CartController {
 		return "choose_address_view";
 	}
 	
+	@GetMapping("/check-out")
+	public String checkOut(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		
+		return "check_out";
+	}
+	
 }

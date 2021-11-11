@@ -1,0 +1,19 @@
+.header-title {
+  background-color: rgb(243, 234, 234);
+  padding: 20px;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.item {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  font-size: 16px;
+  /* border: 1px solid gray; */
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+  border-radius: 0.125rem;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  font-weight: 600;
+}
