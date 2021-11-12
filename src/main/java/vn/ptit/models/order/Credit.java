@@ -5,13 +5,13 @@ import java.util.Date;
 public class Credit extends Payment {
 	private String number;
 	private String type;
-	private Date date;
+	private String date;
 
 	public Credit() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Credit(double totalMoney, String number, String type, Date date) {
+	public Credit(double totalMoney, String number, String type, String date) {
 		super(totalMoney);
 		this.number = number;
 		this.type = type;
@@ -34,11 +34,11 @@ public class Credit extends Payment {
 		this.type = type;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
