@@ -34,6 +34,23 @@
 	<!-- MAIN  -->
 	<div id="main" class="container">
 		<h4 class="tieude-tp">GIỎ HÀNG CỦA BẠN</h4>
+		<c:choose>
+			<c:when test="${status=='success'}">
+				<div class="alert alert-success">
+					<strong>Success!</strong> Bạn đã đặt hàng thành công!
+				</div>
+			</c:when>
+			<c:when test="${status=='failePayPal'}">
+				<div class="alert alert-danger">
+					<strong>Faile!</strong> Bạn đã đặt hàng thất bại!
+				</div>
+			</c:when>
+			<c:when test="${status=='emptyCart'}">
+				<div class="alert alert-danger">
+					<strong>Faile!</strong> Bạn hãy chọn hàng cần mua!
+				</div>
+			</c:when>
+		</c:choose>
 		<div class="row header-title text-center d-flex">
 			<div class="col-4">Sản phẩm</div>
 			<div class="col-2">Đơn giá</div>
@@ -193,8 +210,20 @@
 				Tổng tiền đơn hàng : <strong><span id="total_value">${cart.totalAmount }</span>₫</strong>
 			</div>
 		</div>
-		<div class="row" style="justify-content: flex-end;margin-top: 20px">
-			<a href="#" class="btn btn-success button-buy-submit-cart">Tiến hành đặt hàng</a>
+		<div class="row" style="justify-content: flex-end; margin-top: 20px">
+			<c:choose>
+				<c:when test="${empty cart }">
+					<a href="javascript:void(0);"
+						class="btn btn-success button-buy-submit-cart">Tiến hành đặt
+						hàng</a>
+				</c:when>
+				
+				<c:when test="${not empty cart }">
+					<a href="/cart/finish"
+						class="btn btn-success button-buy-submit-cart">Tiến hành đặt
+						hàng</a>
+				</c:when>
+			</c:choose>
 		</div>
 
 	</div>

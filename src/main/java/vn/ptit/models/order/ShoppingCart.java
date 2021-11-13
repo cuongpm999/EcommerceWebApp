@@ -77,4 +77,11 @@ public class ShoppingCart {
 		this.lineClothesItems = lineClothesItems;
 	}
 
+	@Override
+	public String toString() {
+		return "ShoppingCart [id=" + id + ", dateCreate=" + dateCreate + ", totalAmount=" + totalAmount
+				+ ", lineElectronicsItems=" + lineElectronicsItems + ", lineBookItems=" + lineBookItems
+				+ ", lineShoesItems=" + lineShoesItems + ", lineClothesItems=" + lineClothesItems + "]";
+	}
+
 }

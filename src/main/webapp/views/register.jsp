@@ -177,6 +177,7 @@
 					digits : true,
 				},
 				'address.street' : "required",
+				'address.district' : "required",
 				'address.city' : "required",
 				'account.username' : "required",
 				'account.password' : {
@@ -204,6 +205,7 @@
 					digits : "Số nhà phải là số"
 				},
 				'address.street' : "Vui lòng nhập tên đường",
+				'address.district' : "Vui lòng nhập tên quận, huyện",
 				'address.city' : "Vui lòng nhập tên thành phố",
 				'account.username' : "Vui lòng đăng kí tên tài khoản",
 				'account.password' : {

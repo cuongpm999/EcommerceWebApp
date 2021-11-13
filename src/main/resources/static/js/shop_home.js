@@ -271,6 +271,49 @@ var Shop = {
 		var searchParams = new URLSearchParams(window.location.search);
 		searchParams.delete(name);
 		window.location.search = searchParams.toString();
+	},
+	
+	selectShipment: function(idShipment) {
+		var data = {};
+		data["idShipment"] = idShipment;
+
+		$.ajax({
+			url: "/rest/api/shipment/select",
+			type: "post",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+
+			dataType: "json",
+			success: function(jsonResult) {
+				if (jsonResult.status == "84") {
+					$("#shipment-price").html("₫"+jsonResult.data.key);
+					$("#payment-price").html("₫"+jsonResult.data.value);
+				}
+			}
+		});
+	},
+	
+	editAddress: function(){
+		var data = {};
+		data["number"] = $('#number').val();
+		data["street"] = $('#street').val();
+		data["district"] = $('#district').val();
+		data["city"] = $('#city').val();
+
+		$.ajax({
+			url: "/rest/api/customer/edit-address",
+			type: "post",
+			contentType: "application/json",
+			data: JSON.stringify(data),
+
+			dataType: "json",
+			success: function(jsonResult) {
+				if (jsonResult.status == "333") {
+					window.location.reload();
+				}
+			}
+		});
 	}
+
 
 }

@@ -91,7 +91,6 @@ public class CartUtil {
 		}
 
 		shoppingCart.setLineBookItems(lineBookItems);
-		;
 
 		httpSession.setAttribute("status", null);
 		httpSession.setAttribute("cart", shoppingCart);
@@ -120,7 +119,6 @@ public class CartUtil {
 		if (!isExists) {
 			LineClothesItem item = new LineClothesItem();
 			item.setClothesItem(clothesItem);
-			;
 			item.setQuanity(1);
 			lineClothesItems.add(item);
 		} else {
@@ -133,7 +131,6 @@ public class CartUtil {
 		}
 
 		shoppingCart.setLineClothesItems(lineClothesItems);
-		;
 
 		httpSession.setAttribute("status", null);
 		httpSession.setAttribute("cart", shoppingCart);
@@ -162,7 +159,6 @@ public class CartUtil {
 		if (!isExists) {
 			LineShoesItem item = new LineShoesItem();
 			item.setShoesItem(shoesItem);
-			;
 			item.setQuanity(1);
 			lineShoesItems.add(item);
 		} else {

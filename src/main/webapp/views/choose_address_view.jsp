@@ -22,6 +22,11 @@
 <%@ include file="/views/includes/css_js.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="/css/form.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
+	
 </head>
 <body>
 	<!-- HEADER -->
@@ -33,23 +38,9 @@
 		<h4 class="tieude-tp">ĐỊA CHỈ GIAO HÀNG</h4>
 		<div class="row card">
 			<div class="col-md-12" style="padding: 10px;">
-				<c:choose>
-					<c:when test="${status=='success'}">
-						<div class="alert alert-success">
-							<strong>Success!</strong> Bạn đăng kí tài khoản thành công!
-						</div>
-					</c:when>
-					<c:when test="${status=='faile'}">
-						<div class="alert alert-danger">
-							<strong>Faile!</strong> Bạn đăng kí tài khoản thất bại!
-						</div>
-					</c:when>
-				</c:choose>
 				<div class="card-body">
 					<div class="panel-body">
-						<form:form modelAttribute="customerNew" action="/checkout"
-							enctype="multipart/form-data" id="registerForm">
-
+						<form:form modelAttribute="customerNew" action="/choose-address" id="registerForm">
 							<div class="form-group">
 								<label class="required">First name:</label>
 								<form:input path="fullName.firstName" class="form-control"
@@ -69,23 +60,11 @@
 							</div>
 
 							<div class="form-group">
-								<label class="required">Mobile:</label>
-								<form:input path="mobile" class="form-control"
-									placeholder="Mobile" />
-							</div>
-
-							<div class="form-group">
-								<label class="required">Email:</label>
-								<form:input path="email" class="form-control"
-									placeholder="email" />
-							</div>
-
-							<div class="form-group">
-								<label class="required">Number:</label>
+								<label class="required">Apartment number:</label>
 								<form:input type="number" path="address.number"
 									class="form-control" placeholder="number" />
 							</div>
-							
+
 							<div class="form-group">
 								<label class="required">Street:</label>
 								<form:input path="address.street" class="form-control"
@@ -107,9 +86,7 @@
 							<div class="card-body">
 								<button type="submit" class="btn btn-success">
 									<i class="fas fa-download"></i> Cập nhật
-								</button> 
-								
-								<a href="/cart" class = "btn btn-secondary"><i class="fas fa-backspace"></i> Hủy bỏ</a>
+								</button>
 							</div>
 						</form:form>
 					</div>
@@ -123,5 +100,76 @@
 	<%@ include file="/views/includes/footer.jsp"%>
 	<!-- ------ -->
 </body>
+
+<script type="text/javascript">
+	$().ready(function() {
+		$('#registerForm').validate({
+			rules : {
+				'fullName.firstName' : "required",
+				'fullName.middleName' : "required",
+				'fullName.lastName' : "required",
+				mobile : {
+					required : true,
+					digits : true,
+					minlength : 10,
+					maxlength : 10,
+				},
+				email : {
+					required : true,
+					email : true
+				},
+				dob : "required",
+				'address.number' : {
+					required : true,
+					digits : true,
+				},
+				'address.street' : "required",
+				'address.district' : "required",
+				'address.city' : "required",
+				'account.username' : "required",
+				'account.password' : {
+					required : true,
+					minlength : 6,
+				}
+			},
+			messages : {
+				'fullName.firstName' : "Please enter your first name",
+				'fullName.middleName' : "Please enter your middle name",
+				'fullName.lastName' : "Please enter your last name",
+				mobile : {
+					required : "Please enter phone numbers",
+					minlength : "Số điện thoại phải bao gồm 10 số",
+					maxlength : "Số điện thoại chỉ bao gồm 10 số",
+					digits : "Số điện thoại chỉ bao gồm số"
+				},
+				email : {
+					required : "Vui lòng nhập Email",
+					email : "Vui lòng nhập đúng Email"
+				},
+				dob : "Vui lòng nhập ngày sinh",
+				'address.number' : {
+					required : "Vui lòng nhập số nhà",
+					digits : "Số nhà phải là số"
+				},
+				'address.street' : "Vui lòng nhập tên đường",
+				'address.district' : "Vui lòng nhập tên quận, huyện",
+				'address.city' : "Vui lòng nhập tên thành phố",
+				'account.username' : "Vui lòng đăng kí tên tài khoản",
+				'account.password' : {
+					required : "Vui lòng đăng kí mật khẩu",
+					minlength : "Mật khẩu cần tối thiểu 6 kí tự"
+				}
+			},
+		})
+	})
+</script>
+
+<style>
+.error {
+	font-weight: 400 !important;
+	color: red;
+	font-size: 15px !important;
+}
+</style>
 
 </html>

@@ -21,12 +21,15 @@ import org.springframework.web.client.RestTemplate;
 import vn.ptit.models.book.BookItem;
 import vn.ptit.models.clothes.ClothesItem;
 import vn.ptit.models.electronics.ElectronicsItem;
+import vn.ptit.models.order.Order;
+import vn.ptit.models.order.Shipment;
 import vn.ptit.models.order.ShoppingCart;
 import vn.ptit.models.shoes.ShoesItem;
 import vn.ptit.utils.AjaxResponse;
 import vn.ptit.utils.CartUtil;
 import vn.ptit.utils.FilterMap;
 import vn.ptit.utils.HelperMap;
+import vn.ptit.utils.PaymentUtil;
 
 @RestController
 @RequestMapping("/rest/api")
@@ -165,6 +168,49 @@ public class AjaxController {
 		HttpSession httpSession = request.getSession();
 		Integer soLuongMua = (Integer) httpSession.getAttribute("soLuongMua");
 		return ResponseEntity.ok(new AjaxResponse(500, soLuongMua));
+	}
+	
+	@PostMapping(value = "/shipment/select")
+	public ResponseEntity<AjaxResponse> selectShipment(@RequestBody final Map<String, Object> data, final ModelMap model,
+			final HttpServletRequest request, final HttpServletResponse response) {
+		
+		int idShipment = Integer.parseInt(data.get("idShipment").toString());
+		Shipment shipment = rest.getForObject("http://localhost:6969/rest/api/shipment/find-one/"+idShipment, Shipment.class);
+		
+		Order order = new Order();
+		HttpSession httpSession = request.getSession();
+		if (httpSession.getAttribute("order") != null) {
+			order = ((Order) httpSession.getAttribute("order"));
+		}
+		double allMoney = PaymentUtil.calTotalMoney(order.getShoppingCart(), shipment);
+		
+		Locale local = new Locale("vi", "VN");
+		NumberFormat numberFormat = NumberFormat.getInstance(local);
+		FilterMap filterMap = new FilterMap(numberFormat.format(shipment.getPrice()),numberFormat.format(allMoney));
+		return ResponseEntity.ok(new AjaxResponse(84, filterMap));
+	}
+	
+	@PostMapping(value = "/customer/edit-address")
+	public ResponseEntity<AjaxResponse> editAddress(@RequestBody final Map<String, Object> data, final ModelMap model,
+			final HttpServletRequest request, final HttpServletResponse response) {
+		
+		int number = Integer.parseInt(data.get("number").toString());
+		String street = data.get("street").toString();
+		String district = data.get("district").toString();
+		String city = data.get("city").toString();
+		
+		Order order = new Order();
+		HttpSession httpSession = request.getSession();
+		if (httpSession.getAttribute("order") != null) {
+			order = ((Order) httpSession.getAttribute("order"));
+		}
+		
+		order.getCustomer().getAddress().setNumber(number);
+		order.getCustomer().getAddress().setStreet(street);
+		order.getCustomer().getAddress().setDistrict(district);
+		order.getCustomer().getAddress().setCity(city);
+		
+		return ResponseEntity.ok(new AjaxResponse(333, null));
 	}
 
 }
