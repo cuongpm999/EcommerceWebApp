@@ -167,8 +167,8 @@ h3.tieu-de::after {
 }
 
 #main .row .col-md-3 .infor .gia-goc {
-	display: flex;
-	justify-content: space-around;
+	/* display: flex;
+	justify-content: space-around; */
 }
 
 #main .row .col-md-3 .infor .gia-goc .gia-chinh {
@@ -229,4 +229,15 @@ h3.tieu-de::after {
 
 #footer h5 {
 	font-weight: 700;
+}
+
+#onTop{
+    width:40px;
+    display:none
+}
+#toTop{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    cursor:pointer
 }

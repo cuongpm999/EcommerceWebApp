@@ -24,7 +24,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
 
-<title>Đăng nhập</title>
+<title>Ecommerce Project</title>
 </head>
 <body>
 	<!-- HEADER -->

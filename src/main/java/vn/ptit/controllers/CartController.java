@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
@@ -30,6 +31,7 @@ import com.paypal.base.rest.PayPalRESTException;
 
 import vn.ptit.models.customer.CustomerMember;
 import vn.ptit.models.customer.CustomerNew;
+import vn.ptit.models.electronics.ElectronicsItem;
 import vn.ptit.models.order.Cash;
 import vn.ptit.models.order.Credit;
 import vn.ptit.models.order.DigitalWallet;
@@ -266,6 +268,22 @@ public class CartController {
 		JSONObject object1 = object.getJSONObject("VND_USD");
 		double tyGia = object1.getDouble("val");
 		return tyGia;
+	}
+	
+	@GetMapping("/my-order")
+	public String myOrder(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession httpSession = req.getSession();
+		CustomerMember customerMember = (CustomerMember) httpSession.getAttribute("customerMemberLogin");
+		List<Order> orders = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/order/get-order-by-customer/"+customerMember.getId(), Order[].class));
+		model.addAttribute("myorders", orders);
+		return "myorder";
+	}
+	
+	@GetMapping("/my-order/change-status/{id}")
+	public String changeStatus(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		String status = id +";cancel";
+		rest.postForObject("http://localhost:6969/rest/api/order/change-status", status, Order.class);
+		return "redirect:/my-order";
 	}
 
 }

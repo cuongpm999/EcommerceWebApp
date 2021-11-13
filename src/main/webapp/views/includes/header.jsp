@@ -19,10 +19,10 @@
 				<div class="col-md-6 header-top-right">
 					<c:choose>
 						<c:when test="${not empty customerMemberLogin }">
-							<span style="color: #020528E6"><i class="fas fa-user"></i>
-								${customerMemberLogin.fullName.firstName }</span>
+							<span style="color: #020528E6"><a href="/edit-profile"><i class="fas fa-user"></i>
+								${customerMemberLogin.fullName.firstName }</a></span>
 							<div class="header-separator"></div>
-							<a href="/order"><i class="fas fa-clipboard"> </i> Đơn hàng
+							<a href="/my-order"><i class="fas fa-clipboard"> </i> Đơn hàng
 								của tôi</a>
 							<div class="header-separator"></div>
 							<a href="/logout">Đăng xuất</a>

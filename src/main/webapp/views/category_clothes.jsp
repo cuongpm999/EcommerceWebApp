@@ -25,7 +25,7 @@
 <%@ include file="/views/includes/css_js.jsp"%>
 
 
-<title>Laptop Project</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -275,15 +275,25 @@
 									<c:choose>
 										<c:when test="${clothesItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${clothesItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${clothesItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm:
 													${clothesItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
-									<a href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-										ngay</a>
+
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${clothesItem.price }" />
+										₫
+									</h6>
+									<a
+										href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i
+										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
 								</div>
 							</div>
 						</c:forEach>

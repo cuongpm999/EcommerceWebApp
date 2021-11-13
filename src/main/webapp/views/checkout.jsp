@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="/css/cart.css">
 <!-- --- -->
 
-<title>Check out</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -82,13 +82,15 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;">${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }đ</div>
+						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />₫</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineElectronicsItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineElectronicsItem.electronicsItem.slug}">${(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100) * lineElectronicsItem.quanity }đ</div>
+						id="price${lineElectronicsItem.electronicsItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100) * lineElectronicsItem.quanity }" />₫</div>
 
 				</div>
 			</c:forEach>
@@ -111,13 +113,15 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;">${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }đ</div>
+						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" />₫</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineShoesItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineShoesItem.shoesItem.slug}">${(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) * lineShoesItem.quanity }đ</div>
+						id="price${lineShoesItem.shoesItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) * lineShoesItem.quanity }" />₫</div>
 
 				</div>
 			</c:forEach>
@@ -140,13 +144,15 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;">${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }đ</div>
+						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }" />₫</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineClothesItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineClothesItem.clothesItem.slug}">${(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) * lineClothesItem.quanity }đ</div>
+						id="price${lineClothesItem.clothesItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) * lineClothesItem.quanity }" />₫</div>
 
 				</div>
 			</c:forEach>
@@ -169,22 +175,18 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;">${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }đ</div>
+						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }" />₫</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineBookItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineBookItem.bookItem.slug}">${(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) * lineBookItem.quanity }đ</div>
+						id="price${lineBookItem.bookItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) * lineBookItem.quanity }" />₫</div>
 
 				</div>
 			</c:forEach>
-			<div class="card-body row"
-				style="justify-content: flex-end; background: white; margin-top: 10px">
-				<div class="tongtienthanhtoan">
-					Tổng tiền đơn hàng : <strong><span id="total_value">${order.shoppingCart.totalAmount }</span>₫</strong>
-				</div>
-			</div>
 		</div>
 
 		<div class="container payment-method-type-delivery">
@@ -256,15 +258,19 @@
 					<div class="col-8" style="align-self: center"></div>
 					<div class="col-4" style="align-self: center">
 						<h4 class="summary-left">
-							Tổng tiền hàng <span class="summary-right" style="float: right">₫${order.shoppingCart.totalAmount }</span>
+							Tổng tiền hàng <span class="summary-right" style="float: right"><fmt:formatNumber type="number"
+									maxFractionDigits="3" value="${order.shoppingCart.totalAmount }" />₫</span>
 						</h4>
 						<h4 class="summary-left">
 							Phí vận chuyển<span class="summary-right" style="float: right"
-								id="shipment-price">₫${shipments.get(0).price}</span>
+								id="shipment-price"><fmt:formatNumber type="number"
+									maxFractionDigits="3" value="${shipments.get(0).price}" />₫</span>
 						</h4>
 						<h4 class="summary-left">
 							Tổng thanh toán:<span class="summary-right red-color"
-								style="float: right" id="payment-price">₫${order.shoppingCart.totalAmount + shipments.get(0).price }</span>
+								style="float: right" id="payment-price"><fmt:formatNumber
+									type="number" maxFractionDigits="3"
+									value="${order.shoppingCart.totalAmount + shipments.get(0).price }" />₫</span>
 						</h4>
 						<button type="submit" class="btn btn-danger button-submit">
 							Đặt hàng</button>
@@ -290,25 +296,29 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Số nhà</label> <input type="text" value="${order.customer.address.number }" class="form-control"
+							<label>Số nhà</label> <input type="text"
+								value="${order.customer.address.number }" class="form-control"
 								id="number" />
 						</div>
 						<div class="form-group">
-							<label>Tên đường</label> <input type="text" value="${order.customer.address.street }" class="form-control"
+							<label>Tên đường</label> <input type="text"
+								value="${order.customer.address.street }" class="form-control"
 								id="street" />
 						</div>
 						<div class="form-group">
-							<label>Quận/Huyện</label> <input type="text" value="${order.customer.address.district }" class="form-control"
+							<label>Quận/Huyện</label> <input type="text"
+								value="${order.customer.address.district }" class="form-control"
 								id="district" />
 						</div>
 						<div class="form-group">
-							<label>Thành phố</label> <input type="text" value="${order.customer.address.city }" class="form-control"
+							<label>Thành phố</label> <input type="text"
+								value="${order.customer.address.city }" class="form-control"
 								id="city" />
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" onclick="Shop.editAddress()">Lưu
-							lại</button>
+						<button type="button" class="btn btn-primary"
+							onclick="Shop.editAddress()">Lưu lại</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal" type="submit">Đóng</button>
 					</div>

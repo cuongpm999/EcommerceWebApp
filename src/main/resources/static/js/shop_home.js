@@ -286,8 +286,8 @@ var Shop = {
 			dataType: "json",
 			success: function(jsonResult) {
 				if (jsonResult.status == "84") {
-					$("#shipment-price").html("₫"+jsonResult.data.key);
-					$("#payment-price").html("₫"+jsonResult.data.value);
+					$("#shipment-price").html(jsonResult.data.key+"₫");
+					$("#payment-price").html(jsonResult.data.value+"₫");
 				}
 			}
 		});

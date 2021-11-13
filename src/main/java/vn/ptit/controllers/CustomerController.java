@@ -154,4 +154,42 @@ public class CustomerController {
 
 		return "redirect:/";
 	}
+
+	@GetMapping(value = "/edit-profile")
+	public String viewEditProfile(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession httpSession = req.getSession();
+		CustomerMember customerMember = (CustomerMember) httpSession.getAttribute("customerMemberLogin");
+		model.addAttribute("customerMember", customerMember);
+		return "edit_profile";
+	}
+
+	@PostMapping(value = "/edit-profile")
+	public String editProfile(@ModelAttribute("customerMember") CustomerMember customerMember,
+			@RequestParam("dob") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dob, ModelMap model,
+			HttpServletRequest req, HttpServletResponse resp) throws ParseException {
+		customerMember.setDateOfBirth(dob);
+
+		boolean flagEmail = false;
+		List<CustomerMember> customerMembers = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/customer/checkmail-edit/" + customerMember.getId(),
+						CustomerMember[].class));
+		for (int i = 0; i < customerMembers.size(); i++) {
+			if (customerMembers.get(i).getEmail().equalsIgnoreCase(customerMember.getEmail())) {
+				flagEmail = true;
+				break;
+			}
+		}
+
+		if (flagEmail) {
+			model.addAttribute("status1", "faileEmailBiTrung");
+			return "edit_profile";
+		} else {
+			customerMember = rest.postForObject("http://localhost:6969/rest/api/customer/edit-profile", customerMember,
+					CustomerMember.class);
+			HttpSession httpSession = req.getSession();
+			httpSession.setAttribute("customerMemberLogin", customerMember);
+
+			return "redirect:/";
+		}
+	}
 }
