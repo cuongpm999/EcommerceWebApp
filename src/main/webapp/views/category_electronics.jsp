@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="/css/category.css">
 <!-- --- -->
 
-<title>BookShop</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -230,15 +230,24 @@
 									<c:choose>
 										<c:when test="${electronicsItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${electronicsItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${electronicsItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm:
 													${electronicsItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
-									<a href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-										ngay</a>
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${electronicsItem.price }" />
+										₫
+									</h6>
+									<a
+										href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i
+										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
 								</div>
 							</div>
 						</c:forEach>

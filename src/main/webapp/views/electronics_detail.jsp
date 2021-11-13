@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="/css/item-detail.css">
 <!-- --- -->
 
-<title>BookShop</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -66,10 +66,18 @@
 					<div style="display: flex;">
 						<c:choose>
 							<c:when test="${electronicsItem.discount > 0 }">
-								<h4 class="gia-chinh">${electronicsItem.price }₫</h4>
+								<h4 class="gia-chinh">
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${electronicsItem.price }" />
+									₫
+								</h4>
 							</c:when>
 						</c:choose>
-						<h3 class="price">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h3>
+						<h3 class="price">
+							<fmt:formatNumber type="number" maxFractionDigits="3"
+								value="${electronicsItem.price*(100-electronicsItem.discount)/100 }" />
+							₫
+						</h3>
 					</div>
 					<div class="table-mid" style="margin-top: 20px">
 						<div class="button" style="display: flex">
@@ -78,7 +86,9 @@
 								class="btn1"
 								style="background-color: #ffeee8; line-height: 46px; margin-right: 40px; color: #ee4d2d;">
 								<i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
-							</a> <a href="javascript:Shop.addToCartNow('${electronicsItem.slug}','electronics');" class="btn2"
+							</a> <a
+								href="javascript:Shop.addToCartNow('${electronicsItem.slug}','electronics');"
+								class="btn2"
 								style="line-height: 46px; color: white; font-size: 16px; font-weight: 600;">MUA
 								NGAY</a>
 						</div>
@@ -104,13 +114,21 @@
 							<c:choose>
 								<c:when test="${electronicsItem_.discount > 0}">
 									<div class="gia-goc">
-										<p class="gia-chinh">${electronicsItem_.price }₫</p>
+										<p class="gia-chinh">
+											<fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${electronicsItem_.price }" />
+											₫
+										</p>
 										<p class="khuyen-mai">(Tiết kiệm:
 											${electronicsItem_.discount}%)</p>
 									</div>
 								</c:when>
 							</c:choose>
-							<h6 class="gia-ban">${electronicsItem_.price*(100-electronicsItem_.discount)/100 }₫</h6>
+							<h6 class="gia-ban">
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${electronicsItem_.price*(100-electronicsItem_.discount)/100 }" />
+								₫
+							</h6>
 							<a
 								href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i
 								class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>

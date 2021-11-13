@@ -128,8 +128,7 @@ h4.tieude-tp::after {
 }
 
 #main .row .col-md-3 .infor .gia-goc{
-    display: flex;
-    justify-content: space-around;
+    
 }
 
 #main .row .col-md-3 .infor .gia-goc .gia-chinh{

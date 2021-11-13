@@ -80,19 +80,19 @@
 								onclick="Shop.addUrlParameter('price', 'tren200')"><i
 									class="far fa-square"></i> Trên 200.000₫</a></li>
 						</c:when>
-						
+
 						<c:when test="${price=='duoi100' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('price')"><i
 									class="far fa-check-square"></i> Dưới 100.000₫</a></li>
 						</c:when>
-						
+
 						<c:when test="${price=='100den200' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('price')"><i
 									class="far fa-check-square"></i> Từ 100.000₫ đến 200.000₫</a></li>
 						</c:when>
-						
+
 						<c:when test="${price=='tren200' }">
 							<li><a href="javascript:void(0);"
 								onclick="Shop.deleteUrlParameter('price')"><i
@@ -133,14 +133,22 @@
 									<c:choose>
 										<c:when test="${bookItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${bookItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${bookItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm: ${bookItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
-									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-										ngay</a>
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${bookItem.price*(100-bookItem.discount)/100 }" />
+										₫
+									</h6>
+									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i
+										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
 								</div>
 							</div>
 
