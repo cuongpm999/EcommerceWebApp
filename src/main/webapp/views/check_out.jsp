@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="/css/cart-custom.css">
 <!-- --- -->
 
-<title>Check out</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>

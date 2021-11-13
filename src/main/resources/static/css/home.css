@@ -167,8 +167,8 @@ h3.tieu-de::after {
 }
 
 #main .row .col-md-3 .infor .gia-goc {
-	display: flex;
-	justify-content: space-around;
+	/* display: flex;
+	justify-content: space-around; */
 }
 
 #main .row .col-md-3 .infor .gia-goc .gia-chinh {

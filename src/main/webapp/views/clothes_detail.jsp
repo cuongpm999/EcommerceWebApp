@@ -15,7 +15,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
 <!-- CSS & JS -->
 <!-- CSS -->
 <%@ include file="/views/includes/css_js.jsp"%>
@@ -23,6 +22,7 @@
 <link rel="stylesheet" href="/css/slick-theme.css">
 <script src="/js/slick.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/item-detail.css">
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -118,17 +118,29 @@
 					<div style="display: flex;">
 						<c:choose>
 							<c:when test="${clothesItemDetail.discount > 0}">
-								<h4 class="gia-chinh"">${clothesItemDetail.price }₫</h4>
+								<h4 class="gia-chinh"">
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${clothesItemDetail.price }" />
+									₫
+								</h4>
 							</c:when>
 						</c:choose>
-						<h3 class="price">${clothesItemDetail.price*(100-clothesItemDetail.discount)/100 }₫</h3>
+						<h3 class="price">
+							<fmt:formatNumber type="number" maxFractionDigits="3"
+								value="${clothesItemDetail.price*(100-clothesItemDetail.discount)/100 }" />
+							₫₫
+						</h3>
 					</div>
 					<div class="table-mid" style="margin-top: 20px">
 						<div class="button" style="display: flex">
-							<a href="javascript:Shop.addToCart('${clothesItemDetail.slug}','clothes');" class="btn1"
+							<a
+								href="javascript:Shop.addToCart('${clothesItemDetail.slug}','clothes');"
+								class="btn1"
 								style="background-color: #ffeee8; line-height: 46px; margin-right: 40px; color: #ee4d2d;">
 								<i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
-							</a> <a href="javascript:Shop.addToCartNow('${clothesItemDetail.slug}','clothes');" class="btn2"
+							</a> <a
+								href="javascript:Shop.addToCartNow('${clothesItemDetail.slug}','clothes');"
+								class="btn2"
 								style="line-height: 46px; color: white; font-size: 16px; font-weight: 600;">MUA
 								NGAY</a>
 						</div>
@@ -157,15 +169,24 @@
 							<c:choose>
 								<c:when test="${clothesItem.discount > 0}">
 									<div class="gia-goc">
-										<p class="gia-chinh">${clothesItem.price }₫</p>
+										<p class="gia-chinh">
+											<fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${clothesItem.price }" />
+											₫
+										</p>
 										<p class="khuyen-mai">(Tiết kiệm:
 											${clothesItem.discount}%)</p>
 									</div>
 								</c:when>
 							</c:choose>
-							<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
-							<a href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i class="fas fa-shopping-cart"></i>&nbsp;Mua
-								ngay</a>
+							<h6 class="gia-ban">
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${clothesItem.price*(100-clothesItem.discount)/100 }" />
+								₫
+							</h6>
+							<a
+								href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i
+								class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
 						</div>
 					</div>
 				</c:forEach>

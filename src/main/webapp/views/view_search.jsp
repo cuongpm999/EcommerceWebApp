@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="/css/category.css">
 <!-- --- -->
 
-<title>BookShop</title>
+<title>Ecommerce Project</title>
 </head>
 <body>
 	<!-- HEADER -->
@@ -38,12 +38,12 @@
 			<div class="danh-muc">
 				<span class="title">DANH MỤC</span>
 				<ul class="list-unstyled">
-					<li><a href="/book"><i
-							class="fas fa-angle-double-right"></i> Book</a></li>
+					<li><a href="/book"><i class="fas fa-angle-double-right"></i>
+							Book</a></li>
 					<li><a href="/electronics"><i
 							class="fas fa-angle-double-right"></i> Electronics</a></li>
-					<li><a href="/shoes"><i
-							class="fas fa-angle-double-right"></i> Shoes</a></li>
+					<li><a href="/shoes"><i class="fas fa-angle-double-right"></i>
+							Shoes</a></li>
 					<li><a href="/clothes"><i
 							class="fas fa-angle-double-right"></i> Clothes</a></li>
 				</ul>
@@ -69,12 +69,20 @@
 									<c:choose>
 										<c:when test="${bookItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${bookItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${bookItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm: ${bookItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${bookItem.price*(100-bookItem.discount)/100 }₫</h6>
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${bookItem.price*(100-bookItem.discount)/100 }" />
+										₫
+									</h6>
 									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i
 										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
 								</div>
@@ -96,13 +104,21 @@
 									<c:choose>
 										<c:when test="${electronicsItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${electronicsItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${electronicsItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm:
 													${electronicsItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${electronicsItem.price*(100-electronicsItem.discount)/100 }₫</h6>
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${electronicsItem.price*(100-electronicsItem.discount)/100 }" />
+										₫
+									</h6>
 									<a
 										href="javascript:Shop.addToCart('${electronicsItem.slug}','electronics');"><i
 										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
@@ -124,13 +140,21 @@
 									<c:choose>
 										<c:when test="${shoesItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${shoesItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${shoesItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm:
 													${shoesItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${shoesItem.price*(100-shoesItem.discount)/100 }₫</h6>
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${shoesItem.price*(100-shoesItem.discount)/100 }" />
+										₫
+									</h6>
 									<a
 										href="javascript:Shop.addToCart('${shoesItem.slug}','shoes');"><i
 										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
@@ -152,13 +176,21 @@
 									<c:choose>
 										<c:when test="${clothesItem.discount > 0}">
 											<div class="gia-goc">
-												<p class="gia-chinh">${clothesItem.price }₫</p>
+												<p class="gia-chinh">
+													<fmt:formatNumber type="number" maxFractionDigits="3"
+														value="${clothesItem.price }" />
+													₫
+												</p>
 												<p class="khuyen-mai">(Tiết kiệm:
 													${clothesItem.discount}%)</p>
 											</div>
 										</c:when>
 									</c:choose>
-									<h6 class="gia-ban">${clothesItem.price*(100-clothesItem.discount)/100 }₫</h6>
+									<h6 class="gia-ban">
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${clothesItem.price*(100-clothesItem.discount)/100 }" />
+										₫
+									</h6>
 									<a
 										href="javascript:Shop.addToCart('${clothesItem.slug}','clothes');"><i
 										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>

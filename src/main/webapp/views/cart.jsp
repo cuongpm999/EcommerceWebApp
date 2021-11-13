@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="/css/cart.css">
 <!-- --- -->
 
-<title>BookShop</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -59,9 +59,12 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col-2"
-					style="align-self: center; word-break: break-all;">${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }đ</div>
+					style="align-self: center; word-break: break-all;">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />
+					₫
+				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;">
 					<input class="form-control" value="${lineElectronicsItem.quanity }"
@@ -71,7 +74,11 @@
 				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;"
-					id="price${lineElectronicsItem.electronicsItem.slug}">${(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100) * lineElectronicsItem.quanity }đ</div>
+					id="price${lineElectronicsItem.electronicsItem.slug}">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100) * lineElectronicsItem.quanity }" />
+					₫
+				</div>
 				<div class="col-2" style="align-self: center;">
 					<a href="javascript:void(0);"
 						onclick="Shop.deleteCart('${lineElectronicsItem.electronicsItem.slug}','electronics')"
@@ -95,9 +102,12 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col-2"
-					style="align-self: center; word-break: break-all;">${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }đ</div>
+					style="align-self: center; word-break: break-all;">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" />
+					₫
+				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;">
 					<input class="form-control" value="${lineShoesItem.quanity }"
@@ -107,7 +117,11 @@
 				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;"
-					id="price${lineShoesItem.shoesItem.slug}">${(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) * lineShoesItem.quanity }đ</div>
+					id="price${lineShoesItem.shoesItem.slug}">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) * lineShoesItem.quanity }" />
+					₫
+				</div>
 				<div class="col-2" style="align-self: center;">
 					<a href="javascript:void(0);"
 						onclick="Shop.deleteCart('${lineShoesItem.shoesItem.slug}','shoes')"
@@ -131,9 +145,12 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col-2"
-					style="align-self: center; word-break: break-all;">${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }đ</div>
+					style="align-self: center; word-break: break-all;">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }" />
+					₫
+				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;">
 					<input class="form-control" value="${lineClothesItem.quanity }"
@@ -143,7 +160,11 @@
 				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;"
-					id="price${lineClothesItem.clothesItem.slug}">${(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) * lineClothesItem.quanity }đ</div>
+					id="price${lineClothesItem.clothesItem.slug}">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) * lineClothesItem.quanity }" />
+					₫
+				</div>
 				<div class="col-2" style="align-self: center;">
 					<a href="javascript:void(0);"
 						onclick="Shop.deleteCart('${lineClothesItem.clothesItem.slug}','clothes')"
@@ -167,9 +188,12 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col-2"
-					style="align-self: center; word-break: break-all;">${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }đ</div>
+					style="align-self: center; word-break: break-all;">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }" />
+					₫
+				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;">
 					<input class="form-control" value="${lineBookItem.quanity }"
@@ -179,7 +203,11 @@
 				</div>
 				<div class="col-2"
 					style="align-self: center; word-break: break-all;"
-					id="price${lineBookItem.bookItem.slug}">${(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) * lineBookItem.quanity }đ</div>
+					id="price${lineBookItem.bookItem.slug}">
+					<fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) * lineBookItem.quanity }" />
+					₫
+				</div>
 				<div class="col-2" style="align-self: center;">
 					<a href="javascript:void(0);"
 						onclick="Shop.deleteCart('${lineBookItem.bookItem.slug}','book')"
@@ -187,14 +215,18 @@
 				</div>
 			</div>
 		</c:forEach>
+		
 		<div class="card-body row"
 			style="justify-content: flex-end; background: white; margin-top: 10px">
 			<div class="tongtienthanhtoan">
-				Tổng tiền đơn hàng : <strong><span id="total_value">${cart.totalAmount }</span>₫</strong>
+				Tổng tiền đơn hàng : <strong><span id="total_value"><fmt:formatNumber
+							type="number" maxFractionDigits="3" value="${cart.totalAmount }" />
+						</span>₫</strong>
 			</div>
 		</div>
-		<div class="row" style="justify-content: flex-end;margin-top: 20px">
-			<a href="#" class="btn btn-success button-buy-submit-cart">Tiến hành đặt hàng</a>
+		<div class="row" style="justify-content: flex-end; margin-top: 20px">
+			<a href="#" class="btn btn-success button-buy-submit-cart">Tiến
+				hành đặt hàng</a>
 		</div>
 
 	</div>
