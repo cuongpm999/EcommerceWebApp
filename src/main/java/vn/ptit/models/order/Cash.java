@@ -15,6 +15,5 @@ public class Cash extends Payment{
 	public void setCashTendered(double cashTendered) {
 		this.cashTendered = cashTendered;
 	}
-	
-	
+
 }

@@ -5,7 +5,7 @@ public class Shipment {
 	private String name;
 	private double price;
 	private String address;
-	
+
 	public Shipment() {
 		// TODO Auto-generated constructor stub
 	}

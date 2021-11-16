@@ -46,11 +46,13 @@ public class Order {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public ShoppingCart getShoppingCart() {
 		return shoppingCart;
 	}
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+
 	}
 	public Shipment getShipment() {
 		return shipment;
@@ -58,12 +60,14 @@ public class Order {
 	public void setShipment(Shipment shipment) {
 		this.shipment = shipment;
 	}
+
 	public Payment getPayment() {
 		return payment;
 	}
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -71,6 +75,4 @@ public class Order {
 		this.customer = customer;
 	}
 	
-	
-
 }

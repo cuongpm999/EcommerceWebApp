@@ -5,7 +5,7 @@ public class DigitalWallet extends Payment{
 	public DigitalWallet() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public DigitalWallet(double totalMoney, String name) {
 		super(totalMoney);
 		this.name = name;
@@ -14,9 +14,9 @@ public class DigitalWallet extends Payment{
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 }
