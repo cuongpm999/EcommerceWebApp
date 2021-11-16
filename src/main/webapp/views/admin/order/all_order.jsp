@@ -38,40 +38,49 @@
 	<!-- MAIN -->
 	<div id="main">
 		<%@ include file="/views/admin/header_admin.jsp"%>
+
 		<div class="main-content">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-add">
 						<input class="form-control" id="myInput" type="text"
-							placeholder="Search.."> <a href="/admin/add-book-item"
-							class="btn btn-success" style="margin-top: 10px"><i
-							class="fas fa-plus"></i> Add book item</a>
+							placeholder="Search..">
 						<h1 class="my-3"></h1>
 
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th>Image</th>
-									<th>Title</th>
+									<th>Name</th>
+									<th style="width: 200px;">Address</th>
+									<th>Create</th>
 									<th>Price</th>
-									<th>Discount</th>
-									<th>Action</th>
+									<th colspan="2">Status</th>
 								</tr>
 							</thead>
 							<tbody id="myTable">
-								<c:forEach items="${bookItems }" var="bookItem">
+								<c:forEach items="${orders }" var="order">
 									<tr>
-										<td><img
-											src="/files_item/${bookItem.imgBookItems.get(0).name }"
-											alt="product" style="width: 150px; height: 150px"></td>
-										<td>${bookItem.book.title }</td>
-										<td>${bookItem.price }</td>
-										<td>${bookItem.discount }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
-											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
-											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
-											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
+										<td>${order.customer.fullName.firstName }
+											${order.customer.fullName.middleName }
+											${order.customer.fullName.lastName }</td>
+										<td>${order.customer.address.number },
+											${order.customer.address.street },
+											${order.customer.address.district },
+											${order.customer.address.city }</td>
+										<td>${order.dateCreate }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${order.payment.totalMoney }" /> ₫</td>
+										<td>${order.status }</td>
+										<td style="text-align: center;"><c:choose>
+												<c:when
+													test="${order.status == 'Đã giao' || order.status == 'Đã hủy' }">
+													<a href="#">Chi tiết</a>
+												</c:when>
+												<c:when test="${order.status == 'Chưa giao' }">
+													<a href="/admin/order/change-status/${order.id }">Giao hàng</a>
+													<a href="#">Chi tiết</a>
+												</c:when>
+											</c:choose></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -80,8 +89,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<%@ include file="/views/admin/footer_admin.jsp"%>
+		<%@ include file="/views/admin/footer_admin.jsp"%>
 	</div>
 	</div>
 

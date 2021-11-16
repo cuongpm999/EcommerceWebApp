@@ -49,7 +49,7 @@
 <script src="/js/fontawesome.min.js"></script>
 <!-- ----------------- -->
 
-<title>Add Dresses</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>

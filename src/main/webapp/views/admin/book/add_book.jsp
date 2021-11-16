@@ -47,7 +47,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="/js/fontawesome.min.js"></script>
-<title>PTTK-HTTT</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>

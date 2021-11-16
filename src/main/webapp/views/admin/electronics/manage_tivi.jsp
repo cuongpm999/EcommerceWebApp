@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css" href="/css/manage.css">
 <!-- ----------------- -->
 
-<title>Laptop Project</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
