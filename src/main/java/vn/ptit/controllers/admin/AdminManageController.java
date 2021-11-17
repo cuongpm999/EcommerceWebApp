@@ -2,6 +2,8 @@ package vn.ptit.controllers.admin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +29,10 @@ import vn.ptit.models.electronics.Laptop;
 import vn.ptit.models.electronics.MobilePhone;
 import vn.ptit.models.electronics.Tivi;
 import vn.ptit.models.employee.ItemStat;
+import vn.ptit.models.employee.ShipmentStat;
 import vn.ptit.models.order.Order;
 import vn.ptit.models.order.Payment;
+import vn.ptit.models.order.Shipment;
 import vn.ptit.models.shoes.Boots;
 import vn.ptit.models.shoes.HighHeels;
 import vn.ptit.models.shoes.Shoes;
@@ -42,45 +46,70 @@ import vn.ptit.utils.RevenuePerMonth;
 @RequestMapping("/admin/manage")
 public class AdminManageController {
 	private RestTemplate rest = new RestTemplate();
-	@Autowired ItemService itemService;
+	@Autowired
+	ItemService itemService;
 
 	@GetMapping
 	public String viewManage(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		double totalMoney = rest.getForObject("http://localhost:6969/rest/api/payment/total-revenue", Double.class);
 		model.addAttribute("totalMoney", totalMoney);
-		
+
 		int totalCustomer = rest.getForObject("http://localhost:6969/rest/api/customer/total-customers", Integer.class);
 		model.addAttribute("totalCustomer", totalCustomer);
-		
+
 		int totalOrder = rest.getForObject("http://localhost:6969/rest/api/order/total-order", Integer.class);
 		model.addAttribute("totalOrder", totalOrder);
-		
+
 		int totalVisit = rest.getForObject("http://localhost:6969/rest/api/statistic/total-visit", Integer.class);
 		model.addAttribute("totalVisit", totalVisit);
-		
+
 		String label[] = new String[6];
 		double data[] = new double[6];
-		List<Order> orders = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/order/find-by-status-success", Order[].class));
+		List<Order> orders = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/order/find-by-status-success", Order[].class));
 		label[0] = RevenuePerMonth.getStringMonth5();
 		label[1] = RevenuePerMonth.getStringMonth4();
 		label[2] = RevenuePerMonth.getStringMonth3();
 		label[3] = RevenuePerMonth.getStringMonth2();
 		label[4] = RevenuePerMonth.getStringMonth1();
 		label[5] = RevenuePerMonth.getStringMonth();
-		
+
 		data[0] = RevenuePerMonth.getTotalMoneyMonth5(orders);
 		data[1] = RevenuePerMonth.getTotalMoneyMonth4(orders);
 		data[2] = RevenuePerMonth.getTotalMoneyMonth3(orders);
 		data[3] = RevenuePerMonth.getTotalMoneyMonth2(orders);
 		data[4] = RevenuePerMonth.getTotalMoneyMonth1(orders);
 		data[5] = RevenuePerMonth.getTotalMoneyMonth(orders);
-		
-		model.addAttribute("chartReport", new ChartReport(label,data));
-		
+
+		model.addAttribute("chartReport", new ChartReport(label, data));
+
 		List<ItemStat> itemStats = itemService.statItemBestSeller(orders);
 		model.addAttribute("itemStats", itemStats);
 		return "admin/manage";
 	}
-	
-	
+
+	@GetMapping("/statistic/shipment")
+	public String viewShipmentStat(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Order> orders = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/order/find-by-status-success", Order[].class));
+		List<ShipmentStat> shipmentStats = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shipment/find-all", ShipmentStat[].class));
+		for (ShipmentStat shipmentStat : shipmentStats) {
+			int totalQuantity = 0;
+			for (Order order : orders) {
+				if (order.getShipment().getId() == shipmentStat.getId()) {
+					totalQuantity++;
+				}
+			}
+			shipmentStat.setTotalQuantity(totalQuantity);
+		}
+		Collections.sort(shipmentStats, new Comparator<ShipmentStat>() {
+			@Override
+			public int compare(ShipmentStat ss1, ShipmentStat ss2) {
+				return ss2.getTotalQuantity() - ss1.getTotalQuantity();
+			}
+		});
+		model.addAttribute("shipmentStats", shipmentStats);
+		return "admin/statistic_shipment";
+	}
 }
