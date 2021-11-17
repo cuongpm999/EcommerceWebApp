@@ -43,33 +43,28 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-add">
-					<input class="form-control" id="myInput" type="text"
+						<input class="form-control" id="myInput" type="text"
 							placeholder="Search..">
 						<h3 class="my-3"></h3>
-						
+
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th>#</th>
+									<th>Index</th>
 									<th>Name</th>
+									<th>Price</th>
 									<th>Address</th>
-									<th>Total</th>
+									<th>Total Quantity</th>
 								</tr>
 							</thead>
 							<tbody id="myTable">
-								<c:forEach items="${customerStats }" var="customerStat"
-									varStatus="loop">
+								<c:forEach items="${shipmentStats }" var="shipmentStat" varStatus="loop">
 									<tr>
-										<td>${loop.index+1 }</td>
-										<td>${customerStat.fullName.firstName }
-											${customerStat.fullName.middleName }
-											${customerStat.fullName.lastName }</td>
-										<td>${customerStat.address.number },
-											${customerStat.address.street },
-											${customerStat.address.district },
-											${customerStat.address.city }</td>
-										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${customerStat.total }" />₫</td>
+										<td>${loop.index + 1}</td>
+										<td>${shipmentStat.name }</td>
+										<td>${shipmentStat.price }</td>
+										<td>${shipmentStat.address }</td>
+										<td>${shipmentStat.totalQuantity }</td>
 									</tr>
 								</c:forEach>
 							</tbody>

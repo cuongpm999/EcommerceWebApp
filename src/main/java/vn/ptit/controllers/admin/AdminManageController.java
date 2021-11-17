@@ -31,8 +31,10 @@ import vn.ptit.models.electronics.MobilePhone;
 import vn.ptit.models.electronics.Tivi;
 import vn.ptit.models.employee.CustomerStat;
 import vn.ptit.models.employee.ItemStat;
+import vn.ptit.models.employee.ShipmentStat;
 import vn.ptit.models.order.Order;
 import vn.ptit.models.order.Payment;
+import vn.ptit.models.order.Shipment;
 import vn.ptit.models.shoes.Boots;
 import vn.ptit.models.shoes.HighHeels;
 import vn.ptit.models.shoes.Shoes;
@@ -124,6 +126,31 @@ public class AdminManageController {
 		});
 		model.addAttribute("customerStats", customerStats);
 		return "admin/customerstat";
+	}
+
+	@GetMapping("/statistic/shipment")
+	public String viewShipmentStat(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Order> orders = Arrays.asList(
+				rest.getForObject("http://localhost:6969/rest/api/order/find-by-status-success", Order[].class));
+		List<ShipmentStat> shipmentStats = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shipment/find-all", ShipmentStat[].class));
+		for (ShipmentStat shipmentStat : shipmentStats) {
+			int totalQuantity = 0;
+			for (Order order : orders) {
+				if (order.getShipment().getId() == shipmentStat.getId()) {
+					totalQuantity++;
+				}
+			}
+			shipmentStat.setTotalQuantity(totalQuantity);
+		}
+		Collections.sort(shipmentStats, new Comparator<ShipmentStat>() {
+			@Override
+			public int compare(ShipmentStat ss1, ShipmentStat ss2) {
+				return ss2.getTotalQuantity() - ss1.getTotalQuantity();
+			}
+		});
+		model.addAttribute("shipmentStats", shipmentStats);
+		return "admin/statistic_shipment";
 	}
 
 }
