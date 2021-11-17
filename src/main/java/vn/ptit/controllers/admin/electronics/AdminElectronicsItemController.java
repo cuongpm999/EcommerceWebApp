@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -108,6 +109,34 @@ public class AdminElectronicsItemController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/find-all", ElectronicsItem[].class));
 		model.addAttribute("electronicsItems", electronicsItems);
 		return "admin/electronics/manage_electronicsItem";
+	}
+	
+	@GetMapping("/edit-electronics-item/{code}")
+	public String viewEditElectronicsItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Electronics> electronics = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics/find-all", Electronics[].class));
+		model.addAttribute("electronics", electronics);
+		ElectronicsItem electronicsItem = rest.getForObject("http://localhost:6969/rest/api/electronics-item/find-by-code/"+code, ElectronicsItem.class);
+		model.addAttribute("electronicsItem", electronicsItem);
+		return "admin/electronics/edit_electronicsItem";
+	}
+
+	@PostMapping("/edit-electronics-item")
+	public String editElectronicsItem(@ModelAttribute("electronicsItem") ElectronicsItem electronicsItem, final ModelMap model,
+			final HttpServletRequest request, final HttpServletResponse response)
+			throws IllegalStateException, IOException {
+	
+		
+		rest.postForObject("http://localhost:6969/rest/api/electronics-item/update", electronicsItem,
+				ElectronicsItem.class);
+
+		return "redirect:/admin/electronics-item";
+	}
+	
+	@GetMapping("/delete-electronics-item/{code}")
+	public String viewDeleteLaptop(@PathVariable("code") String code, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/electronics-item/delete-by-code/"+code, Integer.class);
+		return "redirect:/admin/electronics-item";
 	}
 
 }

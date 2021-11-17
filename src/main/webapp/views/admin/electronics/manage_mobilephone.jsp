@@ -72,10 +72,10 @@
 										<td>${mobilePhone.ram }</td>
 										<td>${mobilePhone.cpu }</td>
 										<td>${mobilePhone.camera }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/electronics/edit-mobilephone/${mobilePhone.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct(${mobilePhone.id },'/admin/electronics/delete-mobilephone/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>

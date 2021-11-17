@@ -13,36 +13,49 @@
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="/admin/manage"><i
 						class="fas fa-home"></i>Dashboard</a></li>
-
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
-					data-toggle="dropdown"><i class="fas fa-list"></i>Nhập hàng</a>
+					data-toggle="dropdown"><i class="fas fa-pencil-alt"></i>Forms</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/admin/add-author">Author</a> <a
+							class="dropdown-item" href="/admin/add-publisher">Publisher</a> <a
+							class="dropdown-item" href="/admin/add-manufacturer">Manufacturer</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbardrop"
+					data-toggle="dropdown"><i class="far fa-copy"></i>Nhập hàng</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/admin/book">Book</a> <a
-							class="dropdown-item" href="/admin/laptop">Laptop</a> <a
-							class="dropdown-item" href="/admin/mobilephone">Mobile
-							phone</a> <a class="dropdown-item" href="/admin/tivi">Tivi</a>
-						<a class="dropdown-item" href="/admin/jeans">Jeans</a> <a
-							class="dropdown-item" href="/admin/dresses">Dresses</a> <a
-							class="dropdown-item" href="/admin/swimwear">Swimwear</a>
-						<a class="dropdown-item" href="/admin/sneaker">Sneaker</a>
-						<a class="dropdown-item" href="/admin/highheels">Highheels</a>
-						<a class="dropdown-item" href="/admin/boots">Boots</a>
+							class="dropdown-item" href="/admin/electronics/laptop">Laptop</a>
+						<a class="dropdown-item" href="/admin/electronics/mobilephone">Mobile
+							phone</a> <a class="dropdown-item" href="/admin/electronics/tivi">Tivi</a>
+						<a class="dropdown-item" href="/admin/clothes/jeans">Jeans</a> <a
+							class="dropdown-item" href="/admin/clothes/dresses">Dresses</a> <a
+							class="dropdown-item" href="/admin/clothes/swimwear">Swimwear</a>
+						<a class="dropdown-item" href="/admin/shoes/sneaker">Sneaker</a> <a
+							class="dropdown-item" href="/admin/shoes/highheels">Highheels</a>
+						<a class="dropdown-item" href="/admin/shoes/boots">Boots</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
 					data-toggle="dropdown"><i class="fas fa-list"></i>Đưa hàng lên
 						website</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/book-item">Book
-							Item</a> <a class="dropdown-item"
-							href="/admin/electronics-item">Electronics Item</a> <a
-							class="dropdown-item" href="/admin/clothes-item">Clothes
+						<a class="dropdown-item" href="/admin/book-item">Book Item</a> <a
+							class="dropdown-item" href="/admin/electronics-item">Electronics
+							Item</a> <a class="dropdown-item" href="/admin/clothes-item">Clothes
 							Item</a> <a class="dropdown-item" href="/admin/shoes-item">Shoes
 							Item</a>
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="/admin/order"><i
-						class="fas fa-list"></i>Order</a></li>
+				<li class="nav-item"><a class="nav-link" href="/admin/order"><i class="fas fa-shopping-cart"></i>Order</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbardrop"
+					data-toggle="dropdown"><i class="fas fa-chart-bar"></i>Statistics</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/admin/manage/statistic/item">Item</a> <a
+							class="dropdown-item" href="/admin/manage/statistic/customer">Customer</a> <a
+							class="dropdown-item" href="/admin/manage/statistic/shipment">Shipment</a>
+					</div></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i
 						class="fas fa-envelope"></i>Email</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i
@@ -75,8 +88,7 @@
 										<img class="icon" alt="user"
 											src="/files_users/${userDis.userAttachment.name }">
 									</c:when>
-								</c:choose> --%> <span class="text-icon">
-							<%-- ${userDis.username } --%>
+								</c:choose> --%> <span class="text-icon"> <%-- ${userDis.username } --%>
 					</span>
 				</a>
 					<div class="dropdown-menu">

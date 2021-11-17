@@ -38,40 +38,32 @@
 	<!-- MAIN -->
 	<div id="main">
 		<%@ include file="/views/admin/header_admin.jsp"%>
+
 		<div class="main-content">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-add">
 						<input class="form-control" id="myInput" type="text"
-							placeholder="Search.."> <a
-							href="/admin/electronics/add-tivi" class="btn btn-success"
-							style="margin-top: 10px"><i class="fas fa-plus"></i> Add tivi</a>
+							placeholder="Search..">
 						<h1 class="my-3"></h1>
 
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
+									<th>BarCode</th>
 									<th>Name</th>
-									<th>Warranty</th>
-									<th>Screend size</th>
-									<th>Manufacture</th>
-									<th>Connector</th>
-									<th>Action</th>
+									<th>Price</th>
+									<th>Quantity</th>
 								</tr>
 							</thead>
 							<tbody id="myTable">
-								<c:forEach items="${tivis }" var="tivi">
+								<c:forEach items="${itemStats }" var="itemStat">
 									<tr>
-										<td>${tivi.name }</td>
-										<td>${tivi.warranty }</td>
-										<td>${tivi.screendSize }</td>
-										<td>${tivi.manufacturer.name }</td>
-										<td>${tivi.connector }</td>
-										<td><a href="/admin/electronics/edit-tivi/${tivi.id }"
-											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
-											<a href="javascript:void(0);"
-											onclick="Shop.deleteProduct(${tivi.id },'/admin/electronics/delete-tivi/')"
-											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
+										<td>${itemStat.barCode }</td>
+										<td>${itemStat.name }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${itemStat.price }" /> ₫</td>
+										<td>${itemStat.quantity }</td>
 									</tr>
 								</c:forEach>
 							</tbody>

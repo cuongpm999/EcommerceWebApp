@@ -82,5 +82,12 @@ public class AdminManageController {
 		return "admin/manage";
 	}
 	
+	@GetMapping("/statistic/item")
+	public String viewItemStat(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Order> orders = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/order/find-by-status-success", Order[].class));
+		List<ItemStat> itemStats = itemService.statItemBestSeller(orders);
+		model.addAttribute("itemStats", itemStats);
+		return "admin/itemstat";
+	}
 	
 }

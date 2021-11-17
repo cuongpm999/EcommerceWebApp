@@ -53,8 +53,6 @@
 							<thead class="thead-light">
 								<tr>
 									<th>Name</th>
-									<th>Warranty</th>
-									<th>Screend size</th>
 									<th>Manufacture</th>
 									<th>Ram</th>
 									<th>Cpu</th>
@@ -66,16 +64,14 @@
 								<c:forEach items="${laptops }" var="laptop">
 									<tr>
 										<td>${laptop.name }</td>
-										<td>${laptop.warranty }</td>
-										<td>${laptop.screendSize }</td>
 										<td>${laptop.manufacturer.name }</td>
 										<td>${laptop.ram }</td>
 										<td>${laptop.cpu }</td>
 										<td>${laptop.card }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/electronics/edit-laptop/${laptop.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct(${laptop.id },'/admin/electronics/delete-laptop/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>
