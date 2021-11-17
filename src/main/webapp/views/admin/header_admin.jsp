@@ -66,9 +66,6 @@
 						class="far fa-calendar-alt"></i>Calendar</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i
 						class="fas fa-chart-bar"></i>Charts</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><i
-						class="far fa-copy"></i>Pages</a></li>
-
 			</ul>
 
 		</nav>
