@@ -27,6 +27,7 @@ import vn.ptit.models.clothes.ClothesItem;
 import vn.ptit.models.customer.Customer;
 import vn.ptit.models.customer.CustomerMember;
 import vn.ptit.models.electronics.ElectronicsItem;
+import vn.ptit.models.employee.TotalVisit;
 import vn.ptit.models.shoes.ShoesItem;
 
 @Controller
@@ -51,6 +52,8 @@ public class HomeController {
 		model.addAttribute("electronicsItems", electronicsItems);
 		model.addAttribute("shoesItems", shoesItems);
 		model.addAttribute("clothesItems", clothesItems);
+        
+		rest.postForObject("http://localhost:6969/rest/api/statistic/add-total-visit",new TotalVisit(req.getRemoteAddr(),new Date()),TotalVisit.class);
 		return "home";
 	}
 	

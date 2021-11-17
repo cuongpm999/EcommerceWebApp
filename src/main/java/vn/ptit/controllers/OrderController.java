@@ -39,12 +39,11 @@ import vn.ptit.models.order.Order;
 import vn.ptit.models.order.Shipment;
 import vn.ptit.models.order.ShoppingCart;
 import vn.ptit.services.PaypalService;
-import vn.ptit.utils.HelperMap;
 import vn.ptit.utils.HelperOrder;
 import vn.ptit.utils.PaymentUtil;
 
 @Controller
-public class CartController {
+public class OrderController {
 	@Autowired
 	PaypalService paypalService;
 
@@ -91,7 +90,7 @@ public class CartController {
 		}
 
 		Order order = new Order();
-		order.setCustomer(customerNew);
+		httpSession.setAttribute("customerNewBuy", customerNew);
 		order.setShoppingCart(shoppingCart);
 		httpSession.setAttribute("order", order);
 		return "redirect:/checkout";
@@ -109,9 +108,7 @@ public class CartController {
 			if (httpSession.getAttribute("cart") != null) {
 				shoppingCart = ((ShoppingCart) httpSession.getAttribute("cart"));
 			}
-			CustomerMember customerMember = (CustomerMember) httpSession.getAttribute("customerMemberLogin");
 			Order order = new Order();
-			order.setCustomer(customerMember);
 			order.setShoppingCart(shoppingCart);
 			httpSession.setAttribute("order", order);
 		}
@@ -163,13 +160,13 @@ public class CartController {
 
 		}
 
-		if (order.getCustomer() instanceof CustomerMember) {
-			CustomerMember customerMember = (CustomerMember) order.getCustomer();
+		if (httpSession.getAttribute("customerMemberLogin") != null) {
+			CustomerMember customerMember = (CustomerMember) httpSession.getAttribute("customerMemberLogin");
 			helperOrder.setCustomerMember(customerMember);
 		}
 
-		if (order.getCustomer() instanceof CustomerNew) {
-			CustomerNew customerNew = (CustomerNew) order.getCustomer();
+		if (httpSession.getAttribute("customerNewBuy") != null) {
+			CustomerNew customerNew = (CustomerNew) httpSession.getAttribute("customerNewBuy");
 			helperOrder.setCustomerNew(customerNew);
 		}
 
@@ -204,6 +201,7 @@ public class CartController {
 			httpSession.removeAttribute("order");
 			httpSession.removeAttribute("cart");
 			httpSession.removeAttribute("soLuongMua");
+			httpSession.removeAttribute("customerNewBuy");
 		}
 		return "cart";
 	}
@@ -236,6 +234,7 @@ public class CartController {
 				httpSession.removeAttribute("order");
 				httpSession.removeAttribute("cart");
 				httpSession.removeAttribute("soLuongMua");
+				httpSession.removeAttribute("customerNewBuy");
 				return "cart";
 			}
 		} catch (PayPalRESTException e) {

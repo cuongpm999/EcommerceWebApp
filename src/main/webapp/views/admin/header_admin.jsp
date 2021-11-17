@@ -18,27 +18,27 @@
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
 					data-toggle="dropdown"><i class="fas fa-list"></i>Nhập hàng</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/manage/book">Book</a> <a
-							class="dropdown-item" href="/admin/manage/laptop">Laptop</a> <a
-							class="dropdown-item" href="/admin/manage/mobilephone">Mobile
-							phone</a> <a class="dropdown-item" href="/admin/manage/tivi">Tivi</a>
-						<a class="dropdown-item" href="/admin/manage/jeans">Jeans</a> <a
-							class="dropdown-item" href="/admin/manage/dresses">Dresses</a> <a
-							class="dropdown-item" href="/admin/manage/swimwear">Swimwear</a>
-						<a class="dropdown-item" href="/admin/manage/sneaker">Sneaker</a>
-						<a class="dropdown-item" href="/admin/manage/highheels">Highheels</a>
-						<a class="dropdown-item" href="/admin/manage/boots">Boots</a>
+						<a class="dropdown-item" href="/admin/book">Book</a> <a
+							class="dropdown-item" href="/admin/laptop">Laptop</a> <a
+							class="dropdown-item" href="/admin/mobilephone">Mobile
+							phone</a> <a class="dropdown-item" href="/admin/tivi">Tivi</a>
+						<a class="dropdown-item" href="/admin/jeans">Jeans</a> <a
+							class="dropdown-item" href="/admin/dresses">Dresses</a> <a
+							class="dropdown-item" href="/admin/swimwear">Swimwear</a>
+						<a class="dropdown-item" href="/admin/sneaker">Sneaker</a>
+						<a class="dropdown-item" href="/admin/highheels">Highheels</a>
+						<a class="dropdown-item" href="/admin/boots">Boots</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
 					data-toggle="dropdown"><i class="fas fa-list"></i>Đưa hàng lên
 						website</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/manage/book-item">Book
+						<a class="dropdown-item" href="/admin/book-item">Book
 							Item</a> <a class="dropdown-item"
-							href="/admin/manage/electronics-item">Electronics Item</a> <a
-							class="dropdown-item" href="/admin/manage/clothes-item">Clothes
-							Item</a> <a class="dropdown-item" href="/admin/manage/shoes-item">Shoes
+							href="/admin/electronics-item">Electronics Item</a> <a
+							class="dropdown-item" href="/admin/clothes-item">Clothes
+							Item</a> <a class="dropdown-item" href="/admin/shoes-item">Shoes
 							Item</a>
 					</div></li>
 				<li class="nav-item"><a class="nav-link" href="/admin/order"><i

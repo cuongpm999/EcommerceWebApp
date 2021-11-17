@@ -42,4 +42,12 @@ public class AdminMobilePhoneController {
 		model.addAttribute("manufacturers", manufacturers);
 		return "admin/electronics/add_mobilePhone";
 	}
+	
+	@GetMapping("/mobilephone")
+	public String viewManageMobilePhone(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<MobilePhone> mobilePhones = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics/find-by-category/" + "MobilePhone", MobilePhone[].class));
+		model.addAttribute("mobilePhones", mobilePhones);
+		return "admin/electronics/manage_mobilephone";
+	}
 }

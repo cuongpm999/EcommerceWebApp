@@ -47,11 +47,24 @@
 					</div>
 				</div>
 				<div class="form-check radio-address">
-					<span class="name-customer">${order.customer.fullName.firstName }
-						${order.customer.fullName.lastName }</span> <span
-						class="address-customer">${order.customer.address.number }
-						${order.customer.address.street }
-						${order.customer.address.district } ${order.customer.address.city }</span>
+					<c:choose>
+						<c:when test="${not empty customerNewBuy }">
+							<span class="name-customer">${customerNewBuy.fullName.firstName }
+								${customerNewBuy.fullName.lastName }</span>
+							<span class="address-customer">${customerNewBuy.address.number }
+								${customerNewBuy.address.street }
+								${customerNewBuy.address.district }
+								${customerNewBuy.address.city }</span>
+						</c:when>
+						<c:when test="${not empty customerMemberLogin }">
+							<span class="name-customer">${customerMemberLogin.fullName.firstName }
+								${customerMemberLogin.fullName.lastName }</span>
+							<span class="address-customer">${customerMemberLogin.address.number }
+								${customerMemberLogin.address.street }
+								${customerMemberLogin.address.district }
+								${customerMemberLogin.address.city }</span>
+						</c:when>
+					</c:choose>
 				</div>
 			</div>
 		</div>
@@ -82,15 +95,21 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />₫</div>
+						style="align-self: center; word-break: break-all;">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />
+						₫
+					</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineElectronicsItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineElectronicsItem.electronicsItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100) * lineElectronicsItem.quanity }" />₫</div>
+						id="price${lineElectronicsItem.electronicsItem.slug}">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100) * lineElectronicsItem.quanity }" />
+						₫
+					</div>
 
 				</div>
 			</c:forEach>
@@ -113,15 +132,21 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" />₫</div>
+						style="align-self: center; word-break: break-all;">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" />
+						₫
+					</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineShoesItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineShoesItem.shoesItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) * lineShoesItem.quanity }" />₫</div>
+						id="price${lineShoesItem.shoesItem.slug}">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) * lineShoesItem.quanity }" />
+						₫
+					</div>
 
 				</div>
 			</c:forEach>
@@ -144,15 +169,21 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }" />₫</div>
+						style="align-self: center; word-break: break-all;">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }" />
+						₫
+					</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineClothesItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineClothesItem.clothesItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) * lineClothesItem.quanity }" />₫</div>
+						id="price${lineClothesItem.clothesItem.slug}">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) * lineClothesItem.quanity }" />
+						₫
+					</div>
 
 				</div>
 			</c:forEach>
@@ -175,15 +206,21 @@
 					</div>
 
 					<div class="col-2"
-						style="align-self: center; word-break: break-all;"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }" />₫</div>
+						style="align-self: center; word-break: break-all;">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }" />
+						₫
+					</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;">
 						${lineBookItem.quanity }</div>
 					<div class="col-2"
 						style="align-self: center; word-break: break-all;"
-						id="price${lineBookItem.bookItem.slug}"><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) * lineBookItem.quanity }" />₫</div>
+						id="price${lineBookItem.bookItem.slug}">
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+							value="${(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) * lineBookItem.quanity }" />
+						₫
+					</div>
 
 				</div>
 			</c:forEach>
@@ -258,8 +295,9 @@
 					<div class="col-8" style="align-self: center"></div>
 					<div class="col-4" style="align-self: center">
 						<h4 class="summary-left">
-							Tổng tiền hàng <span class="summary-right" style="float: right"><fmt:formatNumber type="number"
-									maxFractionDigits="3" value="${order.shoppingCart.totalAmount }" />₫</span>
+							Tổng tiền hàng <span class="summary-right" style="float: right"><fmt:formatNumber
+									type="number" maxFractionDigits="3"
+									value="${order.shoppingCart.totalAmount }" />₫</span>
 						</h4>
 						<h4 class="summary-left">
 							Phí vận chuyển<span class="summary-right" style="float: right"
@@ -294,28 +332,57 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Số nhà</label> <input type="text"
-								value="${order.customer.address.number }" class="form-control"
-								id="number" />
-						</div>
-						<div class="form-group">
-							<label>Tên đường</label> <input type="text"
-								value="${order.customer.address.street }" class="form-control"
-								id="street" />
-						</div>
-						<div class="form-group">
-							<label>Quận/Huyện</label> <input type="text"
-								value="${order.customer.address.district }" class="form-control"
-								id="district" />
-						</div>
-						<div class="form-group">
-							<label>Thành phố</label> <input type="text"
-								value="${order.customer.address.city }" class="form-control"
-								id="city" />
-						</div>
-					</div>
+					<c:choose>
+						<c:when test="${not empty customerNewBuy }">
+							<div class="modal-body">
+								<div class="form-group">
+									<label>Số nhà</label> <input type="text"
+										value="${customerNewBuy.address.number }" class="form-control"
+										id="number" />
+								</div>
+								<div class="form-group">
+									<label>Tên đường</label> <input type="text"
+										value="${customerNewBuy.address.street }" class="form-control"
+										id="street" />
+								</div>
+								<div class="form-group">
+									<label>Quận/Huyện</label> <input type="text"
+										value="${customerNewBuy.address.district }"
+										class="form-control" id="district" />
+								</div>
+								<div class="form-group">
+									<label>Thành phố</label> <input type="text"
+										value="${customerNewBuy.address.city }" class="form-control"
+										id="city" />
+								</div>
+							</div>
+						</c:when>
+						
+						<c:when test="${not empty customerMemberLogin }">
+							<div class="modal-body">
+								<div class="form-group">
+									<label>Số nhà</label> <input type="text"
+										value="${customerMemberLogin.address.number }" class="form-control"
+										id="number" />
+								</div>
+								<div class="form-group">
+									<label>Tên đường</label> <input type="text"
+										value="${customerMemberLogin.address.street }" class="form-control"
+										id="street" />
+								</div>
+								<div class="form-group">
+									<label>Quận/Huyện</label> <input type="text"
+										value="${customerMemberLogin.address.district }"
+										class="form-control" id="district" />
+								</div>
+								<div class="form-group">
+									<label>Thành phố</label> <input type="text"
+										value="${customerMemberLogin.address.city }" class="form-control"
+										id="city" />
+								</div>
+							</div>
+						</c:when>
+					</c:choose>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-primary"
 							onclick="Shop.editAddress()">Lưu lại</button>

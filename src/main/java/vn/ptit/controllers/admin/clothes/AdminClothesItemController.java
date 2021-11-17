@@ -88,4 +88,12 @@ public class AdminClothesItemController {
 		rest.postForObject("http://localhost:6969/rest/api/clothes-item/insert", clothesItem, ClothesItem.class);
 		return "admin/clothes/add_clothesItem";
 	}
+	
+	@GetMapping("/clothes-item")
+	public String viewManageClothesItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<ClothesItem> clothesItems = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/find-all", ClothesItem[].class));
+		model.addAttribute("clothesItems", clothesItems);
+		return "admin/clothes/manage_clothesItem";
+	}
 }

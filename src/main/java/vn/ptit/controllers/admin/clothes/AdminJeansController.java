@@ -1,5 +1,8 @@
 package vn.ptit.controllers.admin.clothes;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,5 +31,13 @@ public class AdminJeansController {
 	public String addSneaker(@ModelAttribute("jeans") Jeans jeans, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		rest.postForObject("http://localhost:6969/rest/api/clothes/jeans/insert", jeans, Jeans.class);
 		return "admin/clothes/add_jeans";
+	}
+	
+	@GetMapping("/jeans")
+	public String viewManageJeans(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Jeans> jeans = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes/find-by-category/" + "Jeans", Jeans[].class));
+		model.addAttribute("jeans", jeans);
+		return "admin/clothes/manage_jeans";
 	}
 }

@@ -1,6 +1,8 @@
 package vn.ptit.controllers;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -20,6 +22,8 @@ import org.springframework.web.client.RestTemplate;
 
 import vn.ptit.models.book.BookItem;
 import vn.ptit.models.clothes.ClothesItem;
+import vn.ptit.models.customer.Customer;
+import vn.ptit.models.customer.CustomerNew;
 import vn.ptit.models.electronics.ElectronicsItem;
 import vn.ptit.models.order.Order;
 import vn.ptit.models.order.Shipment;
@@ -28,7 +32,6 @@ import vn.ptit.models.shoes.ShoesItem;
 import vn.ptit.utils.AjaxResponse;
 import vn.ptit.utils.CartUtil;
 import vn.ptit.utils.FilterMap;
-import vn.ptit.utils.HelperMap;
 import vn.ptit.utils.PaymentUtil;
 
 @RestController
@@ -147,8 +150,10 @@ public class AjaxController {
 		NumberFormat numberFormat = NumberFormat.getInstance(local);
 		String price = numberFormat.format(thanhTien);
 		String totalPrice = numberFormat.format(shoppingCart.getTotalAmount());
-
-		HelperMap helperMap = new HelperMap(soLuongMua.toString(), price,totalPrice);
+		List<String> helperMap = new ArrayList<>();
+		helperMap.add(soLuongMua.toString());
+		helperMap.add(price);
+		helperMap.add(totalPrice);
 
 		return ResponseEntity.ok(new AjaxResponse(400, helperMap));
 	}
@@ -204,11 +209,19 @@ public class AjaxController {
 		if (httpSession.getAttribute("order") != null) {
 			order = ((Order) httpSession.getAttribute("order"));
 		}
+		Customer customer = new Customer();
+		if (httpSession.getAttribute("customerNewBuy") != null) {
+			customer = ((Customer) httpSession.getAttribute("customerNewBuy"));
+		}
 		
-		order.getCustomer().getAddress().setNumber(number);
-		order.getCustomer().getAddress().setStreet(street);
-		order.getCustomer().getAddress().setDistrict(district);
-		order.getCustomer().getAddress().setCity(city);
+		if (httpSession.getAttribute("customerMemberLogin") != null) {
+			customer = ((Customer) httpSession.getAttribute("customerMemberLogin"));
+		}
+		
+		customer.getAddress().setNumber(number);
+		customer.getAddress().setStreet(street);
+		customer.getAddress().setDistrict(district);
+		customer.getAddress().setCity(city);
 		
 		return ResponseEntity.ok(new AjaxResponse(333, null));
 	}

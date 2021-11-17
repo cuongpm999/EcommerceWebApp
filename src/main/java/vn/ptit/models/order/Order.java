@@ -11,21 +11,18 @@ public class Order {
 	private ShoppingCart shoppingCart;
 	private Shipment shipment;
 	private Payment payment;
-	private Customer customer;
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Order(Date dateCreate, String status, ShoppingCart shoppingCart, Shipment shipment, Payment payment,
-			Customer customer) {
+	public Order(Date dateCreate, String status, ShoppingCart shoppingCart, Shipment shipment, Payment payment) {
 		super();
 		this.dateCreate = dateCreate;
 		this.status = status;
 		this.shoppingCart = shoppingCart;
 		this.shipment = shipment;
 		this.payment = payment;
-		this.customer = customer;
 	}
 
 	public int getId() {
@@ -66,13 +63,6 @@ public class Order {
 	}
 	public void setPayment(Payment payment) {
 		this.payment = payment;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 	
 }

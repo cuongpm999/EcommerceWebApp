@@ -74,4 +74,12 @@ public class AdminBookController {
 		rest.postForObject("http://localhost:6969/rest/api/book/insert", book, Book.class);
 		return "/admin/book/add_book";
 	}
+	
+	@GetMapping("/book")
+	public String viewManageBook(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Book> books = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/book/find-all", Book[].class));
+		model.addAttribute("books", books);
+		return "admin/book/manage_book";
+	}
 }

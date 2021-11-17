@@ -46,7 +46,7 @@
 						<img src="/img/icons8-money-100.png" alt="manage">
 						<div class="stats">
 							<h5>
-								<strong> <%-- <c:choose>
+								<strong> <c:choose>
 										<c:when test="${totalMoney>99999999999 }">
 											<fmt:formatNumber type="number" maxFractionDigits="3"
 												value="${totalMoney/1000000000}" /> tỷ
@@ -56,7 +56,7 @@
 												value="${totalMoney}" />
 										</c:when>
 
-									</c:choose> --%>
+									</c:choose>
 								</strong>
 							</h5>
 							<span>Total Revenue</span>
@@ -69,10 +69,11 @@
 						<img src="/img/icons8-user-male-100.png" alt="manage">
 						<div class="stats">
 							<h5>
-								<strong><%-- <fmt:formatNumber type="number"
-										maxFractionDigits="3" value="${totalUser }" /> --%> </strong>
+								<strong> <fmt:formatNumber type="number"
+										maxFractionDigits="3" value="${totalCustomer }" /> 
+								</strong>
 							</h5>
-							<span>Total Users</span>
+							<span>Total Customers</span>
 						</div>
 					</div>
 				</div>
@@ -82,8 +83,8 @@
 						<img src="/img/icons8-laptop-100.png" alt="manage">
 						<div class="stats">
 							<h5>
-								<strong> <%-- <fmt:formatNumber type="number"
-										maxFractionDigits="3" value="${totalOrder }" /> --%>
+								<strong> <fmt:formatNumber type="number"
+										maxFractionDigits="3" value="${totalOrder }" /> 
 								</strong>
 							</h5>
 							<span>Total Orders</span>
@@ -96,8 +97,8 @@
 						<img src="/img/icons8-cursor-100.png" alt="manage">
 						<div class="stats">
 							<h5>
-								<strong> <%-- <fmt:formatNumber type="number"
-										maxFractionDigits="3" value="${totalVisit}" /> --%>
+								<strong> <fmt:formatNumber type="number"
+										maxFractionDigits="3" value="${totalVisit}" /> 
 								</strong>
 							</h5>
 							<span>Total Visits</span>
@@ -110,10 +111,6 @@
 				<div class="col-md-7 chart">
 					<div class="charts">
 						<canvas id="myChart"></canvas>
-						<div class="btn-report">
-							<a href="javascript:void(0);" onclick="Report.reportView()"><i
-								class="fas fa-chart-bar"></i> Thống kê</a>
-						</div>
 					</div>
 				</div>
 				<div class="col-md-5">
@@ -126,10 +123,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="listProductRP" items="${listProductRP }">
+								<c:forEach var="itemStat" items="${itemStats }">
 									<tr>
-										<td>${listProductRP.nameProduct }</td>
-										<td>${listProductRP.amount }</td>
+										<td>${itemStat.name }</td>
+										<td>${itemStat.quantity }</td>
 									</tr>
 								</c:forEach>
 
@@ -137,9 +134,15 @@
 						</table>
 					</div>
 				</div>
+				<input type="hidden" value="${chartReport.label[0]}" id="input0"> 
+				<input type="hidden" value="${chartReport.label[1]}" id="input1"> 
+				<input type="hidden" value="${chartReport.label[2]}" id="input2"> 
+				<input type="hidden" value="${chartReport.label[3]}" id="input3"> 
+				<input type="hidden" value="${chartReport.label[4]}" id="input4"> 
+				<input type="hidden" value="${chartReport.label[5]}" id="input5"> 
 				<script>
-     					var datas=[0, 0, 0, 0, 0, 0];
-     					var labels=['January', 'February', 'March', 'April', 'May', 'June'];
+     					var datas=[${chartReport.data[0]}, ${chartReport.data[1]}, ${chartReport.data[2]}, ${chartReport.data[3]}, ${chartReport.data[4]}, ${chartReport.data[5]}];
+     					var labels=[$('#input0').val(), $('#input1').val(), $('#input2').val(), $('#input3').val(), $('#input4').val(), $('#input5').val()];
      					
                     	const data = {
                         	labels: labels,
@@ -159,36 +162,7 @@
                             document.getElementById('myChart'),
                             config
                         );
-                        function updateData(chart) {    
-                            myChart.data.datasets[0].data.splice(0,6); 
-                            myChart.data.labels.splice(0,6); 
-                            
-                           	for(let i=0;i<6;i++){
-                            	myChart.data.datasets[0].data.push(datas[i]);
-                            	myChart.data.labels.push(labels[i]);
-                            }
-                            chart.update();
-                      	}
-                    	var Report = {
-                    		reportView: function() {
-                        		
-                        		$.ajax({
-                        			url: "/rest/api/report/chart",
-                        			type: "get",
-                        			
-                        			dataType: "json", // dữ liệu từ Rest trả về là json.
-                        			success: function(jsonResult) { // được gọi khi web-service
-                        				// trả
-                        				// về dữ liệu.
-                        				if (jsonResult.status == "333") {
-                        					datas=jsonResult.data.data;
-                        					labels=jsonResult.data.label;
-                        					updateData(myChart);  
-                        				}
-                        			}
-                        		});
-                        	},
-                          }
+                        
                     </script>
 			</div>
 

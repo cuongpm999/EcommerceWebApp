@@ -101,5 +101,13 @@ public class AdminElectronicsItemController {
 
 		return "admin/electronics/add_electronicsItem";
 	}
+	
+	@GetMapping("/electronics-item")
+	public String viewManageElectronicsItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<ElectronicsItem> electronicsItems = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics-item/find-all", ElectronicsItem[].class));
+		model.addAttribute("electronicsItems", electronicsItems);
+		return "admin/electronics/manage_electronicsItem";
+	}
 
 }

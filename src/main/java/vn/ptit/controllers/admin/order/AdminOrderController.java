@@ -1,7 +1,10 @@
 package vn.ptit.controllers.admin.order;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import vn.ptit.models.customer.Customer;
 import vn.ptit.models.order.Order;
 
 @Controller
 @RequestMapping("/admin")
-public class OrderController {
+public class AdminOrderController {
 	
 	private RestTemplate rest = new RestTemplate();
 	
@@ -25,7 +29,13 @@ public class OrderController {
 	public String viewAddBook(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<Order> orders = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/order/find-all", Order[].class));
-		model.addAttribute("orders", orders);
+		HashMap<Order, Customer> map = new HashMap<Order, Customer>();
+		for(Order order : orders) {
+			Customer customer = rest.getForObject("http://localhost:6969/rest/api/customer/get-customer-by-order/"+order.getId(), Customer.class);
+			map.put(order, customer);
+		}
+		
+		model.addAttribute("orders", map);
 		return "/admin/order/all_order";
 	}
 	

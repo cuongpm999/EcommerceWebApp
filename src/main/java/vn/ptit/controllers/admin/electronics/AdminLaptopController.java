@@ -41,4 +41,13 @@ public class AdminLaptopController {
 		model.addAttribute("manufacturers", manufacturers);
 		return "admin/electronics/add_laptop";
 	}
+	
+	@GetMapping("/laptop")
+	public String viewManageLaptop(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Laptop> laptops = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics/find-by-category/" + "Laptop", Laptop[].class));
+		System.out.println(laptops.size());
+		model.addAttribute("laptops", laptops);
+		return "admin/electronics/manage_laptop";
+	}
 }

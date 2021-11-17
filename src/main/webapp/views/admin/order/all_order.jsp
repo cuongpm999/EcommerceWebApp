@@ -60,24 +60,24 @@
 							<tbody id="myTable">
 								<c:forEach items="${orders }" var="order">
 									<tr>
-										<td>${order.customer.fullName.firstName }
-											${order.customer.fullName.middleName }
-											${order.customer.fullName.lastName }</td>
-										<td>${order.customer.address.number },
-											${order.customer.address.street },
-											${order.customer.address.district },
-											${order.customer.address.city }</td>
-										<td>${order.dateCreate }</td>
+										<td>${order.value.fullName.firstName }
+											${order.value.fullName.middleName }
+											${order.value.fullName.lastName }</td>
+										<td>${order.value.address.number },
+											${order.value.address.street },
+											${order.value.address.district },
+											${order.value.address.city }</td>
+										<td>${order.key.dateCreate }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${order.payment.totalMoney }" /> ₫</td>
-										<td>${order.status }</td>
+												value="${order.key.payment.totalMoney }" /> ₫</td>
+										<td>${order.key.status }</td>
 										<td style="text-align: center;"><c:choose>
 												<c:when
-													test="${order.status == 'Đã giao' || order.status == 'Đã hủy' }">
+													test="${order.key.status == 'Đã giao' || order.key.status == 'Đã hủy' }">
 													<a href="#">Chi tiết</a>
 												</c:when>
-												<c:when test="${order.status == 'Chưa giao' }">
-													<a href="/admin/order/change-status/${order.id }">Giao hàng</a>
+												<c:when test="${order.key.status == 'Chưa giao' }">
+													<a href="/admin/order/change-status/${order.key.id }">Giao hàng</a>
 													<a href="#">Chi tiết</a>
 												</c:when>
 											</c:choose></td>

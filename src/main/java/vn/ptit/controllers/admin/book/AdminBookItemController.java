@@ -96,5 +96,13 @@ public class AdminBookItemController {
 
 		return "/admin/book/add_bookItem";
 	}
+	
+	@GetMapping("/book-item")
+	public String viewManageBookItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<BookItem> bookItems = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
+		model.addAttribute("bookItems", bookItems);
+		return "admin/book/manage_bookItem";
+	}
 
 }

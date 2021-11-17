@@ -43,4 +43,12 @@ public class AdminTiviController {
 		model.addAttribute("manufacturers", manufacturers);
 		return "admin/electronics/add_tivi";
 	}
+	
+	@GetMapping("/tivi")
+	public String viewManageTivi(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		List<Tivi> tivis = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/electronics/find-by-category/" + "Tivi", Tivi[].class));
+		model.addAttribute("tivis", tivis);
+		return "admin/electronics/manage_tivi";
+	}
 }

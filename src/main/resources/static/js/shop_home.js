@@ -205,9 +205,9 @@ var Shop = {
 			dataType: "json",
 			success: function(jsonResult) {
 				if (jsonResult.status == "400") {
-					$("span.count-item").html(jsonResult.data.val1);
-					$("#price" + slug).html(jsonResult.data.val2 + "₫");
-					$("#total_value").html(jsonResult.data.val3);
+					$("span.count-item").html(jsonResult.data[0]);
+					$("#price" + slug).html(jsonResult.data[1] + "₫");
+					$("#total_value").html(jsonResult.data[2]);
 				}
 			}
 		});
