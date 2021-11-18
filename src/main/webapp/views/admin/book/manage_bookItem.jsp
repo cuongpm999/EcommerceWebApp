@@ -67,11 +67,12 @@
 										<td>${bookItem.book.title }</td>
 										<td>${bookItem.price }</td>
 										<td>${bookItem.discount }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/edit-book-item/${bookItem.barCode }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
-											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
+											onclick="Shop.deleteProduct('${bookItem.barCode }','/admin/delete-book-item/')"
+											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
