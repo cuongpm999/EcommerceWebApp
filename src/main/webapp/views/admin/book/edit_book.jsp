@@ -47,8 +47,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="/js/fontawesome.min.js"></script>
-<!-- ----------------- -->
-
 <title>Ecommerce Project</title>
 </head>
 
@@ -82,31 +80,67 @@
 
 						<div class="card-body">
 							<div class="panel-body">
-								<form:form modelAttribute="bookItem"
-									action="/admin/add-book-item" enctype="multipart/form-data" method="post">
+								<form action="/admin/edit-book" method="post">
+									<input type="hidden" value="${book.id }" name="id" />
 									<div class="form-group">
-										<label class="required" for="txtInput">Book:</label>
-										<form:select class="form-control" path="book.id">
-											<form:options items="${books}" itemValue="id"
-												itemLabel="title" />
-										</form:select>
+										<label class="required">Author: </label>
+										<div style="height: 100px; overflow-y: scroll;">
+											<c:forEach var="authorChecked" items="${authorsChecked }">
+												<label
+													style="display: block; color: #495057; font-size: 16px;">
+													<input name="authors" type="checkbox" checked
+													value="${authorChecked.id }"> ${authorChecked.name }
+												</label>
+											</c:forEach>
+											<c:forEach var="authorNotChecked"
+												items="${authorsNotChecked }">
+												<label
+													style="display: block; color: #495057; font-size: 16px;">
+													<input name="authors" type="checkbox"
+													value="${authorNotChecked.id }">
+													${authorNotChecked.name }
+												</label>
+											</c:forEach>
+										</div>
 									</div>
 									<div class="form-group">
-										<label class="required">Price:</label>
-										<form:input path="price" class="form-control" />
+										<label class="required">Publisher: </label> <select
+											class="form-control" name="publisherId">
+											<c:forEach var="publisher" items="${publishers }">
+												<c:choose>
+													<c:when test="${publisher.id == book.publisher.id }">
+														<option value="${publisher.id }" selected>${publisher.name }</option>
+													</c:when>
+													<c:when test="${publisher.id != book.publisher.id }">
+														<option value="${publisher.id }">${publisher.name }</option>
+													</c:when>
+												</c:choose>
+												
+											</c:forEach>
+										</select>
 									</div>
 									<div class="form-group">
-										<label>Discount:</label>
-										<form:input path="discount" class="form-control" />
+										<label class="required">Title: </label> <input name="title"
+											class="form-control" value="${book.title }" />
 									</div>
 									<div class="form-group">
-										<label class="required">Images:&ensp;</label> <input
-											type="file" name="imgBookItem" multiple="multiple" />
+										<label class="required">Summary: </label>
+										<textarea name="summary" class="form-control" rows="5"
+											style="width: 100%;">${book.summary }</textarea>
 									</div>
+									<div class="form-group">
+										<label class="required">Pages: </label> <input name="pages"
+											class="form-control" type="number" value="${book.pages }" />
+									</div>
+									<div class="form-group">
+										<label class="required">Language: </label> <input
+											name="language" class="form-control" value="${book.language }" />
+									</div>
+
 									<button type="submit" class="btn btn-success">
 										<i class="fas fa-download"></i> Save
 									</button>
-								</form:form>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -116,7 +150,6 @@
 		<%@ include file="/views/admin/footer_admin.jsp"%>
 	</div>
 	</div>
-	<!-- --- -->
 
 </body>
 

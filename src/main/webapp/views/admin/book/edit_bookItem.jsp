@@ -83,14 +83,10 @@
 						<div class="card-body">
 							<div class="panel-body">
 								<form:form modelAttribute="bookItem"
-									action="/admin/add-book-item" enctype="multipart/form-data" method="post">
-									<div class="form-group">
-										<label class="required" for="txtInput">Book:</label>
-										<form:select class="form-control" path="book.id">
-											<form:options items="${books}" itemValue="id"
-												itemLabel="title" />
-										</form:select>
-									</div>
+									action="/admin/edit-book-item" method="post">
+									<form:hidden path="barCode" />
+									<form:hidden path="slug" />
+									<form:hidden path="book.id" />
 									<div class="form-group">
 										<label class="required">Price:</label>
 										<form:input path="price" class="form-control" />
@@ -98,10 +94,6 @@
 									<div class="form-group">
 										<label>Discount:</label>
 										<form:input path="discount" class="form-control" />
-									</div>
-									<div class="form-group">
-										<label class="required">Images:&ensp;</label> <input
-											type="file" name="imgBookItem" multiple="multiple" />
 									</div>
 									<button type="submit" class="btn btn-success">
 										<i class="fas fa-download"></i> Save
