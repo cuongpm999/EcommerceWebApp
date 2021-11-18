@@ -67,10 +67,10 @@
 										<td>${shoesItem.shoes.name }</td>
 										<td>${shoesItem.price }</td>
 										<td>${shoesItem.discount }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/edit-shoes-item/${shoesItem.barCode }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct('${shoesItem.barCode }','/admin/delete-shoes-item/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>

@@ -65,8 +65,7 @@
 											${order.value.fullName.lastName }</td>
 										<td>${order.value.address.number },
 											${order.value.address.street },
-											${order.value.address.district },
-											${order.value.address.city }</td>
+											${order.value.address.district }, ${order.value.address.city }</td>
 										<td>${order.key.dateCreate }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
 												value="${order.key.payment.totalMoney }" /> ₫</td>
@@ -74,11 +73,14 @@
 										<td style="text-align: center;"><c:choose>
 												<c:when
 													test="${order.key.status == 'Đã giao' || order.key.status == 'Đã hủy' }">
-													<a href="#">Chi tiết</a>
+													<a href="/admin/order/order-detail/${order.key.id }">Chi
+														tiết</a>
 												</c:when>
 												<c:when test="${order.key.status == 'Chưa giao' }">
-													<a href="/admin/order/change-status/${order.key.id }">Giao hàng</a>
-													<a href="#">Chi tiết</a>
+													<a href="/admin/order/change-status/${order.key.id }">Giao
+														hàng</a>
+													<a href="/admin/order/order-detail/${order.key.id }">Chi
+														tiết</a>
 												</c:when>
 											</c:choose></td>
 									</tr>

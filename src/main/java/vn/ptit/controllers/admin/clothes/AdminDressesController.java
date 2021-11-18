@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -39,5 +40,24 @@ public class AdminDressesController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes/find-by-category/" + "Dresses", Dresses[].class));
 		model.addAttribute("dresses", dresses);
 		return "admin/clothes/manage_dresses";
+	}
+	
+	@GetMapping("/edit-dresses/{id}")
+	public String viewEditDresses(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		Dresses dresses = rest.getForObject("http://localhost:6969/rest/api/clothes/dresses/find-by-id/"+id, Dresses.class);
+		model.addAttribute("dresses",dresses);
+		return "admin/clothes/edit_dresses";
+	}
+	
+	@PostMapping("/edit-dresses")
+	public String updateDresses(@ModelAttribute("dresses") Dresses dresses, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.postForObject("http://localhost:6969/rest/api/clothes/dresses/insert", dresses, Dresses.class);
+		return "redirect:/admin/clothes/dresses";
+	}
+	
+	@GetMapping("/delete-dresses/{id}")
+	public String viewDeleteDresses(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/clothes/dresses/delete-by-id/"+id, Integer.class);
+		return "redirect:/admin/clothes/dresses";
 	}
 }

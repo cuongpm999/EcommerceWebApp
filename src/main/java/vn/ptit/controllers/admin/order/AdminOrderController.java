@@ -45,4 +45,13 @@ public class AdminOrderController {
 		rest.postForObject("http://localhost:6969/rest/api/order/change-status", status, Order.class);
 		return "redirect:/admin/order";
 	}
+	
+	@GetMapping("/order/order-detail/{orderID}")
+	public String viewOrderDetail(@PathVariable("orderID") int orderID, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		Order order = rest.getForObject("http://localhost:6969/rest/api/order/find-by-id/"+orderID , Order.class);
+		Customer customer = rest.getForObject("http://localhost:6969/rest/api/customer/get-customer-by-order/"+orderID, Customer.class);
+		model.addAttribute("order", order);
+		model.addAttribute("customer", customer);
+		return "/admin/order/order_detail";
+	}
 }

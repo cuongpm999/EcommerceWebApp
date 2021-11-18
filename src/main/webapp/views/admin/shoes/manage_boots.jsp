@@ -69,10 +69,10 @@
 										<td>${boot.color }</td>
 										<td>${boot.size }</td>
 										<td>${boot.isShoelace == true ? 'Yes' : 'No' }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/shoes/edit-boots/${boot.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct(${boot.id },'/admin/shoes/delete-boots/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>

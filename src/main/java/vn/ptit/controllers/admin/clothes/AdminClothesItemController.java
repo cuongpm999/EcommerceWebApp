@@ -1,7 +1,6 @@
 package vn.ptit.controllers.admin.clothes;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,5 +95,28 @@ public class AdminClothesItemController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes-item/find-all", ClothesItem[].class));
 		model.addAttribute("clothesItems", clothesItems);
 		return "admin/clothes/manage_clothesItem";
+	}
+	
+	@GetMapping("/edit-clothes-item/{code}")
+	public String viewEditClothesItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		ClothesItem clothesItem = rest.getForObject("http://localhost:6969/rest/api/clothes-item/find-by-code/"+code, ClothesItem.class);
+		model.addAttribute("clothesItem", clothesItem);
+		return "admin/clothes/edit_clothesItem";
+	}
+
+	@PostMapping("/edit-clothes-item")
+	public String editClothesItem(@ModelAttribute("clothesItem") ClothesItem clothesItem, final ModelMap model,
+			final HttpServletRequest request, final HttpServletResponse response)
+			throws IllegalStateException, IOException {
+		rest.postForObject("http://localhost:6969/rest/api/clothes-item/update", clothesItem,
+				ClothesItem.class);
+
+		return "redirect:/admin/clothes-item";
+	}
+	
+	@GetMapping("/delete-clothes-item/{code}")
+	public String viewDeleteCLothesItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/clothes-item/delete-by-code/"+code, Integer.class);
+		return "redirect:/admin/clothes-item";
 	}
 }

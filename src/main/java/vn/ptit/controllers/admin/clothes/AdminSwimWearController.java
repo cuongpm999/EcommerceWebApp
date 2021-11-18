@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -39,5 +40,24 @@ public class AdminSwimWearController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/clothes/find-by-category/" + "Swimwear", SwimWear[].class));
 		model.addAttribute("swimwears", swimwears);
 		return "admin/clothes/manage_swimwear";
+	}
+	
+	@GetMapping("/edit-swimwear/{id}")
+	public String viewEditSwimwear(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		SwimWear swimwear = rest.getForObject("http://localhost:6969/rest/api/clothes/swimwear/find-by-id/"+id, SwimWear.class);
+		model.addAttribute("swimwear",swimwear);
+		return "admin/clothes/edit_swimwear";
+	}
+	
+	@PostMapping("/edit-swimwear")
+	public String updateSwimwear(@ModelAttribute("swimwear") SwimWear swimwear, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.postForObject("http://localhost:6969/rest/api/clothes/swimwear/insert", swimwear, SwimWear.class);
+		return "redirect:/admin/clothes/swimwear";
+	}
+	
+	@GetMapping("/delete-swimwear/{id}")
+	public String viewDeleteSwimwear(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/clothes/swimwear/delete-by-id/"+id, Integer.class);
+		return "redirect:/admin/clothes/swimwear";
 	}
 }

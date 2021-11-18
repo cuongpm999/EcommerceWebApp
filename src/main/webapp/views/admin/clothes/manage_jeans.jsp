@@ -70,10 +70,10 @@
 										<td>${jean.color }</td>
 										<td>${jean.size }</td>
 										<td>${jean.pipe }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/clothes/edit-jeans/${jean.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct(${jean.id },'/admin/clothes/delete-jeans/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>
