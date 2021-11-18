@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="/css/manage.css">
 <!-- ----------------- -->
 
-<title>Laptop Project</title>
+<title>Ecommerce Project</title>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
 				<div class="hoadon">
 					<div class="row header_hoadon">
 						<div class="col-md-3">
-							<img src="${pageContext.request.contextPath}/img/logo.png"
+							<img src="/img/logo1.png"
 								alt="logo">
 						</div>
 						<div class="col-md-6">
@@ -65,11 +65,10 @@
 					<div class="row congty_hoadon">
 						<ul class="list-unstyled">
 							<li><span class="chuthich">Đơn vị bán hàng:</span> <span
-								class="congty" style="margin-left: 64px;">CÔNG TY
-									COMPUTER CƯỜNG PHẠM</span></li>
+								class="congty" style="margin-left: 64px;">ONLINE STORE</span></li>
 							<li><span class="chuthich">Mã số thuế:</span> <span
 								class="thongtin" style="margin-left: 107px;">0123456789 -
-									${hoa_don.id }</span></li>
+									${order.id }</span></li>
 							<li><span class="chuthich">Địa chỉ:</span> <span
 								class="thongtin" style="margin-left: 144px;">19A Xa La,
 									Hà Đông, Hà Nội</span></li>
@@ -93,12 +92,10 @@
 								class="thongtin" style="margin-left: 145px;">${customer.address.number },
 									${customer.address.street }, ${customer.address.district },
 									${customer.address.city }</span></li>
-							<%-- 							<li><span class="chuthich">Hình thức thanh toán:</span> <span
-								class="thongtin" style="margin-left: 25px;">${order.payment.payment_type }</span></li> --%>
 							<li><span class="chuthich">Đơn vị vận chuyển:</span> <span
 								class="thongtin" style="margin-left: 50px;">${order.shipment.name }&emsp;<fmt:formatNumber
 										type="number" maxFractionDigits="3"
-										value="${order.shipment.price }" /> Đ
+										value="${order.shipment.price }" /> ₫
 							</span></li>
 						</ul>
 						<hr>
@@ -134,10 +131,10 @@
 											</div>
 										</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />&nbsp;Đ</td>
+												value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />&nbsp;₫</td>
 										<td>${lineElectronicsItem.quanity }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineElectronicsItem.quanity*(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100)  }" />&nbsp;Đ</td>
+												value="${lineElectronicsItem.quanity*(lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100)  }" />&nbsp;₫</td>
 									</tr>
 								</c:forEach>
 								
@@ -159,10 +156,10 @@
 											</div>
 										</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }" />&nbsp;Đ</td>
+												value="${lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100 }" />&nbsp;₫</td>
 										<td>${lineBookItem.quanity }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineBookItem.quanity*(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) }" />&nbsp;Đ</td>
+												value="${lineBookItem.quanity*(lineBookItem.bookItem.price*(100-lineBookItem.bookItem.discount)/100) }" />&nbsp;₫</td>
 									</tr>
 								</c:forEach>
 								
@@ -184,10 +181,10 @@
 											</div>
 										</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }" />&nbsp;Đ</td>
+												value="${lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100 }" />&nbsp;₫</td>
 										<td>${lineClothesItem.quanity }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineClothesItem.quanity*(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) }" />&nbsp;Đ</td>
+												value="${lineClothesItem.quanity*(lineClothesItem.clothesItem.price*(100-lineClothesItem.clothesItem.discount)/100) }" />&nbsp;₫</td>
 									</tr>
 								</c:forEach>
 								
@@ -209,10 +206,10 @@
 											</div>
 										</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" />&nbsp;Đ</td>
+												value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" />&nbsp;₫</td>
 										<td>${lineShoesItem.quanity }</td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
-												value="${lineShoesItem.quanity*(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) }" />&nbsp;Đ</td>
+												value="${lineShoesItem.quanity*(lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100) }" />&nbsp;₫</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -221,7 +218,7 @@
 							<div class="tongtienthanhtoan">
 								Tổng tiền đơn hàng : <strong><span id="total_value"><fmt:formatNumber
 											type="number" maxFractionDigits="3"
-											value="${order.payment.totalMoney }" /> </span> Đ</strong>
+											value="${order.payment.totalMoney }" /> </span> ₫</strong>
 							</div>
 						</div>
 					</div>

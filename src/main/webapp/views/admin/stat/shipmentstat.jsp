@@ -50,7 +50,7 @@
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th>Index</th>
+									<th>#</th>
 									<th>Name</th>
 									<th>Price</th>
 									<th>Address</th>
@@ -62,7 +62,8 @@
 									<tr>
 										<td>${loop.index + 1}</td>
 										<td>${shipmentStat.name }</td>
-										<td>${shipmentStat.price }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${shipmentStat.price }" /> ₫</td>
 										<td>${shipmentStat.address }</td>
 										<td>${shipmentStat.totalQuantity }</td>
 									</tr>

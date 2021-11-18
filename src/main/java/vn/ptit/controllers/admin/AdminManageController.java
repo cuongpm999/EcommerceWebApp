@@ -95,7 +95,7 @@ public class AdminManageController {
 		List<Order> orders = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/order/find-by-status-success", Order[].class));
 		List<ItemStat> itemStats = itemService.statItemBestSeller(orders);
 		model.addAttribute("itemStats", itemStats);
-		return "admin/itemstat";
+		return "admin/stat/itemstat";
 	}
 
 	@GetMapping("/statistic/customer")
@@ -125,7 +125,7 @@ public class AdminManageController {
 
 		});
 		model.addAttribute("customerStats", customerStats);
-		return "admin/customerstat";
+		return "admin/stat/customerstat";
 	}
 
 	@GetMapping("/statistic/shipment")
@@ -150,7 +150,7 @@ public class AdminManageController {
 			}
 		});
 		model.addAttribute("shipmentStats", shipmentStats);
-		return "admin/statistic_shipment";
+		return "admin/stat/shipmentstat";
 	}
 
 }

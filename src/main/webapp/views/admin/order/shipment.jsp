@@ -62,7 +62,8 @@
 								<c:forEach items="${shipments }" var="shipment">
 									<tr>
 										<td>${shipment.name }</td>
-										<td>${shipment.price }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${shipment.price }" /> ₫</td>
 										<td>${shipment.address }</td>
 										<td><a href="/admin/edit-shipment/${shipment.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>

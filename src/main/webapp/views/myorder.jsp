@@ -208,7 +208,7 @@ body {
 										<td><img style="height: 120px;"
 											src="/files_item/${lineElectronicsItem.electronicsItem.imgElectronicsItems.get(0).name }" /></td>
 										<td><a href="javascript:void(0);"
-											style="font-size: 15px;">${lineElectronicsItem.electronicsItem.electronics.name }</a></td>
+											style="font-size: 15px; color: black;">${lineElectronicsItem.electronicsItem.electronics.name }</a></td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
 												value="${lineElectronicsItem.electronicsItem.price*(100-lineElectronicsItem.electronicsItem.discount)/100 }" />
 											₫</td>
@@ -227,7 +227,7 @@ body {
 									<tr>
 										<td><img style="height: 120px;"
 											src="/files_item/${lineShoesItem.shoesItem.imgShoesItems.get(0).name }" /></td>
-										<td><a href="javascript:void(0);" style="font-size: 15px;">${lineShoesItem.shoesItem.shoes.name }</a></td>
+										<td><a href="javascript:void(0);" style="font-size: 15px; color: black;">${lineShoesItem.shoesItem.shoes.name }</a></td>
 										<td><fmt:formatNumber type="number" maxFractionDigits="3"
 												value="${lineShoesItem.shoesItem.price*(100-lineShoesItem.shoesItem.discount)/100 }" /> ₫</td>
 										<td style="text-align: center">${lineShoesItem.quanity }</td>

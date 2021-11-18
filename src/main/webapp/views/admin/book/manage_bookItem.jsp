@@ -63,9 +63,10 @@
 									<tr>
 										<td><img
 											src="/files_item/${bookItem.imgBookItems.get(0).name }"
-											alt="product" style="width: 150px; height: 150px"></td>
+											alt="product" style="height: 150px"></td>
 										<td>${bookItem.book.title }</td>
-										<td>${bookItem.price }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${bookItem.price }" /> ₫</td>
 										<td>${bookItem.discount }</td>
 										<td><a href="/admin/edit-book-item/${bookItem.barCode }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>

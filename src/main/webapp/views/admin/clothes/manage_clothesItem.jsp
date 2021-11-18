@@ -65,7 +65,8 @@
 											src="/files_item/${clothesItem.imgClothesItems.get(0).name }"
 											alt="product" style="width: 150px; height: 150px"></td>
 										<td>${clothesItem.clothes.name }</td>
-										<td>${clothesItem.price }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${clothesItem.price }" /> ₫</td>
 										<td>${clothesItem.discount }</td>
 										<td><a href="/admin/edit-clothes-item/${clothesItem.barCode }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>

@@ -316,7 +316,7 @@ var Shop = {
 	},
 	
 	deleteProduct: function(id,link){
-		var flag = confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
+		var flag = confirm("Bạn có chắc chắn muốn xóa?");
 		if (flag == true) {
 			location.href = link + id;
 		}

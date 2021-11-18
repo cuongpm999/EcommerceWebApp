@@ -66,7 +66,8 @@
 											src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
 											alt="product" style="width: 150px; height: 150px"></td>
 										<td>${electronicsItem.electronics.name }</td>
-										<td>${electronicsItem.price }</td>
+										<td><fmt:formatNumber type="number" maxFractionDigits="3"
+												value="${electronicsItem.price }" /> ₫</td>
 										<td>${electronicsItem.discount }</td>
 										<td><a href="/admin/edit-electronics-item/${electronicsItem.barCode }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
