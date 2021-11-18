@@ -72,10 +72,10 @@
 										<td>${dresse.size }</td>
 										<td>${dresse.length }</td>
 										<td>${dresse.pattern }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/clothes/edit-dresses/${dresse.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct(${dresse.id },'/admin/clothes/delete-dresses/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>

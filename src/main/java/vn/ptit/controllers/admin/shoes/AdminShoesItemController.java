@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,28 +35,32 @@ import vn.ptit.utils.RandomString;
 @Controller
 @RequestMapping("/admin")
 public class AdminShoesItemController {
-@Autowired Cloudinary cloudinary;
-	
+	@Autowired
+	Cloudinary cloudinary;
+
 	@Value("${file.upload.path}")
 	private String attachmentPath;
-	
+
 	private RestTemplate rest = new RestTemplate();
+
 	@GetMapping("/add-shoes-item")
 	public String viewAddShoesItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
-		List<Shoes> shoes = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/shoes/find-all", Shoes[].class));
+		List<Shoes> shoes = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes/find-all", Shoes[].class));
 		model.addAttribute("shoes", shoes);
 		model.addAttribute("shoesItem", new ShoesItem());
 		return "admin/shoes/add_shoesItem";
 	}
-	
+
 	@PostMapping("/add-shoes-item")
 	public String addShoesItem(@RequestParam("shoesImage") MultipartFile[] shoesImage,
-			@ModelAttribute("shoesItem") ShoesItem shoesItem, ModelMap model, HttpServletRequest req, HttpServletResponse resp) 
-					throws IOException {
-		List<Shoes> shoes = Arrays.asList(rest.getForObject("http://localhost:6969/rest/api/shoes/find-all", Shoes[].class));
+			@ModelAttribute("shoesItem") ShoesItem shoesItem, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) throws IOException {
+		List<Shoes> shoes = Arrays
+				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes/find-all", Shoes[].class));
 		model.addAttribute("shoes", shoes);
 		for (Shoes shoe : shoes) {
-			if(shoe.getId() == shoesItem.getShoes().getId()) {
+			if (shoe.getId() == shoesItem.getShoes().getId()) {
 				shoesItem.setShoes(shoe);
 				break;
 			}
@@ -77,7 +82,7 @@ public class AdminShoesItemController {
 						ObjectUtils.asMap("resource_type", "auto", "folder", "EcommerceProject/ShoesItem"));
 				imgShoesItem.setName((String) uploadResult.get("public_id") + '.'
 						+ multipartFile.getContentType().substring(multipartFile.getContentType().indexOf('/') + 1));
-				
+
 				imgShoesItems.add(imgShoesItem);
 			}
 		}
@@ -85,12 +90,36 @@ public class AdminShoesItemController {
 		rest.postForObject("http://localhost:6969/rest/api/shoes-item/insert", shoesItem, ShoesItem.class);
 		return "admin/shoes/add_shoesItem";
 	}
-	
+
 	@GetMapping("/shoes-item")
 	public String viewManageShoesItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<ShoesItem> shoesItems = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes-item/find-all", ShoesItem[].class));
 		model.addAttribute("shoesItems", shoesItems);
 		return "admin/shoes/manage_shoesItem";
+	}
+
+	@GetMapping("/edit-shoes-item/{code}")
+	public String viewEditShoesItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
+		ShoesItem shoesItem = rest.getForObject("http://localhost:6969/rest/api/shoes-item/find-by-code/" + code,
+				ShoesItem.class);
+		model.addAttribute("shoesItem", shoesItem);
+		return "admin/shoes/edit_shoesItem";
+	}
+
+	@PostMapping("/edit-shoes-item")
+	public String editShoesItem(@ModelAttribute("shoesItem") ShoesItem shoesItem, final ModelMap model,
+			final HttpServletRequest request, final HttpServletResponse response)
+			throws IllegalStateException, IOException {
+		rest.postForObject("http://localhost:6969/rest/api/shoes-item/update", shoesItem, ShoesItem.class);
+		return "redirect:/admin/shoes-item";
+	}
+
+	@GetMapping("/delete-shoes-item/{code}")
+	public String viewDeleteShoesItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/shoes-item/delete-by-code/" + code, Integer.class);
+		return "redirect:/admin/shoes-item";
 	}
 }
