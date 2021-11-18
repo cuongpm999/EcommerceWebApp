@@ -47,6 +47,7 @@
 							Item</a> <a class="dropdown-item" href="/admin/shoes-item">Shoes
 							Item</a>
 					</div></li>
+				<li class="nav-item"><a class="nav-link" href="/admin/customer"><i class="fas fa-users"></i>Customer</a></li>
 				<li class="nav-item"><a class="nav-link" href="/admin/order"><i class="fas fa-shopping-cart"></i>Order</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
@@ -77,21 +78,10 @@
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
-					data-toggle="dropdown"> <%-- <c:choose>
-									<c:when test="${empty userDis.userAttachment.name}">
-										<img class="icon" alt="user" src="/img/anh-dai-dien-1.jpg">
-									</c:when>
-									<c:when test="${not empty userDis.userAttachment.name}">
-										<img class="icon" alt="user"
-											src="/files_users/${userDis.userAttachment.name }">
-									</c:when>
-								</c:choose> --%> <span class="text-icon"> <%-- ${userDis.username } --%>
-					</span>
+					data-toggle="dropdown"><img class="icon" alt="user" src="/img/icons8-user-male-100.png"><div class="text-icon">${pageContext.request.remoteUser }</div>
 				</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/user-details"> <i
-							class="far fa-user"></i>Profile
-						</a> <a class="dropdown-item" href="/logout"><i
+					<a class="dropdown-item" href="/logout-employee"><i
 							class="fas fa-power-off"></i>Logout</a>
 					</div></li>
 			</ul>

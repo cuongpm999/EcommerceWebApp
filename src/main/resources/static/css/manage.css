@@ -169,7 +169,8 @@
 }
 
 .page-container .header-container .text-icon {
-	color: #000
+	color: #000;
+	display: inline-block;
 }
 
 .page-container .header-container .dropdown-toggle::after {

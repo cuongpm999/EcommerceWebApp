@@ -38,47 +38,41 @@
 	<!-- MAIN -->
 	<div id="main">
 		<%@ include file="/views/admin/header_admin.jsp"%>
+
 		<div class="main-content">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-add">
 						<input class="form-control" id="myInput" type="text"
-							placeholder="Search.."> <a
-							href="/admin/add-electronics-item" class="btn btn-success"
-							style="margin-top: 10px"><i class="fas fa-plus"></i> Add
-							electronics item</a>
+							placeholder="Search..">
 						<h1 class="my-3"></h1>
 
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th>Image</th>
+									<th>#</th>
 									<th>Name</th>
-									<th>Price</th>
-									<th>Discount</th>
+									<th>Address</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="myTable">
-								<c:forEach items="${electronicsItems }" var="electronicsItem">
+								<c:forEach items="${customers }" var="customer" varStatus="loop">
 									<tr>
-										<td><img
-											src="/files_item/${electronicsItem.imgElectronicsItems.get(0).name }"
-											alt="product" style="width: 150px; height: 150px"></td>
-										<td>${electronicsItem.electronics.name }</td>
-										<td>${electronicsItem.price }</td>
-										<td>${electronicsItem.discount }</td>
-										<td><a href="/admin/edit-electronics-item/${electronicsItem.barCode }"
-											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
-											<a href="javascript:void(0);"
-											onclick="Shop.deleteProduct('${electronicsItem.barCode }','/admin/delete-electronics-item/')"
+										<td>${loop.index + 1 }</td>
+										<td>${customer.fullName.firstName }
+											${customer.fullName.middleName } ${customer.fullName.lastName }</td>
+										<td>${customer.address.number },
+											${customer.address.street }, ${customer.address.district },
+											${customer.address.city }</td>
+										<td><a href="javascript:void(0);"
+											onclick="Shop.deleteProduct(${customer.id },'/admin/customer/delete-customer/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
-
 				</div>
 			</div>
 		</div>
