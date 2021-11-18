@@ -10,11 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import vn.ptit.models.shoes.Boots;
 import vn.ptit.models.shoes.HighHeels;
 
 @Controller
@@ -41,5 +41,24 @@ public class AdminHighHeelsController {
 				.asList(rest.getForObject("http://localhost:6969/rest/api/shoes/find-by-category/" + "HighHeels", HighHeels[].class));
 		model.addAttribute("highheels", highheels);
 		return "admin/shoes/manage_highheels";
+	}
+	
+	@GetMapping("/edit-highheels/{id}")
+	public String viewEditHighHeels(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		HighHeels highheels = rest.getForObject("http://localhost:6969/rest/api/shoes/highheels/find-by-id/"+id, HighHeels.class);
+		model.addAttribute("highheels",highheels);
+		return "admin/shoes/edit_highheels";
+	}
+	
+	@PostMapping("/edit-highheels")
+	public String editHighHeels(@ModelAttribute("highheels") HighHeels highheels, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.postForObject("http://localhost:6969/rest/api/shoes/highheels/insert", highheels, HighHeels.class);
+		return "redirect:/admin/shoes/highheels";
+	}
+	
+	@GetMapping("/delete-highheels/{id}")
+	public String viewDeleteHighHeels(@PathVariable("id") int id, ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/shoes/highheels/delete-by-id/"+id, Integer.class);
+		return "redirect:/admin/shoes/highheels";
 	}
 }

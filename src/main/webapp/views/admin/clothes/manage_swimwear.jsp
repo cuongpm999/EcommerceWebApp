@@ -72,10 +72,10 @@
 										<td>${swimwear.bustSize }</td>
 										<td>${swimwear.waistSize }</td>
 										<td>${swimwear.hipsSize }</td>
-										<td><a href="/admin/edit-laptop/${book.id }"
+										<td><a href="/admin/clothes/edit-swimwear/${swimwear.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
+											onclick="Shop.deleteProduct(${swimwear.id },'/admin/clothes/delete-swimwear/')"
 											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>

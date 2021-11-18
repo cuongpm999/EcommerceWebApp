@@ -69,11 +69,11 @@
 									<td>${highheel.color }</td>
 									<td>${highheel.size }</td>
 									<td>${highheel.height }</td>
-									<td><a href="/admin/edit-laptop/${book.id }"
-										class="btn btn-primary">Edit <i class="fas fa-edit"></i></a> <a
-										href="javascript:void(0);"
-										onclick="Shop.deleteForm('modalDeleteForm', ${book.id }, '/rest/api/laptop/delete')"
-										class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
+									<td><a href="/admin/shoes/edit-highheels/${highheel.id }"
+											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
+											<a href="javascript:void(0);"
+											onclick="Shop.deleteProduct(${highheel.id },'/admin/shoes/delete-highheels/')"
+											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
