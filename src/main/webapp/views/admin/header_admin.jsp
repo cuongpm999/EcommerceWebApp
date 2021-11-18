@@ -47,15 +47,18 @@
 							Item</a> <a class="dropdown-item" href="/admin/shoes-item">Shoes
 							Item</a>
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="/admin/order"><i class="fas fa-shopping-cart"></i>Order</a></li>
+				<li class="nav-item"><a class="nav-link" href="/admin/order"><i
+						class="fas fa-shopping-cart"></i>Order</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbardrop"
 					data-toggle="dropdown"><i class="fas fa-chart-bar"></i>Statistics</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/manage/statistic/item">Item</a> <a
-							class="dropdown-item" href="/admin/manage/statistic/customer">Customer</a> <a
-							class="dropdown-item" href="/admin/manage/statistic/shipment">Shipment</a>
+						<a class="dropdown-item" href="/admin/manage/statistic/item">Item</a>
+						<a class="dropdown-item" href="/admin/manage/statistic/customer">Customer</a>
+						<a class="dropdown-item" href="/admin/manage/statistic/shipment">Shipment</a>
 					</div></li>
+				<li class="nav-item"><a class="nav-link" href="/admin/shipment"><i
+						class="fas fa-shipping-fast"></i>Shipment</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i
 						class="fas fa-envelope"></i>Email</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i

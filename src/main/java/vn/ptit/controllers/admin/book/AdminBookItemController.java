@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,13 +67,13 @@ public class AdminBookItemController {
 				bookItem.setBook(books.get(i));
 			}
 		}
-		
+
 		RandomString randomString = new RandomString(13, new SecureRandom(), RandomString.digits);
 		bookItem.setBarCode(randomString.nextString());
 		bookItem.setSlug(new CreateSlug().create(bookItem.getBook().getTitle()));
-		
+
 		List<ImgBookItem> listImgBookItems = new ArrayList<ImgBookItem>();
-		
+
 		Map uploadResult = null;
 
 		if (imgBookItem != null && imgBookItem.length > 0) {
@@ -89,20 +90,45 @@ public class AdminBookItemController {
 				listImgBookItems.add(img);
 			}
 		}
-		
-		bookItem.setImgBookItems(listImgBookItems);
-		rest.postForObject("http://localhost:6969/rest/api/book-item/insert", bookItem,
-				BookItem.class);
 
-		return "/admin/book/add_bookItem";
+		bookItem.setImgBookItems(listImgBookItems);
+		rest.postForObject("http://localhost:6969/rest/api/book-item/insert", bookItem, BookItem.class);
+
+		return "redirect:/admin/book-item";
 	}
-	
+
 	@GetMapping("/book-item")
 	public String viewManageBookItem(ModelMap model, HttpServletRequest req, HttpServletResponse resp) {
 		List<BookItem> bookItems = Arrays
 				.asList(rest.getForObject("http://localhost:6969/rest/api/book-item/find-all", BookItem[].class));
 		model.addAttribute("bookItems", bookItems);
 		return "admin/book/manage_bookItem";
+	}
+
+	@GetMapping("/edit-book-item/{code}")
+	public String editBookItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
+		BookItem bookItem = rest.getForObject("http://localhost:6969/rest/api/book-item/find-by-code/" + code,
+				BookItem.class);
+		model.addAttribute("bookItem", bookItem);
+		return "admin/book/edit_bookItem";
+	}
+
+	@PostMapping("/edit-book-item")
+	public String editBookItem(@ModelAttribute("bookItem") BookItem bookItem, final ModelMap model,
+			final HttpServletRequest request, final HttpServletResponse response)
+			throws IllegalStateException, IOException {
+
+		rest.postForObject("http://localhost:6969/rest/api/book-item/update", bookItem, BookItem.class);
+
+		return "redirect:/admin/book-item";
+	}
+
+	@GetMapping("/delete-book-item/{code}")
+	public String deleteBookItem(@PathVariable("code") String code, ModelMap model, HttpServletRequest req,
+			HttpServletResponse resp) {
+		rest.getForObject("http://localhost:6969/rest/api/book-item/delete-by-code/" + code, Integer.class);
+		return "redirect:/admin/book-item";
 	}
 
 }

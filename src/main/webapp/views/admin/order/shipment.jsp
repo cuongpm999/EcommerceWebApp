@@ -38,44 +38,37 @@
 	<!-- MAIN -->
 	<div id="main">
 		<%@ include file="/views/admin/header_admin.jsp"%>
-
 		<div class="main-content">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-add">
 						<input class="form-control" id="myInput" type="text"
-							placeholder="Search.."> <a href="/admin/add-book"
-							class="btn btn-success" style="margin-top: 10px"><i
-							class="fas fa-plus"></i> Add book</a>
+							placeholder="Search.."> <a
+							href="/admin/add-shipment" class="btn btn-success"
+							style="margin-top: 10px"><i class="fas fa-plus"></i> Add
+							Shipment</a>
 						<h1 class="my-3"></h1>
 
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th>Title</th>
-									<th>Pages</th>
-									<th>Language</th>
-									<th>Publisher</th>
-									<th>Author</th>
-									<th>Action</th>
+									<th>Name</th>
+									<th>Price</th>
+									<th>Address</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody id="myTable">
-								<c:forEach items="${books }" var="book">
+								<c:forEach items="${shipments }" var="shipment">
 									<tr>
-										<td>${book.title }</td>
-										<td>${book.pages }</td>
-										<td>${book.language }</td>
-										<td>${book.publisher.name }</td>
-										<td><c:forEach items="${book.authors }" var="author">
-												<p>${author.name }</p>
-											</c:forEach></td>
-										<td><a href="/admin/edit-book/${book.id }"
+										<td>${shipment.name }</td>
+										<td>${shipment.price }</td>
+										<td>${shipment.address }</td>
+										<td><a href="/admin/edit-shipment/${shipment.id }"
 											class="btn btn-primary">Edit <i class="fas fa-edit"></i></a>
 											<a href="javascript:void(0);"
-											onclick="Shop.deleteProduct(${book.id },'/admin/delete-book/')"
-											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a>
-										</td>
+											onclick="Shop.deleteProduct(${shipment.id },'/admin/delete-shipment/')"
+											class="btn btn-danger">Delete <i class="fas fa-eraser"></i></a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -85,6 +78,7 @@
 			</div>
 		</div>
 		<%@ include file="/views/admin/footer_admin.jsp"%>
+	</div>
 	</div>
 
 </body>
