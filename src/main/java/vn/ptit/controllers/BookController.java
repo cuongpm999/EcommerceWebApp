@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.sun.xml.internal.stream.Entity;
-
 import vn.ptit.models.book.Author;
 import vn.ptit.models.book.BookItem;
 import vn.ptit.models.book.Publisher;

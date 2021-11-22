@@ -178,6 +178,13 @@
 				</c:forEach>
 			</div>
 		</div>
+		
+		<div class="shoes">
+			<h4 class="mb-4">Hỏi đáp về sản phẩm</h4>
+			<div class="comment-fb">
+				<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/${shoesItemDetail.barCode}" data-width="100%" data-numposts="5"></div>
+			</div>
+		</div>
 	</div>
 
 	<!-- FOOTER -->

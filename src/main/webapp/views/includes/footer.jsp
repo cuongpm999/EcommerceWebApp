@@ -78,3 +78,8 @@
 <div id="toTop">
 	<img src="/img/arrow5-up-512.png" id="onTop" />
 </div>
+
+<div id="hotline">
+	<a href="tel:0961656067" class="call-icon" rel="nofollow"> <img
+		src="/img/icon-hotline.gif" id="hotline_img"></a>
+</div>

@@ -241,3 +241,31 @@ h3.tieu-de::after {
     bottom:20px;
     cursor:pointer
 }
+#hotline_img {
+	width: 65px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 8px;
+	border-radius: 50%;
+	position: relative;
+	animation-name: example;
+	animation-duration: 4s;
+	animation-iteration-count: infinite
+}
+
+#hotline {
+	position: fixed;
+	left: 22px;
+	bottom: 87px;
+	cursor: pointer
+}
+
+@keyframes example {
+	from {
+		border: 5px solid rgba(188, 192, 194, .4)
+	}
+	to {
+		border: 10px solid rgba(188, 192, 194, .4)
+	}
+}

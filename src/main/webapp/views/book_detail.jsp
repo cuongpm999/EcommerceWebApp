@@ -105,50 +105,58 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="book">
-				<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">Các
-					sản phẩm tương tự</h3>
-				<div class="row">
-					<c:forEach var="bookItem" items="${bookItems }" varStatus="loop">
-						<c:if test="${loop.index <4 }">
-							<div class="col-md-3">
-								<div style="text-align: center; width: 100%;">
-									<a href="/book/${bookItem.slug }"><img
-										src="/files_item/${bookItem.imgBookItems.get(0).name }"
-										alt="${bookItem.book.title }"></a>
-								</div>
-								<div class="infor" style="text-align: center;">
-									<a href="/book/${bookItem.slug }">
-										<h6>${bookItem.book.title }</h6>
-									</a>
-									<c:choose>
-
-										<c:when test="${bookItem.discount > 0}">
-											<div class="gia-goc">
-												<p class="gia-chinh">
-													<fmt:formatNumber type="number" maxFractionDigits="3"
-														value="${bookItem.price }" />
-													₫
-												</p>
-												<p class="khuyen-mai">(Tiết kiệm: ${bookItem.discount}%)</p>
-											</div>
-										</c:when>
-									</c:choose>
-									<h6 class="gia-ban">
-										<fmt:formatNumber type="number" maxFractionDigits="3"
-											value="${bookItem.price*(100-bookItem.discount)/100 }" />
-										₫
-									</h6>
-									<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i
-										class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
-								</div>
+		<div class="book">
+			<h3 class="tieu-de" style="margin-top: 20px; text-align: center;">Các
+				sản phẩm tương tự</h3>
+			<div class="row">
+				<c:forEach var="bookItem" items="${bookItems }" varStatus="loop">
+					<c:if test="${loop.index <4 }">
+						<div class="col-md-3">
+							<div style="text-align: center; width: 100%;">
+								<a href="/book/${bookItem.slug }"><img
+									src="/files_item/${bookItem.imgBookItems.get(0).name }"
+									alt="${bookItem.book.title }"></a>
 							</div>
-						</c:if>
-					</c:forEach>
-				</div>
-			</div>
+							<div class="infor" style="text-align: center;">
+								<a href="/book/${bookItem.slug }">
+									<h6>${bookItem.book.title }</h6>
+								</a>
+								<c:choose>
 
+									<c:when test="${bookItem.discount > 0}">
+										<div class="gia-goc">
+											<p class="gia-chinh">
+												<fmt:formatNumber type="number" maxFractionDigits="3"
+													value="${bookItem.price }" />
+												₫
+											</p>
+											<p class="khuyen-mai">(Tiết kiệm: ${bookItem.discount}%)</p>
+										</div>
+									</c:when>
+								</c:choose>
+								<h6 class="gia-ban">
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${bookItem.price*(100-bookItem.discount)/100 }" />
+									₫
+								</h6>
+								<a href="javascript:Shop.addToCart('${bookItem.slug}','book');"><i
+									class="fas fa-shopping-cart"></i>&nbsp;Mua ngay</a>
+							</div>
+						</div>
+					</c:if>
+				</c:forEach>
+			</div>
+		</div>
+
+		<div class="book">
+			<h4 class="mb-4">Hỏi đáp về sản phẩm</h4>
+			<div class="comment-fb">
+				<div class="fb-comments"
+					data-href="https://developers.facebook.com/docs/plugins/${bookItem.barCode}"
+					data-width="100%" data-numposts="5"></div>
+			</div>
 		</div>
 	</div>
 	<!-- FOOTER -->
