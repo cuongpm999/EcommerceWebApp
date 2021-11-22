@@ -63,8 +63,8 @@ public class CustomerController {
 			}
 		}
 		for (int i = 0; i < customerMembers.size(); i++) {
-			if (customerMembers.get(i).getAccount() != null && customerMembers.get(i).getAccount().getUsername()
-					.equalsIgnoreCase(customerMember.getAccount().getUsername())) {
+			if (customerMembers.get(i).getAccount() != null && customerMembers.get(i).getAccount().getUsername() != null
+					&& customerMembers.get(i).getAccount().getUsername().equalsIgnoreCase(customerMember.getAccount().getUsername())) {
 				flagUsername = true;
 				break;
 			}
@@ -141,6 +141,8 @@ public class CustomerController {
 			fullName.setFirstName(googlePojo.getName());
 			customerMember.setFullName(fullName);
 			customerMember.setPoint(0);
+			Address address = new Address(0, googlePojo.getLocale(), googlePojo.getLocale(), googlePojo.getLocale());
+			customerMember.setAddress(address);
 			rest.postForObject("http://localhost:6969/rest/api/customer/insert-by-social", customerMember,
 					CustomerMember.class);
 
